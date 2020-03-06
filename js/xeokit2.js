@@ -1,13 +1,13 @@
 
 
 
-import {Viewer} from "./../bimnomads2/xeokit/src/viewer/Viewer.js";
-import {BIMServerLoaderPlugin} from "./../bimnomads2/xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerLoaderPlugin.js";
-import BimServerClient from "./../bimnomads2/xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerClient/bimserverclient.js";
-import {ReadableGeometry} from "../bimnomads2/xeokit/src/viewer/scene/geometry/ReadableGeometry.js";
+import {Viewer} from "../xeokit/src/viewer/Viewer.js";
+import {BIMServerLoaderPlugin} from "../xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerLoaderPlugin.js";
+import BimServerClient from "../xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerClient/bimserverclient.js";
+import {ReadableGeometry} from "../xeokit/src/viewer/scene/geometry/ReadableGeometry.js";
 //import {AnnotationsPlugin} from "../bimnomads2/xeokit/src/plugins/AnnotationsPlugin/AnnotationsPlugin.js";
 //import {DistanceMeasurementsPlugin} from "../bimnomads2/xeokit/src/plugins/DistanceMeasurementsPlugin/DistanceMeasurementsPlugin.js";
-import {StoreyViewsPlugin} from "../bimnomads2/xeokit/src/plugins/StoreyViewsPlugin/StoreyViewsPlugin.js";
+import {StoreyViewsPlugin} from "../xeokit/src/plugins/StoreyViewsPlugin/StoreyViewsPlugin.js";
 
 const bimServerAddress = "http://www.nomads.usp.br:8080/bimserver/";
 const username = "platnomads@gmail.com";

@@ -4,21 +4,17 @@
 
     <meta charset="UTF-8">
     <title>Bim Nomads</title>
-   <!-- <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>-->
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/annotation.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
 
-  <!-- Load Forum styles-->
-  	
-    <link rel="stylesheet" href="./forum/css/principal.css">
-    <link rel="stylesheet" href="./forum/css/sidebar.css">
-    
+      
 	<!-- Load XEOKIT -->
-    <script type="module" src="./xeokit1.js"></script>
-    <!--<script type="module" src="./xeokit2.js"></script> 
-    <script type="module" src="./xeokit3.js"></script>-->
+    <script type="module" src="./js/xeokit1.js"></script>
+    <script type="module" src="./js/xeokit2.js"></script> 
+    <script type="module" src="./js/xeokit3.js"></script>
 </head>
 <body> 
     <div id='app'>
@@ -65,48 +61,7 @@
                         <!--Forum-->
                         
     
-					                    <div class="forum" style="margin-top: 5px;">
-
-					                          <h4>
-										        Deixe um novo comentário
-										      </h4>
-										      <form method="POST" id="meuForm">
-										        <div class="inputs">
-										          <input type="text" name="txmensagem" placeholder="Mensagem" required />
-										        </div>
-										        <input type="submit" value="Comentar">
-										      </form>
-										      
-										      <div>
-										        <b class="hidefiltros">
-										          <a href="javascript:void(0)" style="text-decoration: none;">
-										        Filtros de Pesquisa
-										        </a>
-										        </b>
-										        <div class="filtros">
-										          <a><input type="checkbox" id="MR" checked><label for="MR"> Mais Recentes </label></a> | 
-										          <a><input type="checkbox" id="MC"><label for="MC"> Mais Comentados </label></a> | 
-										          <a><input type="checkbox" id="ML"><label for="ML"> Mais Curtidos </label></a> | 
-										          <a><input type="checkbox" id="MD"><label for="MD"> Mais Descurtidos </label></a>
-										        </div>
-										        
-										      <p><b class="hidecoment">
-										          <a href="javascript:void(0)" style="text-decoration: none;">
-										            Comentarios
-										          </a>
-										        </b></p>
-										      </div>
-										      <div class="coments" id="exibe_comentarios">
-										      </div>
-										    </div>
-
-										  </div>
-							  <!--Forum scripts-->
-								<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-								<script src="./forum/js/Carrega_Dados.js"></script>
-								<script src="./forum/js/Envia_Dados.js"></script>
-								<script src="./forum/js/Funcoes_Simples.js"></script>
-								<script src="./forum/js/sidebar.js"></script>
+					                    
               
 						<!--Forum end-->
 							

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginDescriptor>
+	<WebModulePlugin>
+		<identifier>bimsurfer3</identifier>
+		<name>BIMsurfer 3</name>
+		<description>BIMsurfer 3</description>
+	</WebModulePlugin>
+</PluginDescriptor>

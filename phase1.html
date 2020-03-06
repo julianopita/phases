@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Bim Nomads</title>
+   <!-- <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>-->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/annotation.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+
+  <!-- Load Forum styles-->
+  	
+    <link rel="stylesheet" href="./forum/css/principal.css">
+    <link rel="stylesheet" href="./forum/css/sidebar.css">
+    
+	<!-- Load XEOKIT -->
+    <script type="module" src="./xeokit1.js"></script>
+    <!--<script type="module" src="./xeokit2.js"></script> 
+    <script type="module" src="./xeokit3.js"></script>-->
+</head>
+<body> 
+    <div id='app'>
+      <!-- Barra de navegação -->
+          <nav id="nav">
+          <div id="flexnave"> 
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"><img src="./images/logo24.png" height="43" width="70" alt=""></a>
+            <div name="barItem" ><span id="over">registro</span></div>
+            <div name="barItem"><span id="over">sobre</span></div>
+            <div name="barItem"><span id="over">buscar</span></div>
+          </div>
+        </nav>
+        <nav-bar></nav-bar>
+        <section class="flex">
+            <div class="flexbox">
+            <!-- essa parte é o lado esquerdo -->
+                <div class="frame left" v-bind:style="{width: len_esq+'vw',height : len_height_esq+'vh'}">
+                    <div class="resize_left">
+                        <input v-if="flag_min_left != -1" v-on:click="minLeft" type="image" src="./images/left.png" ></input>
+                        <input v-if="flag_min_left != 1" v-on:click="raiseLeft" type="image" src="./images/right.png"></input>
+                    </div>
+                    <section class="grid_canvas">                    
+                        <div> 
+                            <canvas id="canvas_main" v-if="main_flag == 0" class="canvas_main" v-bind:style="{marginTop: 10+'vh',width: 13+'vw',height : 17+'vh'}" v-on:click="forceRerender_main"></canvas>
+                            <canvas id="canvas_aux1" v-if="aux1_flag == 0" class="canvas_aux1" v-bind:style="{marginTop: 10+'vh',width: 13+'vw',height : 17+'vh'}" v-on:click="forceRerender_aux1"></canvas>
+                            <canvas id="canvas_aux2" v-if="aux2_flag == 0"  class="canvas_aux2" v-bind:style="{marginTop: 10+'vh',width: 13+'vw',height : 17+'vh'}" v-on:click="forceRerender_aux2" ></canvas>    
+                        </div>
+                        <div>
+                            <canvas id="canvas_main" v-if="main_flag == 1" class="canvas_main" v-bind:style="{marginTop: -5+'vh',width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}"  :key="main_flag" :key="len_esq"></canvas>
+                            <canvas id="canvas_aux1" v-if="aux1_flag == 1"  class="canvas_aux1" v-bind:style="{marginTop: -5+'vh',width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}" :key="aux1_flag" ></canvas>
+                            <canvas id="canvas_aux2" v-if="aux2_flag == 1" class="canvas_aux2"  v-bind:style="{marginTop: -5+'vh',width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}"  :key="aux2_flag"></canvas>    
+                        </div>
+                      
+                    </section> 
+                </div>
+                <!-- lado direito -->
+                    <div class="frame right" v-bind:style="{zIndex:10,width: len_dir+'vw',height : len_height_dir+'vh'}">
+                        <div class="resize_right">
+                            <input v-if="flag_min_right != 1" v-on:click="raiseRight" type="image" src="./images/left.png" ></input>
+                            <input v-if="flag_min_right != -1" v-on:click="minRight" type="image" src="./images/right.png"></input>
+                        </div>
+
+                        <!--Forum-->
+                        
+    
+					                    <div class="forum" style="margin-top: 5px;">
+
+					                          <h4>
+										        Deixe um novo comentário
+										      </h4>
+										      <form method="POST" id="meuForm">
+										        <div class="inputs">
+										          <input type="text" name="txmensagem" placeholder="Mensagem" required />
+										        </div>
+										        <input type="submit" value="Comentar">
+										      </form>
+										      
+										      <div>
+										        <b class="hidefiltros">
+										          <a href="javascript:void(0)" style="text-decoration: none;">
+										        Filtros de Pesquisa
+										        </a>
+										        </b>
+										        <div class="filtros">
+										          <a><input type="checkbox" id="MR" checked><label for="MR"> Mais Recentes </label></a> | 
+										          <a><input type="checkbox" id="MC"><label for="MC"> Mais Comentados </label></a> | 
+										          <a><input type="checkbox" id="ML"><label for="ML"> Mais Curtidos </label></a> | 
+										          <a><input type="checkbox" id="MD"><label for="MD"> Mais Descurtidos </label></a>
+										        </div>
+										        
+										      <p><b class="hidecoment">
+										          <a href="javascript:void(0)" style="text-decoration: none;">
+										            Comentarios
+										          </a>
+										        </b></p>
+										      </div>
+										      <div class="coments" id="exibe_comentarios">
+										      </div>
+										    </div>
+
+										  </div>
+							  <!--Forum scripts-->
+								<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+								<script src="./forum/js/Carrega_Dados.js"></script>
+								<script src="./forum/js/Envia_Dados.js"></script>
+								<script src="./forum/js/Funcoes_Simples.js"></script>
+								<script src="./forum/js/sidebar.js"></script>
+              
+						<!--Forum end-->
+							
+                    </div>
+                </div>
+                <!-- parte de baixo  -->
+                <div class=" down" v-bind:style="{height: len_height_down+ 'vh'}">
+                    <!-- <div class="resize_down">
+                        <input v-if="flag_min_down != 1" v-on:click="raiseDown" type="image" src="./images/up.png"></input>
+                        <input v-if="flag_min_down != -1" v-on:click="minDown"type="image" src="./images/down.png"></input>
+                    </div> -->
+                </div>
+        </section>
+    </div>
+
+
+
+   <template id="nave">
+        
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Ação</a>
+                  <a class="dropdown-item" href="#">Outra ação</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Algo mais aqui</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </template>
+  
+
+</body>
+    <script src="./js/main.js"></script>
+
+</html>

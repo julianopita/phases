@@ -232,7 +232,8 @@ bimServerClient.init(() => {
                                                           });
 
                                                           if (pickResult) {
-
+                                                             var d = i
+                                                              annotations.destroyAnnotation("myAnnotation*");
                                                               const annotation = annotations.createAnnotation({
                                                                   id: "myAnnotation" + i,
                                                                   pickResult: pickResult, // <<------- initializes worldPos and entity from PickResult
@@ -240,16 +241,15 @@ bimServerClient.init(() => {
                                                                   markerShown: true,      // Optional, default is true
                                                                   labelShown: true,       // Optional, default is true
                                                                   values: {               // HTML template values
-                                                                      glyph: "A" + i,
+                                                                      glyph: "A",
                                                                       title: "Informação sobre  " + IfcBuildingName,
                                                                       description: IfcBuildingDescription + "</br> Area: " + IfcOidArea + "m²",
                                                                   },
                                                               });
-
-                                                              i++;
+                                                          ++i;  
                                                           }
-                                                      });
-
+                                                       });
+                                                    
                                                       window.viewer = viewer;
                                                  
                                       //closing Bimserver connection        

@@ -1,0 +1,46 @@
+{
+  "name": "@xeokit/xeokit-sdk",
+  "version": "0.5.4",
+  "description": "JavaScript SDK for viewing high-detail 3D BIM and CAD models in the Web browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xeokit/xeokit-sdk.git"
+  },
+  "keywords": [
+    "webgl",
+    "javascript",
+    "xeokit",
+    "xeolabs",
+    "ifc",
+    "bim",
+    "cad",
+    "bimserver",
+    "buildingsmart",
+    "openbim",
+    "solidworks",
+    "gltf",
+    "3dxml",
+    "obj",
+    "stl",
+    "3d-viewer"
+  ],
+  "author": "Lindsay Kay",
+  "license": "https://xeokit.github.io/xeokit-licensing/",
+  "bugs": {
+    "url": "https://github.com/xeokit/xeokit-sdk/issues"
+  },
+  "homepage": "https://xeokit.io",
+  "dependencies": {},
+  "devDependencies": {
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint": "^5.16.0"
+  },
+  "files": [
+    "/src"
+  ]
+}

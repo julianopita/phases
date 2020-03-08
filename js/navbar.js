@@ -34,13 +34,13 @@ var app = new Vue({
             this.main_flag = 0;
             this.aux1_flag = 1;
             this.aux2_flag = 0;
-            delete require.cache[require.resolve('../xeokit.js')];
+            delete require.cache[require.resolve('../js/xeokit2.js')];
         },
         forceRerender_aux2 : function(){
             this.main_flag = 0;
             this.aux1_flag = 0;
             this.aux2_flag = 1;
-            delete require.cache[require.resolve('../xeokit.js')];
+            delete require.cache[require.resolve('../js/xeokit3.js')];
         },
 
         //raise Left box
@@ -50,7 +50,7 @@ var app = new Vue({
                 this.len_dir = 5;
                 this.flag_min_left = 1;
                 this.flag_min_right = -1;
-                console.log(require.resolve('../xeokit.js')+'aqui');
+                console.log(require.resolve('../js/xeokit1.js')+'aqui');
             }else{
                 this.len_esq = 70;
                 this.len_dir = 30;

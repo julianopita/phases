@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="./css/annotation.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
-
+    
       
 	<!-- Load XEOKIT -->
     <script type="module" src="./js/xeokit1.js"></script>
-    <script type="module" src="./js/xeokit2.js"></script> 
-    <script type="module" src="./js/xeokit3.js"></script>
+    <!--<script type="module" src="./js/xeokit2.js"></script> 
+    <script type="module" src="./js/xeokit3.js"></script>-->
 </head>
 <body> 
     <div id='app'>
       <!-- Barra de navegação -->
-          <nav id="nav">
+          
           <div id="flexnave"> 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#"><img src="./images/logo24.png" height="43" width="70" alt=""></a>
@@ -56,15 +56,7 @@
                         <div class="resize_right">
                             <input v-if="flag_min_right != 1" v-on:click="raiseRight" type="image" src="./images/left.png" ></input>
                             <input v-if="flag_min_right != -1" v-on:click="minRight" type="image" src="./images/right.png"></input>
-                        </div>
-
-                        <!--Forum-->
-                        
-    
-					                    
-              
-						<!--Forum end-->
-							
+                        </div>                  						
                     </div>
                 </div>
                 <!-- parte de baixo  -->
@@ -112,5 +104,6 @@
 
 </body>
     <script src="./js/main.js"></script>
+
 
 </html>

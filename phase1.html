@@ -4,13 +4,9 @@
 
     <meta charset="UTF-8">
     <title>Bim Nomads</title>
-    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/annotation.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
-    
-      
 	<!-- Load XEOKIT -->
     <script type="module" src="./js/xeokit1.js"></script>
     <!--<script type="module" src="./js/xeokit2.js"></script> 
@@ -21,21 +17,13 @@
       <!-- Barra de navegação -->
           
           <div id="flexnave"> 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><img src="./images/logo24.png" height="43" width="70" alt=""></a>
-            <div name="barItem" ><span id="over">registro</span></div>
-            <div name="barItem"><span id="over">sobre</span></div>
-            <div name="barItem"><span id="over">buscar</span></div>
-          </div>
-        </nav>
-        <nav-bar></nav-bar>
         <section class="flex">
             <div class="flexbox">
             <!-- essa parte é o lado esquerdo -->
                 <div class="frame left" v-bind:style="{width: len_esq+'vw',height : len_height_esq+'vh'}">
                     <div class="resize_left">
-                        <input v-if="flag_min_left != -1" v-on:click="minLeft" type="image" src="./images/left.png" ></input>
-                        <input v-if="flag_min_left != 1" v-on:click="raiseLeft" type="image" src="./images/right.png"></input>
+                        <input v-if="flag_min_left != -1" v-on:click="minLeft" type="image" src="./imagens/left.png" ></input>
+                        <input v-if="flag_min_left != 1" v-on:click="raiseLeft" type="image" src="./imagens/right.png"></input>
                     </div>
                     <section class="grid_canvas">                    
                         <div> 
@@ -54,8 +42,8 @@
                 <!-- lado direito -->
                     <div class="frame right" v-bind:style="{zIndex:10,width: len_dir+'vw',height : len_height_dir+'vh'}">
                         <div class="resize_right">
-                            <input v-if="flag_min_right != 1" v-on:click="raiseRight" type="image" src="./images/left.png" ></input>
-                            <input v-if="flag_min_right != -1" v-on:click="minRight" type="image" src="./images/right.png"></input>
+                            <input v-if="flag_min_right != 1" v-on:click="raiseRight" type="image" src="./imagens/left.png" ></input>
+                            <input v-if="flag_min_right != -1" v-on:click="minRight" type="image" src="./imagens/right.png"></input>
                         </div>                  						
                     </div>
                 </div>
@@ -68,38 +56,6 @@
                 </div>
         </section>
     </div>
-
-
-
-   <template id="nave">
-        
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        
-          <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Ação</a>
-                  <a class="dropdown-item" href="#">Outra ação</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Algo mais aqui</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </template>
   
 
 </body>

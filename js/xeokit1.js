@@ -143,15 +143,13 @@ bimServerClient.init(() => {
                         var IfcBuildingName = sessionStorage.getItem('IfcBuildingName');
                         var IfcBuildingDescription = sessionStorage.getItem('IfcBuildingDescription');
 
-                        console.log (IfcBuildingOid);
+                       console.log (IfcBuildingOid);
                        console.log (IfcOidArea);
                        console.log (IfcBuildingName);
                        console.log (IfcBuildingDescription);
                                                      
-                          bimServerClient.init(() => {
-                              // Login to the BIMServerClient
-                              bimServerClient.login(username, password, () => {
-                                //get Oid from Guid
+                         bimServerClient.init(() => {
+                              //get Oid from Guid
                                  bimServerClient.call("LowLevelInterface", "getDataObjectByGuid",  {roid: roid , guid: IfcBuildingGuid.id}, function(IfcBuildingData){
                                    //obterm o Oid do site e o salva em uma sessao local
                                        sessionStorage.setItem("IfcBuildingOid", IfcBuildingData.oid);
@@ -253,11 +251,8 @@ bimServerClient.init(() => {
                                                       window.viewer = viewer;
                                                  
                                       //closing Bimserver connection        
-                                                     });
-                                      };
+                                                };
                                 //closing object picking
-
-
     
                                 });
 

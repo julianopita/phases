@@ -15,8 +15,7 @@
 <body> 
     <div id='app'>
       <!-- Barra de navegação -->
-          
-          <div id="flexnave"> 
+      
         <section class="flex">
             <div class="flexbox">
             <!-- essa parte é o lado esquerdo -->
@@ -27,14 +26,9 @@
                     </div>
                     <section class="grid_canvas">                    
                         <div> 
-                            <canvas id="canvas_main" v-if="main_flag == 0" class="canvas_main" v-bind:style="{marginTop: 10+'vh',width: 13+'vw',height : 17+'vh'}" v-on:click="forceRerender_main"></canvas>
-                            <canvas id="canvas_aux1" v-if="aux1_flag == 0" class="canvas_aux1" v-bind:style="{marginTop: 10+'vh',width: 13+'vw',height : 17+'vh'}" v-on:click="forceRerender_aux1"></canvas>
-                            <canvas id="canvas_aux2" v-if="aux2_flag == 0"  class="canvas_aux2" v-bind:style="{marginTop: 10+'vh',width: 13+'vw',height : 17+'vh'}" v-on:click="forceRerender_aux2" ></canvas>    
                         </div>
                         <div>
                             <canvas id="canvas_main" v-if="main_flag == 1" class="canvas_main" v-bind:style="{marginTop: -5+'vh',width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}"  :key="main_flag" :key="len_esq"></canvas>
-                            <canvas id="canvas_aux1" v-if="aux1_flag == 1"  class="canvas_aux1" v-bind:style="{marginTop: -5+'vh',width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}" :key="aux1_flag" ></canvas>
-                            <canvas id="canvas_aux2" v-if="aux2_flag == 1" class="canvas_aux2"  v-bind:style="{marginTop: -5+'vh',width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}"  :key="aux2_flag"></canvas>    
                         </div>
                       
                     </section> 

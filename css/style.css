@@ -3,10 +3,17 @@ html,body{
     margin: 0%;
 }
 
-
+#flexnave{
+    display: flex;
+    position: fixed;
+    right: 10px;
+    top: 17px;
+    flex: 1 1 1;
+}
 
 .flexbox{
     display: flex;
+    position: relative;
 }
 .flex{
     display: flexbox;
@@ -32,9 +39,11 @@ html,body{
     background-color: lightgray;
 }
 .grid_canvas{
+    position: relative;
     display: grid;
+    top: 20px;
     grid-template-columns: 15vw 59vw ;
-    z-index: -30;
+    /* z-index: 3; */
 }
 .canvas_main{
     border: 0px solid #000;
@@ -65,4 +74,13 @@ html,body{
     position: relative;
     left: 95vw;
     z-index: 1000;
+}
+div[name="barItem"]{
+    padding-right: 20px;
+}
+#over::after {
+    content: url("./imagens/down.png");
+    position: relative;
+    left: 5px;
+    top: 3px;
 }

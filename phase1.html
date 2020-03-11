@@ -13,43 +13,60 @@
     <script type="module" src="./js/xeokit3.js"></script>-->
 </head>
 <body> 
-    <div id='app'>
-      <!-- Barra de navegação -->
-      
-        <section class="flex">
-            <div class="flexbox">
-            <!-- essa parte é o lado esquerdo -->
-                <div class="frame left" v-bind:style="{width: len_esq+'vw',height : len_height_esq+'vh'}">
-                    <div class="resize_left">
-                        <input v-if="flag_min_left != -1" v-on:click="minLeft" type="image" src="./imagens/left.png" ></input>
-                        <input v-if="flag_min_left != 1" v-on:click="raiseLeft" type="image" src="./imagens/right.png"></input>
-                    </div>
-                    <section class="grid_canvas">                    
-                        <div> 
-                        </div>
-                        <div>
-                            <canvas id="canvas_main" v-if="main_flag == 1" class="canvas_main" v-bind:style="{marginTop: -5+'vh',width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}"  :key="main_flag" :key="len_esq"></canvas>
-                        </div>
-                      
-                    </section> 
-                </div>
-                <!-- lado direito -->
-                    <div class="frame right" v-bind:style="{zIndex:10,width: len_dir+'vw',height : len_height_dir+'vh'}">
-                        <div class="resize_right">
-                            <input v-if="flag_min_right != 1" v-on:click="raiseRight" type="image" src="./imagens/left.png" ></input>
-                            <input v-if="flag_min_right != -1" v-on:click="minRight" type="image" src="./imagens/right.png"></input>
-                        </div>                  						
-                    </div>
-                </div>
-                <!-- parte de baixo  -->
-                <div class=" down" v-bind:style="{height: len_height_down+ 'vh'}">
-                    <!-- <div class="resize_down">
-                        <input v-if="flag_min_down != 1" v-on:click="raiseDown" type="image" src="./images/up.png"></input>
-                        <input v-if="flag_min_down != -1" v-on:click="minDown"type="image" src="./images/down.png"></input>
-                    </div> -->
-                </div>
-        </section>
+  <div id='app'>
+    <!-- Barra de navegação -->
+    <nav>
+      <img src="./imagens/logo24.png" width="80px" heght="20px"alt="" >
+      <div id="flexnave">
+        <div name="barItem" ><span id="over">registro</span></div>
+        <div name="barItem"><span id="over">sobre</span></div>
+        <div name="barItem"><span id="over">buscar</span></div>
+      </div>
+    </nav>
+
+    <div class="flexbox">
+    <!-- essa parte é o lado esquerdo -->
+      <div class="frame left" v-bind:style="{width: len_esq+'vw',height : len_height_esq+'vh'}">
+        <div class="resize_left" style="width: 60px;">
+          <input v-if="flag_min_left != -1" v-on:click="minLeft" type="image" src="./imagens/left.png" ></input>
+          <input v-if="flag_min_left != 1" v-on:click="raiseLeft" type="image" src="./imagens/right.png"></input>          
+        </div>
+
+      <section class="grid_canvas">   
+        <div>
+          <!-- Canvas selector -->
+          <div class="resize_left" style="display:flex;60px;position: relative;left:-4px;top: 15px;">
+            <input type="image" src="./imagens/1.png" ></input>
+            <input type="image" src="./imagens/2.png"></input>          
+            <input type="image" src="./imagens/3.png" ></input>
+          </div>
+        </div>
+        <div>
+
+          <div>
+            <canvas id="canvas_main" v-if="main_flag == 1" class="canvas_main" v-bind:style="{width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}"></canvas>            
+          </div>
+        
+        </div>
+      </section>
+       
+      </div>
+        <!-- lado direito -->
+        <div class="frame right" v-bind:style="{zIndex:10,width: len_dir+'vw',height : len_height_dir+'vh'}">
+          <div class="resize_right">
+              <input v-if="flag_min_right != 1" v-on:click="raiseRight" type="image" src="./imagens/left.png" ></input>
+              <input v-if="flag_min_right != -1" v-on:click="minRight" type="image" src="./imagens/right.png"></input>
+          </div>                  						
+        </div>
     </div>
+            <!-- parte de baixo  -->
+            <div class=" down" v-bind:style="{height: len_height_down+ 'vh'}">
+                <!-- <div class="resize_down">
+                    <input v-if="flag_min_down != 1" v-on:click="raiseDown" type="image" src="./images/up.png"></input>
+                    <input v-if="flag_min_down != -1" v-on:click="minDown"type="image" src="./images/down.png"></input>
+                </div> -->
+            </div>
+  </div>
   
 
 </body>

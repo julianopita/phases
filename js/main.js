@@ -25,24 +25,6 @@ var app = new Vue({
         aux2_flag : 0,
     },
     methods: {
-        forceRerender_main : function(){
-            this.main_flag = 1;
-            this.aux1_flag = 0;
-            this.aux2_flag = 0;
-        },
-        forceRerender_aux1 : function(){
-            this.main_flag = 0;
-            this.aux1_flag = 1;
-            this.aux2_flag = 0;
-            delete require.cache[require.resolve('../xeokit.js')];
-        },
-        forceRerender_aux2 : function(){
-            this.main_flag = 0;
-            this.aux1_flag = 0;
-            this.aux2_flag = 1;
-            delete require.cache[require.resolve('../xeokit.js')];
-        },
-
         //raise Left box
         raiseLeft : function(){
             if(this.flag_min_left == 0){
@@ -50,7 +32,6 @@ var app = new Vue({
                 this.len_dir = 5;
                 this.flag_min_left = 1;
                 this.flag_min_right = -1;
-                console.log(require.resolve('../xeokit.js')+'aqui');
             }else{
                 this.len_esq = 70;
                 this.len_dir = 30;

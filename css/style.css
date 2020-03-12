@@ -46,11 +46,10 @@ html,body{
     /* z-index: 3; */
 }
 .canvas_main{
+    position: relative;
     border: 0px solid #000;
     border-radius: 1px solid #000;
     background-color: white;
-    z-index: -30;
-}
 .canvas_aux1{
     border: 0px solid #000;
     border-radius: 1px solid #000;

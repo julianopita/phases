@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="./css/annotation.css">
 	<!-- Load XEOKIT -->
     <script type="module" src="./js/xeokit1.js"></script>
-    <!--<script type="module" src="./js/xeokit2.js"></script> 
-    <script type="module" src="./js/xeokit3.js"></script>-->
+    <script type="module" src="./js/xeokit2.js"></script> 
+    <script type="module" src="./js/xeokit3.js"></script>
 </head>
 <body> 
   <div id='app'>
     <!-- Barra de navegação -->
     <nav>
-      <img src="./imagens/logo24.png" width="80px" heght="20px"alt="" >
+      <img src="./imagens/logo24.png" width="80px" heght="10px"alt="" style="padding: 3px;">
       <div id="flexnave">
         <div name="barItem" ><span id="over">registro</span></div>
         <div name="barItem"><span id="over">sobre</span></div>
@@ -35,18 +35,18 @@
       <section class="grid_canvas">   
         <div>
           <!-- Canvas selector -->
-          <div class="resize_left" style="display:flex;60px;position: relative;left:-4px;top: 15px;">
-            <input type="image" src="./imagens/1.png" ></input>
-            <input type="image" src="./imagens/2.png"></input>          
-            <input type="image" src="./imagens/3.png" ></input>
+          <div class="resize_left" style="width: 150px;display:flex;position: relative;left:20px;top: 15px;">
+            <input v-on:click="changeZIndex1" type="image" src="./imagens/1.png" ></input>
+            <input v-on:click="changeZIndex2" type="image" src="./imagens/2.png"></input>          
+            <input v-on:click="changeZIndex3" type="image" src="./imagens/3.png" ></input>
           </div>
         </div>
         <div>
-
           <div>
-            <canvas id="canvas_main" v-if="main_flag == 1" class="canvas_main" v-bind:style="{width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}"></canvas>            
+            <canvas style="position: absolute;background-color: beige;" id="canvas_main" v-bind:style="{zIndex: z_main,width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}" class="max"></canvas>
+            <canvas style="position: absolute;background-color: beige;"  id="canvas_aux1" v-bind:style="{zIndex: z_aux1,width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}" class="max"></canvas>
+            <canvas style="position: absolute;background-color: beige;"  id="canvas_aux2" v-bind:style="{zIndex: z_aux2,width: 80+'%',height : 82.5+'vh',marginLeft: 10+'px'}" class="max"></canvas>
           </div>
-        
         </div>
       </section>
        
@@ -71,6 +71,6 @@
 
 </body>
     <script src="./js/main.js"></script>
-
+    <script src="./js/zindex.js"></script>
 
 </html>

@@ -23,6 +23,10 @@ var app = new Vue({
         main_flag : 1,
         aux1_flag : 0,
         aux2_flag : 0,
+        //
+        z_main : 1,
+        z_aux1 : 0,
+        z_aux2 : 0
     },
     methods: {
         //raise Left box
@@ -84,5 +88,20 @@ var app = new Vue({
                 this.flag_min_down = 0;
             }
         },
+        changeZIndex1 : function(){
+            this.z_main = 10;
+            this.z_aux1 = 0;
+            this.z_aux2 = 0;
+        },
+        changeZIndex2 : function(){
+            this.z_main = 0;
+            this.z_aux1 = 10;
+            this.z_aux2 = 0;
+        },
+        changeZIndex3 : function(){
+            this.z_main = 0;
+            this.z_aux1 = 0;
+            this.z_aux2 = 10;
+        }
     }
 })

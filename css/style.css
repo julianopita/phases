@@ -65,6 +65,8 @@ html,body{
 
 .resize_left{
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 .resize_right{
     position: absolute;

@@ -186,12 +186,14 @@ bimServerClient.init(() => {
         viewer.scene.setObjectsOpacity(viewer.metaScene.getObjectIDsByType("IfcDoor"), 0.3);
 
         buildStoreyMapsMenu();
-    });
+    
 
     function buildStoreyMapsMenu() {
 
         const cameraMemento = new CameraMemento(); // Saves 3D perspective camera to restore
         cameraMemento.saveCamera(viewer.scene);
+// Get matadata on our model
+const metaModel = viewer.metaScene.metaModels["myModel"];
 
         var test= viewer.metaScene.getObjectIDsByType("IfcBuildingStorey");
         console.log(test);
@@ -283,7 +285,7 @@ bimServerClient.init(() => {
         }
     }                                              
                                            
-
+});
 
 
 

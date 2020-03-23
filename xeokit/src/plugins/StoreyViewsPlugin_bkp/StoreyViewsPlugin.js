@@ -321,8 +321,7 @@ class StoreyViewsPlugin extends Plugin {
             const metaObject = metaScene.metaObjects[storeyId];
             const childObjectIds = metaObject.getObjectIDsInSubtree();
             const aabb = scene.getAABB(childObjectIds);
-            const numObjects = (Math.random() > 0.5) ? childObjectIds.length : 0;
-            const storey = new Storey(this, aabb, modelId, storeyId, numObjects);
+            const storey = new Storey(this, aabb, modelId, storeyId);
             storey._onModelDestroyed = model.once("destroyed", () => {
                 this._deregisterModelStoreys(modelId);
                 this.fire("storeys", this.storeys);

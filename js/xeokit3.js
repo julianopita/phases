@@ -20,8 +20,8 @@ import {ReadableGeometry} from "../xeokit/src/viewer/scene/geometry/ReadableGeom
 const bimServerAddress = "http://www.nomads.usp.br:8080/bimserver/";
 const username = "platnomads@gmail.com";
 const password = "@bimserver";
-const poid = 196609;
-const roid = 131075;
+const poid = 1376257;
+const roid = 13631491;
 
 
 
@@ -168,6 +168,12 @@ bimServerClient.init(() => {
                                    		var IfcBuildingStoreysAll = JSON.parse(sessionStorage.getItem("IfcBuildingStoreys"));
                                    		console.log(JSON.parse(sessionStorage.getItem("IfcBuildingStoreys")));
                                         console.log (IfcBuildingStoreysAll);
+
+                                                  };
+                              
+                           
+
+          
                                               	
  //------------------------------------------------------------------------------------------------------------------
     // Add a StoreyViewsPlugin
@@ -185,7 +191,21 @@ bimServerClient.init(() => {
         // Make all doors transparent
         viewer.scene.setObjectsOpacity(viewer.metaScene.getObjectIDsByType("IfcDoor"), 0.3);
 
-        buildStoreyMapsMenu();
+          const storeyMap = storeyViewsPlugin.createStoreyMap("hm0005Jl7W1FLAu0H9D600", {
+            format: "png",
+            width: 400,
+            useObjectStates: true
+        });
+
+        const img = document.createElement("img");
+        img.src = storeyMap.imageData;
+        img.style.width = storeyMap.width + "px";
+        img.style.height = storeyMap.height + "px";
+
+        const storeyMapDiv = document.getElementById("storeyMap");
+        storeyMapDiv.appendChild(img);
+
+        /* buildStoreyMapsMenu();
     
 
     function buildStoreyMapsMenu() {
@@ -195,12 +215,16 @@ bimServerClient.init(() => {
 // Get matadata on our model
 const metaModel = viewer.metaScene.metaModels["myModel"];
 
-        var test= viewer.metaScene.getObjectIDsByType("IfcBuildingStorey");
+        var test=[];
+
+        test = viewer.metaScene.getObjectIDsByType("IfcBuildingStorey");
         console.log(test);
 
         const storeyDiv = document.getElementById("storeys");
         //const storeyIds = IfcBuildingStoreysAll
-        const storeyIds = test;
+        const storey = storeyViewsPlugin.storeys["0B5gfVFyr9cw1sh0d961jX"];
+        const storeyIds = storey.storeyId;
+        //const storeyIds = Object.keys(storeyViewsPlugin.storeys);
         console.log(storeyIds);
 
         const canStandOnTypes = { // IFC types we can stand on in first-person mode
@@ -283,18 +307,28 @@ const metaModel = viewer.metaScene.metaModels["myModel"];
                 }
             };
         }
-    }                                              
+    }
+    */                                              
                                            
 });
-
-
-
-
-                                 };
-                              });
-                           });
+  });
 });
+});
+/*
+
                                                   //closing Guid call
+
+ //* const storey = storeyViewsPlugin.storeys["2SWZMQPyD9pfT9q87pgXa1"]; // ID of the IfcBuildingStorey
+ //*
+// * const modelId  = storey.modelId;  // "myModel"
+ //* const storeyId = storey.storeyId; // "2SWZMQPyD9pfT9q87pgXa1"
+ //* const aabb     = storey.aabb;     // Axis-aligned 3D World-space boundary of the IfcBuildingStorey
+
+*/
+
+
+
+                       
                                                    
                                                    
                                                     

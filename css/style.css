@@ -21,7 +21,7 @@ html,body{
     /* grid-template-rows: 85vh 15vh; */
 }
 .frame{
-    border: 0px solid #000;
+    border: 2px solid #000;
     border-radius: 1px solid #000;
     transition: 0.3s;
     padding: 20px;
@@ -47,17 +47,18 @@ html,body{
 }
 .canvas_main{
     position: relative;
-    border: 0px solid #000;
+    border: 2px solid #000;
     border-radius: 1px solid #000;
     background-color: white;
+
 .canvas_aux1{
-    border: 0px solid #000;
+    border: 2px solid #000;
     border-radius: 1px solid #000;
     background-color: white;
     z-index: -30;
 }
 .canvas_aux2{
-    border: 0px solid #000;
+    border: 2px solid #000;
     border-radius: 1px solid #000;
     background-color: white;
     z-index: -30;

@@ -231,11 +231,11 @@ bimServerClient.init(() => {
 
                                                           if (pickResult) {
                                                              var d = i
-                                                              annotations.destroyAnnotation("myAnnotation*");
+                                                              annotations.destroyAnnotation("myAnnotation" + [d]);
                                                               const annotation = annotations.createAnnotation({
                                                                   id: "myAnnotation" + i,
                                                                   pickResult: pickResult, // <<------- initializes worldPos and entity from PickResult
-                                                                  occludable: true,       // Optional, default is true
+                                                                  occludable: false,       // Optional, default is true
                                                                   markerShown: true,      // Optional, default is true
                                                                   labelShown: true,       // Optional, default is true
                                                                   values: {               // HTML template values

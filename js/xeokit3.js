@@ -20,8 +20,8 @@ import {ReadableGeometry} from "../xeokit/src/viewer/scene/geometry/ReadableGeom
 const bimServerAddress = "http://www.nomads.usp.br:8080/bimserver/";
 const username = "platnomads@gmail.com";
 const password = "@bimserver";
-const poid = 1376257;
-const roid = 13631491;
+const poid = 196609;
+const roid = 131075;
 
 
 
@@ -175,7 +175,7 @@ bimServerClient.init(() => {
 
           
                                               	
- //------------------------------------------------------------------------------------------------------------------
+ /*//------------------------------------------------------------------------------------------------------------------
     // Add a StoreyViewsPlugin
     //------------------------------------------------------------------------------------------------------------------
 
@@ -313,18 +313,9 @@ const metaModel = viewer.metaScene.metaModels["myModel"];
 });
   });
 });
-});
-/*
 
-                                                  //closing Guid call
 
- //* const storey = storeyViewsPlugin.storeys["2SWZMQPyD9pfT9q87pgXa1"]; // ID of the IfcBuildingStorey
- //*
-// * const modelId  = storey.modelId;  // "myModel"
- //* const storeyId = storey.storeyId; // "2SWZMQPyD9pfT9q87pgXa1"
- //* const aabb     = storey.aabb;     // Axis-aligned 3D World-space boundary of the IfcBuildingStorey
 
-*/
 
 
 

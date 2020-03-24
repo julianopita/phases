@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="./css/model.css">
 	<!-- Load XEOKIT -->
     <script type="module" src="./js/xeokit1.js"></script>
-    <!--<script type="module" src="./js/xeokit2.js"></script> 
-    <script type="module" src="./js/xeokit3.js"></script>-->
+    <script type="module" src="./js/xeokit2.js"></script> 
+    <script type="module" src="./js/xeokit3.js"></script>
 </head>
 <body> 
   <div id='app'>
@@ -60,7 +60,36 @@
           <div class="resize_right">
               <input v-if="flag_min_right != 1" v-on:click="raiseRight" type="image" src="./imagens/left.png" ></input>
               <input v-if="flag_min_right != -1" v-on:click="minRight" type="image" src="./imagens/right.png"></input>
-          </div>                  						
+          </div>
+           <!-- Forum -->
+            <div class="forum">
+
+              <div class="content">
+                <div class="cabecalho">
+                  <h3>
+                    Forum
+                  </h3>
+                    <b class="hidefiltros">
+                      <a href="javascript:void(0)" style="text-decoration: none;">
+                        Filtos de Pesquisa
+                      </a>
+                    </b>
+                    <div class="filtros">
+                      <a><input type="checkbox" id="MR" checked><label for="MR"> Mais Recentes </label></a> |
+                      <a><input type="checkbox" id="MC"><label for="MC"> Mais Comentados </label></a> |
+                      <a><input type="checkbox" id="ML"><label for="ML"> Mais Curtidos </label></a> |
+                      <a><input type="checkbox" id="MD"><label for="MD"> Mais Descurtidos </label></a>
+                    </div>
+        
+                    <p><b class="hidecoment">
+                        <a href="javascript:void(0)" style="text-decoration: none;">
+                          Comentarios
+                        </a>
+                      </b></p>
+                  </div>            
+                <div class="coments" id="exibe_comentarios">
+                </div>
+              </div>                  						
         </div>
     </div>
             <!-- parte de baixo  -->

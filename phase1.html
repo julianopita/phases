@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/annotation.css">
     <link rel="stylesheet" href="./css/model.css">
+    
+    <link rel="stylesheet" href="./css/sidebar.css">
 	<!-- Load XEOKIT -->
     <script type="module" src="./js/xeokit1.js"></script>
     <script type="module" src="./js/xeokit2.js"></script> 
@@ -62,6 +64,13 @@
               <input v-if="flag_min_right != -1" v-on:click="minRight" type="image" src="./imagens/right.png"></input>
           </div>
            <!-- Forum -->
+           <!-- Jquery -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <!-- Forum -->
+            <script src="js/forum/Funcoes_Simples.js"></script>
+            <script src="js/forum/Carrega_Dados.js"></script>
+            <script src="js/forum/Envia_Dados.js"></script>
+            <script src="js/forum/Funcao_Like.js"></script>
             <div class="forum">
 
               <div class="content">
@@ -92,6 +101,8 @@
               </div>                  						
         </div>
     </div>
+      </div>
+  </div>
             <!-- parte de baixo  -->
             <div class=" down" v-bind:style="{height: len_height_down+ 'vh'}">
             	<div id="storeys"></div>
@@ -104,6 +115,7 @@
   
 
 </body>
+    
     <script src="./js/main.js"></script>
     <script src="./js/zindex.js"></script>
 

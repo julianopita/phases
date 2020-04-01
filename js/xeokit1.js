@@ -96,7 +96,7 @@ viewer.scene.input.on("click", function (coords) {
     });
 
     if (hit) {
-            getOid(hit);
+            calls(hit);
             if (!lastEntity || hit.entity.id !== lastEntity.id) {
 
             if (lastEntity) {
@@ -115,16 +115,31 @@ viewer.scene.input.on("click", function (coords) {
     }
 });   
 
+
 //exibir o que foi salvo no storage
 
-function getOid(hit){
+function calls(hit){
     bimServerClient.call("LowLevelInterface", "getDataObjectByGuid",
     {roid: roid , guid: hit.entity.id},
     function(IfcBuildingData){
         //obterm o Oid do objeto e o salva em uma sessao local
         sessionStorage.setItem("IfcBuildingOid", IfcBuildingData.oid);
         console.log(IfcBuildingData.oid);
-    })
+    });
+    //get Area from Oid
+    bimServerClient.call("ServiceInterface", "getArea",  {roid: roid , oid: sessionStorage.getItem('IfcBuildingOid')}, 
+        function(area){
+        //obterm o Oid do site e o salva em uma sessao local
+            sessionStorage.setItem("IfcOidArea", area);
+            console.log(area);
+        //closing Area
+        });
+    bimServerClient.call("LowLevelInterface", "getDataObjectByOid",  {roid: roid , oid: sessionStorage.getItem('IfcBuildingOid')}, 
+        function(data){
+        // obterm o Oid do site e o salva em uma sessao local
+            sessionStorage.setItem("IfcOidName", data.name);
+            console.log(data.name);
+       })
 }
 
 // function obterOidIfcBuilding(hit){

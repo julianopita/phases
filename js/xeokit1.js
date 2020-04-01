@@ -4,11 +4,11 @@
 import {Viewer} from "../xeokit/src/viewer/Viewer.js";
 import {BIMServerLoaderPlugin} from "../xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerLoaderPlugin.js";
 import BimServerClient from "../xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerClient/bimserverclient.js";
-import {ReadableGeometry} from "../xeokit/src/viewer/scene/geometry/ReadableGeometry.js";
+// import {ReadableGeometry} from "../xeokit/src/viewer/scene/geometry/ReadableGeometry.js";
 import {AnnotationsPlugin} from "../xeokit/src/plugins/AnnotationsPlugin/AnnotationsPlugin.js";
 //import {DistanceMeasurementsPlugin} from "../bimnomads2/xeokit/src/plugins/DistanceMeasurementsPlugin/DistanceMeasurementsPlugin.js";
-import {StoreyViewsPlugin} from "../xeokit/src/plugins/StoreyViewsPlugin/StoreyViewsPlugin.js";
-
+// import {StoreyViewsPlugin} from "../xeokit/src/plugins/StoreyViewsPlugin/StoreyViewsPlugin.js";
+// import {XKTLoaderPlugin} from "../src/plugins/XKTLoaderPlugin/XKTLoaderPlugin.js";
 
 
 const bimServerAddress = "http://www.nomads.usp.br:8080/bimserver/";
@@ -30,18 +30,18 @@ const bimServerLoader = new BIMServerLoaderPlugin(viewer, {
     bimServerClient: bimServerClient
 });
 // Create a Annotation plugin
-const annotations = new AnnotationsPlugin(viewer, {
+// const annotations = new AnnotationsPlugin(viewer, {
 
-    markerHTML: "<div class='annotation-marker' style='background-color: {{markerBGColor}};'>{{glyph}}</div>",
-    labelHTML: "<div class='annotation-label' style='background-color: {{labelBGColor}};'><div class='annotation-title'>{{title}}</div><div class='annotation-desc'>{{description}}</div></div>",
+//     markerHTML: "<div class='annotation-marker' style='background-color: {{markerBGColor}};'>{{glyph}}</div>",
+//     labelHTML: "<div class='annotation-label' style='background-color: {{labelBGColor}};'><div class='annotation-title'>{{title}}</div><div class='annotation-desc'>{{description}}</div></div>",
 
-    values: {
-        markerBGColor: "red",
-        glyph: "X",
-        title: "Untitled",
-        description: "No description"
-    }
-});
+//     values: {
+//         markerBGColor: "red",
+//         glyph: "X",
+//         title: "Untitled",
+//         description: "No description"
+//     }
+// });
 
 
 // Initialize the BIMServerClient
@@ -84,18 +84,46 @@ bimServerClient.init(() => {
     });
 });
 
+
+
+
+const annotations = new AnnotationsPlugin(viewer, {
+
+    markerHTML: "<div class='annotation-marker' style='background-color: {{markerBGColor}};'>{{glyph}}</div>",
+    labelHTML: "<div class='annotation-label' style='background-color: {{labelBGColor}};'><div class='annotation-title'>{{title}}</div><div class='annotation-desc'>{{description}}</div></div>",
+
+    values: {
+        markerBGColor: "red",
+        glyph: "X",
+        title: "Untitled",
+        description: "No description"
+    }
+});
+
+annotations.on("markerClicked", (annotation) => {
+    annotation.labelShown = !annotation.labelShown;
+});
+
 //------------------------------------------------------------------------------------------------------------------
 // Highlights selected entities
 //------------------------------------------------------------------------------------------------------------------
-
+var i = 1;
 var lastEntity = null;
-viewer.scene.input.on("click", function (coords) {
-
+var flag = -1;
+var annotation = null;
+viewer.scene.input.on("mouseclicked", function (coords) {
+    // coords[0] = coords[0] - 100;
+    // coords[1] = coords[1] - 100;
     var hit = viewer.scene.pick({
-        canvasPos: coords
+        canvasPos: coords,
+        pickSurface : true
     });
 
     if (hit) {
+            if(flag == 1 && annotation != null){
+                annotation.destroy();
+                flag = -1;
+            }
             calls(hit);
             if (!lastEntity || hit.entity.id !== lastEntity.id) {
 
@@ -105,6 +133,23 @@ viewer.scene.input.on("click", function (coords) {
 
             lastEntity = hit.entity;
             hit.entity.highlighted = true;
+            if (hit) {
+
+                annotation = annotations.createAnnotation({
+                    id: "myAnnotation" + i,
+                    pickResult: hit, // <<------- initializes worldPos and entity from PickResult
+                    occludable: true,       // Optional, default is true
+                    markerShown: true,      // Optional, default is true
+                    labelShown: true,       // Optional, default is true
+                    values: {               // HTML template values
+                        glyph: "A" + i,
+                        title: "My annotation " + i,
+                        description: "My description " + i
+                    },
+                });
+                flag = 1;
+                i++;
+            }
         }
     } else {
 
@@ -113,11 +158,9 @@ viewer.scene.input.on("click", function (coords) {
             lastEntity = null;
         }
     }
-});   
+});
 
-
-//exibir o que foi salvo no storage
-
+//chamadas ao servidor
 function calls(hit){
     bimServerClient.call("LowLevelInterface", "getDataObjectByGuid",
     {roid: roid , guid: hit.entity.id},
@@ -142,128 +185,33 @@ function calls(hit){
        })
 }
 
-// function obterOidIfcBuilding(hit){
-//     var metaObject = viewer.metaScene.metaObjects[hit.entity.o];
-//     console.log(JSON.stringify(metaObject.getJSON(), null, "\t"));
-//     bimServerClient.init(() => {
-//         //get Oid from Guid
-//             bimServerClient.call("LowLevelInterface", "getDataObjectByGuid",
-//             {roid: roid , guid: hit.entity.id}, 
-//             function(IfcBuildingData){
-//                 //obterm o Oid do site e o salva em uma sessao local
-//                 sessionStorage.setItem("IfcBuildingOid", IfcBuildingData.oid);
-//                 console.log(IfcBuildingData.oid);
-//             }),
-//             //get Area from Oid
-//             bimServerClient.call("ServiceInterface", "getArea",  {roid: roid , oid: IfcBuildingData.oid}, 
-//                 function(IfcBuildingData2){
-//                 //obterm o Oid do site e o salva em uma sessao local
-//                     sessionStorage.setItem("IfcOidArea", IfcBuildingData2);
-//                     console.log(IfcBuildingData2);
-//                 //closing Area
-//                 })
-//         });
-// }
+
+// Testing annotations
 
 
-// console.log("--------------");
-// console.log(IfcBuildingData)
-// console.log("--------------");
+
+viewer.camera.eye = [-3.93, 2.85, 27.01];
+viewer.camera.look = [4.40, 3.72, 8.89];
+viewer.camera.up = [-0.01, 0.99, 0.039];
 
 
-//     //get Name from Oid
-//     bimServerClient.call("LowLevelInterface", "getDataObjectByOid",  {roid: roid , oid: IfcBuildingData.oid}, 
-//         function(IfcBuildingData2){
-//         //obtem o Oid do site e o salva em uma sessao local
-//             //sessionStorage.setItem("IfcOidName", IfcBuildingData3);
-//             console.log(IfcBuildingData2);
-//             var n = "Name";
-//             console.log(n);
-//             // iterate over each element in the array
-//             for (var i = 0; i < IfcBuildingData2.values.length; i++)
-//             {IfcBuildingData
-//                 // look for the entry with a matching `code` value
-//                 if (IfcBuildingData2.values[i].fieldName == n)
-//                 {
-//                     // we found it
-//                 // obj[i].name is the matched result
-//                 sessionStorage.setItem("IfcBuildingName", IfcBuildingData2.values[i].stringValue);
-//                 console.log (IfcBuildingData2.values[i].stringValue);
-//         //closing Name
 
-//                 };
-//             };
+//------------------------------------------------------------------------------------------------------------------
+// Use the AnnotationsPlugin to create an annotation wherever we click on an object
+//------------------------------------------------------------------------------------------------------------------
+
+
+
+// viewer.scene.input.on("mouseclicked", (coords) => {
+//     console.log(coords);
+//     coords[1] = coords[1] - 10;
+//     console.log(coords);
+//     var pickResult = viewer.scene.pick({
+//         canvasPos: coords,
+//         pickSurface: true  // <<------ This causes picking to find the intersection point on the entity
 //     });
-    
-//     //get Description from Oid
-//     bimServerClient.call("LowLevelInterface", "getDataObjectByOid",  {roid: roid , oid: IfcBuildingData.oid}, function(IfcBuildingData2){
-//         //obterm o Oid do site e o salva em uma sessao local
-//             //sessionStorage.setItem("IfcOidName", IfcBuildingData3);
-//             console.log(IfcBuildingData2);
-//                 var n = "Description";
-//                 console.log(n);
-//                 // iterate over each element in the array
-//                 for (var i = 0; i < IfcBuildingData2.values.length; i++){
-//                     // look for the entry with a matching `code` value
-//                     if (IfcBuildingData2.values[i].fieldName == n){
-//                         // we found it
-//                     // obj[i].name is the matched result
-//                     sessionStorage.setItem("IfcBuildingDescription", IfcBuildingData2.values[i].stringValue);
-//                     console.log (IfcBuildingData2.values[i].stringValue);
 
-//     //closing Description
-//         };
-//         };
-//         });
-
-
-// //closing Guid call
-//     });
+ 
 // });
 
-                        //------------------------------------------------------------------------------------------------------------------
-                        // Use the AnnotationsPlugin to create an annotation wherever we click on an object
-//                         //------------------------------------------------------------------------------------------------------------------
-
-//                     annotations.on("markerClicked", (annotation) => {
-//                             annotation.labelShown = !annotation.labelShown;
-//                         });
-
-//                         var i = 1;
-
-//                         viewer.scene.input.on("mouseclicked", (coords) => {
-
-//                             var pickResult = viewer.scene.pick({
-//                                 canvasPos: coords,
-//                                 pickSurface: true  // <<------ This causes picking to find the intersection point on the entity
-//                             });
-
-//                             if (pickResult) {
-//                                 var d = i
-//                                 annotations.destroyAnnotation("myAnnotation" + [d]);
-//                                 const annotation = annotations.createAnnotation({
-//                                     id: "myAnnotation" + i,
-//                                     pickResult: pickResult, // <<------- initializes worldPos and entity from PickResult
-//                                     occludable: false,       // Optional, default is true
-//                                     markerShown: true,      // Optional, default is true
-//                                     labelShown: true,       // Optional, default is true
-//                                     values: {               // HTML template values
-//                                         glyph: "A",
-//                                         title: "Informação sobre  " + IfcBuildingName,
-//                                         description: IfcBuildingDescription + "</br> Area: " + IfcOidArea + "m²",
-//                                     },
-//                                 });
-//                             ++i;  
-//                             }
-//                         });
-                    
-//                         window.viewer = viewer;
-                    
-//         //closing Bimserver connection        
-//                 };
-// //closing object picking
-
-// });
-
-
-                              
+window.viewer = viewer;

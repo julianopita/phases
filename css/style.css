@@ -29,7 +29,7 @@ html,body{
 }
 
 .left{
-    background-color: lightgray;
+    /* background-color: lightgray; */
 }
 .right{
     background-color: lightgray;
@@ -49,18 +49,18 @@ html,body{
     position: relative;
     border: 2px solid #000;
     border-radius: 1px solid #000;
-    background-color: white;
-
+    /* background-color: white; */
+}
 .canvas_aux1{
     border: 2px solid #000;
     border-radius: 1px solid #000;
-    background-color: white;
+    /* background-color: white; */
     z-index: -30;
 }
 .canvas_aux2{
     border: 2px solid #000;
     border-radius: 1px solid #000;
-    background-color: white;
+    /* background-color: white; */
     z-index: -30;
 }
 

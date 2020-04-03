@@ -84,8 +84,8 @@ class Annotation extends Marker {
                 }
             }
             if (this._visibilityDirty) {
-                this._marker.style.visibility = (this.visible && this._markerShown) ? "visible" : "hidden";
-                this._label.style.visibility = (this.visible && this._markerShown && this._labelShown) ? "visible" : "hidden";
+                this._marker.style.visibility = (this.visible && this._markerShown) ? "visible" : "visible";
+                this._label.style.visibility = (this.visible && this._markerShown && this._labelShown) ? "visible" : "visible";
                 this._visibilityDirty = false;
             }
         });
@@ -155,7 +155,7 @@ class Annotation extends Marker {
             const markerFragment = document.createRange().createContextualFragment(markerHTML);
             this._marker = markerFragment.firstChild;
             this._container.appendChild(this._marker);
-            this._marker.style.visibility = this._markerShown ? "visible" : "hidden";
+            this._marker.style.visibility = this._markerShown ? "visible" : "visible";
             this._marker.addEventListener("click", () => {
                 this.plugin.fire("markerClicked", this);
             });
@@ -179,7 +179,7 @@ class Annotation extends Marker {
             const labelFragment = document.createRange().createContextualFragment(labelHTML);
             this._label = labelFragment.firstChild;
             this._container.appendChild(this._label);
-            this._label.style.visibility = (this._markerShown && this._labelShown) ? "visible" : "hidden";
+            this._label.style.visibility = (this._markerShown && this._labelShown) ? "visible" : "visible";
         }
     }
 

@@ -100,9 +100,9 @@ const annotations = new AnnotationsPlugin(viewer, {
     }
 });
 
-annotations.on("markerClicked", (annotation) => {
-    annotation.labelShown = !annotation.labelShown;
-});
+// annotations.on("markerClicked", (annotation) => {
+//     annotation.labelShown = !annotation.labelShown;
+// });
 
 //------------------------------------------------------------------------------------------------------------------
 // Highlights selected entities
@@ -111,7 +111,7 @@ var i = 1;
 var lastEntity = null;
 var flag = -1;
 var annotation = null;
-viewer.scene.input.on("mouseclicked", function (coords) {
+viewer.scene.input.on("mouseclicked",async function (coords) {
     // coords[0] = coords[0] - 100;
     // coords[1] = coords[1] - 100;
     var hit = viewer.scene.pick({
@@ -135,7 +135,7 @@ viewer.scene.input.on("mouseclicked", function (coords) {
             hit.entity.highlighted = true;
             if (hit) {
 
-                annotation = annotations.createAnnotation({
+                annotation = await annotations.createAnnotation({
                     id: "myAnnotation" + i,
                     pickResult: hit, // <<------- initializes worldPos and entity from PickResult
                     occludable: true,       // Optional, default is true
@@ -150,6 +150,7 @@ viewer.scene.input.on("mouseclicked", function (coords) {
                 flag = 1;
                 i++;
             }
+            // document.getElementsByClassName('annotation-marker')[0].style.setProperty('visibility','visible');
         }
     } else {
 
@@ -161,8 +162,8 @@ viewer.scene.input.on("mouseclicked", function (coords) {
 });
 
 //chamadas ao servidor
-function calls(hit){
-    bimServerClient.call("LowLevelInterface", "getDataObjectByGuid",
+async function calls(hit){
+    await bimServerClient.call("LowLevelInterface", "getDataObjectByGuid",
     {roid: roid , guid: hit.entity.id},
     function(IfcBuildingData){
         //obterm o Oid do objeto e o salva em uma sessao local
@@ -170,14 +171,14 @@ function calls(hit){
         console.log(IfcBuildingData.oid);
     });
     //get Area from Oid
-    bimServerClient.call("ServiceInterface", "getArea",  {roid: roid , oid: sessionStorage.getItem('IfcBuildingOid')}, 
+    await bimServerClient.call("ServiceInterface", "getArea",  {roid: roid , oid: sessionStorage.getItem('IfcBuildingOid')}, 
         function(area){
         //obterm o Oid do site e o salva em uma sessao local
             sessionStorage.setItem("IfcOidArea", area);
             console.log(area);
         //closing Area
         });
-    bimServerClient.call("LowLevelInterface", "getDataObjectByOid",  {roid: roid , oid: sessionStorage.getItem('IfcBuildingOid')}, 
+    await bimServerClient.call("LowLevelInterface", "getDataObjectByOid",  {roid: roid , oid: sessionStorage.getItem('IfcBuildingOid')}, 
         function(data){
         // obterm o Oid do site e o salva em uma sessao local
             sessionStorage.setItem("IfcOidName", data.name);

@@ -1,3 +1,4 @@
+
 h2 {
   text-align: center;
   margin-top: 5px;
@@ -12,12 +13,15 @@ h2 {
 /* Efeito de resposta ao comentario */
 span{ 
   margin-left: 0px;
+  font-family: arial;
+  font-size:10px;
 }
 
 /* respostas */
 .rsposta{
   padding-bottom: 2px;
   margin-left: 30px;
+  font-family: arial;
 }
 
 /* votações */
@@ -25,21 +29,21 @@ span{
   display: flex;
   flex-direction: row;
   padding: 5px;
-  font-family: arial;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: normal;
+  font-family: arial;
 }
 
 /* texto comentários */
 .comments{
-  font-family: arial;
-  font-size: 24px;
+  font-size: 12px;
   font-weight: normal;
+  font-family: arial;
 }
 
 .topic{
   font-family: arial;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   color: white;
   background-color: red;
@@ -135,4 +139,16 @@ right: 0px;
 /* Ponteiro nos botoes de Fitros */
 a, label, input[type=checkbox]{
   cursor: pointer;
+}
+
+.resposta{
+  font-family: arial;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.forum{
+  font-family: arial;
+  font-size: 14px;
+  font-weight: normal;
 }

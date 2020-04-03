@@ -93,7 +93,7 @@ const annotations = new AnnotationsPlugin(viewer, {
     labelHTML: "<div class='annotation-label' style='background-color: {{labelBGColor}};'><div class='annotation-title'>{{title}}</div><div class='annotation-desc'>{{description}}</div></div>",
 
     values: {
-        markerBGColor: "red",
+        markerBGColor: "blue",
         glyph: "X",
         title: "Untitled",
         description: "No description"
@@ -111,6 +111,7 @@ var i = 1;
 var lastEntity = null;
 var flag = -1;
 var annotation = null;
+
 viewer.scene.input.on("mouseclicked",async function (coords) {
     // coords[0] = coords[0] - 100;
     // coords[1] = coords[1] - 100;
@@ -118,7 +119,7 @@ viewer.scene.input.on("mouseclicked",async function (coords) {
         canvasPos: coords,
         pickSurface : true
     });
-
+    
     if (hit) {
             if(flag == 1 && annotation != null){
                 annotation.destroy();
@@ -142,10 +143,10 @@ viewer.scene.input.on("mouseclicked",async function (coords) {
                     markerShown: true,      // Optional, default is true
                     labelShown: true,       // Optional, default is true
                     values: {               // HTML template values
-                        glyph: "A" + i,
-                        title: "My annotation " + i,
-                        description: "My description " + i
-                    },
+                        glyph: "i",
+                        title: sessionStorage.getItem("IfcOidName"),
+                        description: "Área: " + sessionStorage.getItem("IfcOidArea")
+                }        
                 });
                 flag = 1;
                 i++;
@@ -159,7 +160,10 @@ viewer.scene.input.on("mouseclicked",async function (coords) {
             lastEntity = null;
         }
     }
+    
 });
+
+
 
 //chamadas ao servidor
 async function calls(hit){
@@ -184,7 +188,9 @@ async function calls(hit){
             sessionStorage.setItem("IfcOidName", data.name);
             console.log(data.name);
        })
+    
 }
+
 
 
 // Testing annotations

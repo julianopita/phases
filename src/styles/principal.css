@@ -1,0 +1,16 @@
+@media(max-width: 1366px) {
+    #layoutMain{
+        display: grid;
+        grid-template-columns: 1fr .5fr;
+        height: 92vh;
+    }
+}
+
+@media(min-width: 1367px) {
+    #layoutMain{
+        display: grid;
+        grid-template-columns: 1fr .3fr;
+        height: 94.5vh;
+        padding-bottom: 0%;
+    }
+}

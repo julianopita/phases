@@ -1,8 +1,5 @@
-// import {Viewer} from "../xeokit/src/viewer/Viewer.js";
 import {BIMServerLoaderPlugin} from "../xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerLoaderPlugin.js";
-// import BimServerClient from "../xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerClient/bimserverclient.js";
 import {Viewer} from "../node_modules/@xeokit/xeokit-sdk/src/viewer/Viewer.js";
-// import {BIMServerLoaderPlugin} from "../node_modules/@xeokit/xeokit-sdk/src/plugins/BIMServerLoaderPlugin/BIMServerLoaderPlugin.js"
 import BimServerClient from "../xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerClient/bimserverclient.js";
 import Login from "./lib/login.js"
 import click from "./lib/click.js"

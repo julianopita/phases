@@ -7,25 +7,21 @@
 	</head>
 	<link rel="stylesheet" href="./src/styles/global.css">
 	<link rel="stylesheet" href="./src/styles/canvas.css">
+	<link rel="stylesheet" href="./src/styles/card.css">
 	<body>
 		<canvas id="canvas_main" style="background-color: white;"height="600px" width="600px"></canvas>
-		<!-- <section id="info" stylqe="position:absolute; top:550px; background :#6a4f4b; width: 600px;height: 100px;"> -->
-			<div id="descricao" >
-
-			</div>
-
-			<div id="area">
-
-			</div>
+		<section id="info" style="align-items: center;align-content: center;">
+			<span style="position: relative;top: 10px;padding-left: 12px;">Nome:</span>
+			<div id="descricao" style="width: 180px;height: 15px;padding: 13px;"></div>
+			<span style="position: relative;top: 15px;padding-left: 12px;">Area :</span>
+			<div id="area" style="width: 193px;height: 15px;padding-top: 15px;padding-left: 13px;" ></div>
 		</section>
-
-
 		<div id="app">
 			<app></app>
 		</div>
 
 	</body>
 	<script src="./src/index.js" type="module"></script>
-	<!-- <script src="./src/xeokit.js" type="module"></script> -->
+	<script src="./src/xeokit.js" type="module"></script>
 	<!-- <script src="./src/lib/Info.js"></script> -->
 </html>

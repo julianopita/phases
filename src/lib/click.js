@@ -1,4 +1,5 @@
 import info from "./Info.js"
+import Info from "./Info.js";
 
 var click;
 const roid = 2097155;
@@ -16,7 +17,7 @@ export default click = (viewer,bimServerClient) =>{
         if (hit) {
             if (!lastEntity || hit.entity.id !== lastEntity.id) {
                 await calls(hit);
-                console.log(hit.entity.id);
+                // console.log(hit.entity.id);
                 if (lastEntity) {
                     lastEntity.highlighted = false;
                 }
@@ -36,25 +37,18 @@ export default click = (viewer,bimServerClient) =>{
         bimServerClient.call("LowLevelInterface", "getDataObjectByGuid",
         {roid: roid , guid: hit.entity.id},
         function(IfcBuildingData){
-            //obterm o Oid do objeto e o salva em uma sessao local
-            sessionStorage.setItem("IfcBuildingData", IfcBuildingData.oid);
-            console.log(IfcBuildingData.oid);
-                    //get Area from Oid
-            bimServerClient.call("ServiceInterface", "getArea",  {roid: roid , oid: IfcBuildingData.oid}, 
-            function(area){
-                console.log
-            //obterm o Oid do site e o salva em uma sessao local
-                sessionStorage.setItem("IfcOidArea", area);
-                console.log(area);
-            //closing Area
-            });
+
+
+
+            bimServerClient.call("ServiceInterface", "getArea",  {roid: roid , oid: IfcBuildingData.oid},             
+                function(area){
+                    Info.area(area);
+                });
+           
             bimServerClient.call("LowLevelInterface", "getDataObjectByOid",  {roid: roid , oid: IfcBuildingData.oid}, 
-            function(data){
-            // obtem o Oid do site e o salva em uma sessao local
-                sessionStorage.setItem("IfcOidName", data.name);
-                console.log(data.name);
-                info();
-            })    
+                function(data){
+                    Info.descricao(data.name);
+                })    
         });
 
                

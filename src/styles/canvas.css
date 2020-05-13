@@ -17,3 +17,29 @@
         height: 89vh;    
     }
 }
+
+
+
+#buttonBox{
+    padding-top: 40px;  
+    padding-left: 0%; 
+    box-sizing: border-box;
+    background-color:#687681;
+    box-shadow: 0px 0px 5px 0px #273c75;
+    position: relative;
+    left: 93.5%;
+    width: 40px;
+    height: 200px;
+    top: 40%;
+}
+#empty ul li{
+    list-style-type: none;
+    padding-top: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid #666;
+    border-color: azure;
+}

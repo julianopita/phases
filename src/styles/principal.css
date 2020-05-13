@@ -3,6 +3,7 @@
         display: grid;
         grid-template-columns: 1fr .5fr;
         height: 92vh;
+        box-sizing: border-box;
     }
 }
 
@@ -12,5 +13,6 @@
         grid-template-columns: 1fr .3fr;
         height: 94.5vh;
         padding-bottom: 0%;
+        box-sizing: border-box;
     }
 }

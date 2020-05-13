@@ -8,15 +8,17 @@ import BimServerClient from "../../xeokit/src/plugins/BIMServerLoaderPlugin/BIMS
 
 const username = "platnomads@gmail.com";
 const password = "@bimserver";
-const poid = 1179649;
-const roid = 2097155;
+
 
 var Login;
 
 
 
-export default Login = (viewer,bimServerClient,bimServerLoader) =>{
-    bimServerClient.init(() => {
+export default Login = {
+    cria
+};
+    function cria(viewer,bimServerClient,bimServerLoader,poid){
+        bimServerClient.init(() => {
         // Login to the BIMServerClient
         bimServerClient.login(username, password,() => {
             // Get information on our project

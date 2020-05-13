@@ -2,11 +2,11 @@ import info from "./Info.js"
 import Info from "./Info.js";
 
 var click;
-const roid = 2097155;
+
 var lastEntity = null;
 var count = 0;
 
-export default click = (viewer,bimServerClient) =>{
+export default click = (viewer,bimServerClient,roid) =>{
     viewer.scene.input.on("mouseclicked",async function (coords) {
 
         var hit = viewer.scene.pick({
@@ -15,9 +15,9 @@ export default click = (viewer,bimServerClient) =>{
         });
 
         if (hit) {
+            console.log(hit);
             if (!lastEntity || hit.entity.id !== lastEntity.id) {
-                await calls(hit);
-                // console.log(hit.entity.id);
+                await calls(hit,roid);
                 if (lastEntity) {
                     lastEntity.highlighted = false;
                 }
@@ -33,7 +33,7 @@ export default click = (viewer,bimServerClient) =>{
     });
 
 
-    function calls(hit){
+    function calls(hit,roid){
         bimServerClient.call("LowLevelInterface", "getDataObjectByGuid",
         {roid: roid , guid: hit.entity.id},
         function(IfcBuildingData){
@@ -47,6 +47,7 @@ export default click = (viewer,bimServerClient) =>{
            
             bimServerClient.call("LowLevelInterface", "getDataObjectByOid",  {roid: roid , oid: IfcBuildingData.oid}, 
                 function(data){
+                    console.log(data);
                     Info.descricao(data.name);
                 })    
         });

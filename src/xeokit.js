@@ -6,9 +6,14 @@ import click from "./lib/click.js"
 
 
 const bimServerAddress = "http://www.nomads.usp.br:8080/bimserver/";
-const poid = 196609;
-const roid = 131075;
+const poidOne = 196609;
+const roidOne = 131075;
 
+const poidTwo = 1179649;
+const roidTwo = 2097155;
+
+const poidThree = 1376257;
+const roidThree = 13631491;
 
 
 var ul = document.getElementById("buttonBox");
@@ -28,10 +33,10 @@ function projectOne(){
     });
     
     // faz o login no servidor
-    Login.cria(viewer,bimServerClient,bimServerLoader,poid);
+    Login.cria(viewer,bimServerClient,bimServerLoader,poidOne);
     
     //pega os cliques e armazena na sessão
-    click(viewer,bimServerClient,roid);
+    click(viewer,bimServerClient,roidOne);
 }
 
 function projectTwo(){
@@ -47,10 +52,10 @@ function projectTwo(){
     });
     
     // faz o login no servidor
-    Login.cria(viewer,bimServerClient,bimServerLoader,poid);
+    Login.cria(viewer,bimServerClient,bimServerLoader,poidTwo);
     
     //pega os cliques e armazena na sessão
-    click(viewer,bimServerClient,roid);
+    click(viewer,bimServerClient,roidTwo);
 }
 
 function projectThree(){
@@ -66,10 +71,10 @@ function projectThree(){
     });
     
     // faz o login no servidor
-    Login.cria(viewer,bimServerClient,bimServerLoader,poid);
+    Login.cria(viewer,bimServerClient,bimServerLoader,poidThree);
     
     //pega os cliques e armazena na sessão
-    click(viewer,bimServerClient,roid);
+    click(viewer,bimServerClient,roidThree);
 }
 
 

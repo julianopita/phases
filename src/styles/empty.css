@@ -2,3 +2,27 @@
     background-color: rgb(240, 237, 230);
 }
 
+@media(min-width: 1367px){
+    #dados_area{
+        position: relative;
+        z-index: 11;
+        top: 75vh;
+        left: 8px;
+        width : 70vw;
+        height: 12vh;
+        background-color: rgb(252, 247, 240);  
+    }
+
+}
+
+@media(max-width : 1366px){
+    #dados_area{
+        position: relative;
+        z-index: 11;
+        background-color: rgb(252, 247, 240);
+        top: 75vh;
+        left: 8px;
+        width : 60vw;
+        height: 12vh;    
+    }
+}

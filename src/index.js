@@ -3,6 +3,9 @@ import NavBar from "./vue_lib/NabBar.js"
 import Comentarios from "./vue_lib/Comentarios.js"
 import Empty from "./vue_lib/Empty.js"
 
+
+
+
 Vue.component("app",{
     
     //HTML principal

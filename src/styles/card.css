@@ -5,12 +5,13 @@
         font-family: 'Roboto';
         font-weight: bolder;
         position:absolute; 
-        top:74vh;
+        top:62vh;
         left: 38vw;
         background : rgb(240, 237, 230);
         width: 22vw;
         height: 21vh;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        z-index: 11;
     }
 }
 
@@ -19,12 +20,13 @@
         font-family: 'Roboto';
         font-weight: bolder;
         position:absolute; 
-        top:77vh;
+        top:60vh;
         left: 54.3vw;
         background : rgb(240, 237, 230);
         width: 15vw;
         height: 20vh;
-        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        z-index: 11;
     }    
 }
 

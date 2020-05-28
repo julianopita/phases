@@ -1,6 +1,6 @@
 import {EventHandler} from "./EventHandler.js";
 import {Request} from "./request.js";
-import {utils} from "../../../viewer/scene/utils";
+import {utils} from "@xeokit/xeokit-sdk/src/viewer/scene/utils.js";
 
 /**
  * @private
@@ -147,7 +147,7 @@ function MetaDataRenderer(args) {
                 }
             }
             if (typeof(v) !== 'undefined') {
-                r = s.addRow();
+                const r = s.addRow();
                 r.setName(k);
                 r.setValue(v);
             }

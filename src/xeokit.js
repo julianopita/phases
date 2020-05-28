@@ -5,9 +5,9 @@ import Login from "./lib/login.js"
 import click from "./lib/click.js"
 
 
-const bimServerAddress = "http://www.nomads.usp.br:8080/bimserver/";
-const poidOne = 196609;
-const roidOne = 131075;
+const bimServerAddress = "http://191.235.97.124:8080/bimserverwar-1.5.182/";
+const poidOne = 131073;
+const roidOne = 65539;
 
 const poidTwo = 1179649;
 const roidTwo = 2097155;

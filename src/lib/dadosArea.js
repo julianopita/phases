@@ -1,4 +1,4 @@
-import Info from "./Info.js";
+
 
 var click;
 
@@ -14,7 +14,7 @@ export default click = (viewer,bimServerClient,roid) =>{
         });
 
         if (hit) {
-            // console.log(hit);
+            console.log(hit);
             if (!lastEntity || hit.entity.id !== lastEntity.id) {
                 await calls(hit,roid);
                 if (lastEntity) {
@@ -46,7 +46,7 @@ export default click = (viewer,bimServerClient,roid) =>{
            
             bimServerClient.call("LowLevelInterface", "getDataObjectByOid",  {roid: roid , oid: IfcBuildingData.oid}, 
                 function(data){
-                    // console.log(data);
+                    console.log(data);
                     Info.descricao(data.name);
                 })    
         });

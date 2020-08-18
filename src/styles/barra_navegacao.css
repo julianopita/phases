@@ -7,16 +7,43 @@
     height: 60px;
     box-shadow: 0.1px 0.1px 15px 0.1px #273c75;
 }
-#navbar ul{
+#bar{
+    padding-left: 0px;
     display: grid;
+    position: relative;
+    left: 80%;
     grid-template-columns: .1fr .1fr .1fr;
     height: 60px;
+    width: 19%;
     margin: 0px;
     box-sizing: border-box;
     align-items: center;
+    /* background-color: aqua; */
 }
 
-#navbar ul li{
+#dropDown{
+    position: fixed;
+    left: 77.1%;
+    top: 44px;
+    width: 20%;
+    align-items: center;
+}
+#dropDown ul li{
+    /* position: fixed; */
+    /* left: 80%; */
+    background-color:white;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: .1fr .1fr .1fr;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    padding-left: 90px;
+    box-shadow: 0.1px 0.1px #273c75
+}
+
+
+#liBar{
     box-sizing: border-box;
     padding-top: 20px;
     align-items: center;

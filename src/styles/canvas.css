@@ -65,7 +65,7 @@
     height: 200px;
     top: 20%;
 }
-#empty ul li{
+#buttonBox li{
     list-style-type: none;
     padding-top: 8px;
     box-sizing: border-box;
@@ -78,6 +78,6 @@
     background-color:#687681;
 
 }
-#empty ul li:hover{
+#buttonBox li{
     cursor: pointer;
 }

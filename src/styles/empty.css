@@ -1,5 +1,5 @@
 #empty{
-    background-color: rgb(240, 237, 230);
+    background-color: rgb(163, 124, 32);
 }
 
 @media(min-width: 1367px){
@@ -10,13 +10,15 @@
         left: 8px;
         width : 70vw;
         height: 12vh;
-        background-color: rgb(252, 247, 240);  
+        background-color: rgb(201, 145, 67);  
     }
 
 }
 
 @media(max-width : 1366px){
     #dados_area{
+        list-style: none;
+
         position: relative;
         z-index: 11;
         background-color: rgb(252, 247, 240);

@@ -5,7 +5,7 @@ import Login from "./lib/login.js"
 import click from "./lib/click.js"
 
 
-const bimServerAddress = "http://191.235.97.124:8080/bimserverwar-1.5.182/";
+const bimServerAddress = "http://plat-nomads.ddns.net:8080/bimserver/";
 const poidOne = 131073;
 const roidOne = 65539;
 

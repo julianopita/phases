@@ -6,8 +6,14 @@ import click from "./lib/click.js"
 
 
 const bimServerAddress = "http://plat-nomads.ddns.net:8080/bimserver/";
-const poidOne = 131073;
-const roidOne = 65539;
+const poid = 131073;
+const roid = 65539;
+
+
+const Cvas = Login.cria(viewerUm,bimServerClientUm,bimServerLoaderUm,poidOne);
+
+
+export default Cvas;
 
 // const poidTwo = 1179649;
 // const roidTwo = 2097155;
@@ -21,16 +27,17 @@ const roidOne = 65539;
 // console.log(ulChildren);
 
 
-//vizualizadores
-const viewerUm = new Viewer({
-    canvasId: "c2"
-});
-// const viewerDois = new Viewer({
-//     canvasId: "canvas_2"
-// });
-// const viewer = new Viewer({
-//     canvasId: "canvas_3"
-// });
+let clientNomads = function(bimServerAddress,poid){
+    const bimServerClient = new BimServerClient(bimServerAddress);
+    const viewer = new Viewer({
+        canvasId: "c2"
+    });
+    const bimServerLoader = new BIMServerLoaderPlugin(viewer, {
+        bimServerClient: bimServerClient
+    });
+    Login.cria(viewer,bimServerClient,bimServerLoader,poid);
+}
+
 
 
 
@@ -38,15 +45,6 @@ const viewerUm = new Viewer({
 
 
 //Carrega o projeto 1
-const bimServerClientUm = new BimServerClient(bimServerAddress);
-const bimServerLoaderUm = new BIMServerLoaderPlugin(viewerUm, {
-    bimServerClient: bimServerClientUm
-});
-
-const Cvas = Login.cria(viewerUm,bimServerClientUm,bimServerLoaderUm,poidOne);
-
-
-export default Cvas;
 
 // click(viewerUm,bimServerClientUm,roidOne);
 

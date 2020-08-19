@@ -1,58 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+
 #navbar{
+    background-color:#222;
+    position: relative;
     font-family: 'Roboto';
-    position: relative;
-    background-color:#687681;
-    width: 100%;
-    height: 60px;
-    box-shadow: 0.1px 0.1px 15px 0.1px #273c75;
-}
-#bar{
-    padding-left: 0px;
-    display: grid;
-    position: relative;
-    left: 80%;
-    grid-template-columns: .1fr .1fr .1fr;
-    height: 60px;
-    width: 19%;
-    margin: 0px;
-    box-sizing: border-box;
-    align-items: center;
-    /* background-color: aqua; */
-}
-
-#dropDown{
-    position: fixed;
-    left: 77.1%;
-    top: 44px;
     width: 20%;
+    left: 80%;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    display: flex;
     align-items: center;
+    justify-items: center;
+    
 }
-#dropDown ul li{
-    /* position: fixed; */
-    /* left: 80%; */
-    background-color:white;
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: .1fr .1fr .1fr;
-    align-items: center;
+
+#navbar .menu-item{
+    color: #FFF;
+    padding: 10px 20px;
+    position: relative;
     text-align: center;
-    padding: 20px;
-    padding-left: 90px;
-    box-shadow: 0.1px 0.1px #273c75
+    border-bottom: 3px solid transparent;
+    display: flex;
+    transition: 0.4s;
 }
 
-
-#liBar{
-    box-sizing: border-box;
-    padding-top: 20px;
-    align-items: center;
-    text-align: center;
-    list-style-type: none;
-    width: 80px;
-    height: 60px;
+#navbar .menu-item.active,
+#navbar .menu-item:hover{
+    background-color: #444;
+    border-bottom-color: #FFF;
 }
 
-#navbar ul li:hover{
-    background-color:#373d42;
+#navbar .menu-item a{
+    color: inherit;
+    text-decoration : none;
 }

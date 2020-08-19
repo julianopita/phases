@@ -1,13 +1,44 @@
 @media(max-width: 1366px) {
+
+
+    #rightSide{
+        display: grid;
+        grid-template-rows: .2fr 1fr .5fr;
+
+    }
+    .generalInfo{
+        height: 5%;
+    }
+    .canvaSpace{
+        height: 85%;
+    }
+    .infoSpace{
+        height: 10%;
+    }
     #layoutMain{
         display: grid;
-        grid-template-columns: 1fr .5fr;
+        grid-template-columns: 8fr 2fr;
         height: 92vh;
         box-sizing: border-box;
     }
 }
 
 @media(min-width: 1367px) {
+    #rightSide{
+        display: grid;
+        grid-template-rows: 1fr .5fr;
+
+    }
+    .generalInfo{
+        height: 5%;
+    }
+    .canvaSpace{
+        height: 85%;
+    }
+    .infoSpace{
+        height: 10%;
+    }
+
     #layoutMain{
         display: grid;
         grid-template-columns: 1fr .3fr;

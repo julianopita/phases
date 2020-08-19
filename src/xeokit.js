@@ -5,19 +5,21 @@ import Login from "./lib/login.js"
 import click from "./lib/click.js"
 
 
-const bimServerAddress = "http://plat-nomads.ddns.net:8080/bimserver/";
-const poid = 131073;
-const roid = 65539;
 
-let clientNomads = function(bimServerAddress,poid){
+
+let clientNomads = function(bimServerAddress,poid,canvasId, roid){
     const bimServerClient = new BimServerClient(bimServerAddress);
     const viewer = new Viewer({
-        canvasId: "c1"
+        canvasId: canvasId
     });
+
+    document.getElementById(canvasId).style.height = '650px';
+
     const bimServerLoader = new BIMServerLoaderPlugin(viewer, {
         bimServerClient: bimServerClient
     });
     Login.cria(viewer,bimServerClient,bimServerLoader,poid);
+    click(viewer,bimServerClient,roid);
 }
 
 

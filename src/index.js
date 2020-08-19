@@ -1,8 +1,9 @@
 import Vue from './lib/vue.js';
 import NavBar from './components/NabBar.js';
 import CanvasComponent from './components/Canvas.js';
-import Cvas from './xeokit.js';
-
+import clientNomads from './xeokit.js';
+const bimServerAddress = "http://plat-nomads.ddns.net:8080/bimserver/";
+const poid = 131073;
 
 const App = {
     name : 'App',
@@ -42,7 +43,8 @@ template : `<div style="width:100%">
 
 
     mounted(){
-        console.log(document.getElementById('c1'));
+        // console.log(document.getElementById('c1'));
+        let a = new clientNomads(bimServerAddress,poid);
     }
 
 }

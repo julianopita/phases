@@ -7,10 +7,10 @@ const Comentario = {
     template : `
         <div id="comentario">
             <ul>
-                <li v-for="comentario in coment">
-                    {{comentario.name}}
+                <li v-for="(comentario,i) in coment">
+                   {{i}} {{comentario.name}} 
                 </li>
-            <ul>
+            </ul>
 
             <link rel="stylesheet" href="./src/styles/comentario.css">
         </div>

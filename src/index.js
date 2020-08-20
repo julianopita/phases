@@ -40,9 +40,7 @@ const App = {
         
                 </div>
                 
-                <div>
                     <Forum/>
-                </div>
         </div>
     </div>
         `,

@@ -1,6 +1,3 @@
-import VueRouter from './lib/vue-router.js';
-
-
 import NavBar from './components/NabBar.js';
 import CanvasComponent from './components/Canvas.js';
 import clientNomads from './xeokit.js';
@@ -27,7 +24,7 @@ const App = {
         <NavBar/>
 
         <div id="layoutMain">
-            <link rel="stylesheet" href="./src/styles/principal.css">
+            <link rel="stylesheet" href="../styles/principal.css">
 
 
                 <div id="leftSide">

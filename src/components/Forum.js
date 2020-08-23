@@ -5,7 +5,7 @@ const Forum = {
     template : `
         <div id="forum">
             <Comentario/>
-            <link rel="stylesheet" href="./src/styles/forum.css">
+            <link rel="stylesheet" href="../../styles/forum.css">
         </div>
     `,
     components : {

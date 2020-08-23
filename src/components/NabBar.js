@@ -10,7 +10,7 @@ const Navbar = {
                 <div class="menu-item"><a href="#"> Nomads </a></div>  
                 <Dropdown title="Visitante" :items="visitante" />
             </div>         
-            <link rel="stylesheet" href="./src/styles/barra_navegacao.css">
+            <link rel="stylesheet" href="../../styles/barra_navegacao.css">
         </div>
     `,
 

@@ -1,39 +1,52 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
-
-
-#cadastro{
+#divCadastro{
     display: grid;
-    grid-template-rows: 1fr 8fr;
+    grid-template-rows: 1fr 3.5fr 1fr;    
 }
 
-#cadastro .textoCadastro{
-    /* background-color: tomato; */
+#divCadastro .textoCadastro{
+    font-size: 22px;
+    width: max-content;
+    position: relative;
+    left: 40%;
 }
 
-#cadastro .formulario{
-    /* background-color: burlywood; */
-}
 
-#cadastro .formulario .caixa{
-    /* background-color: cornflowerblue; */
-    height: 90px;
-    font-family: 'Roboto';
-    height: 60px;
+#divCadastro .form{
+    /* background: turquoise; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: 80%;
     position: relative;
-    /* background-color: cornflowerblue; */
     left: 10%;
 }
-#cadastro .formulario .caixa input{
-    /* background-color: cornflowerblue; */
-    height: 30px;
-    width: 95%;
-    font-size: 15px;
-    position: relative;
-}
- 
-#cadastro .formulario .caixa p{
-    font-size: 14px;
+
+
+#divCadastro .form p{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
 }
 
+
+#divCadastro .form input{
+    background: rgb(173, 173, 173);
+    width: 95%;
+    height: 30px;
+    border-radius: 5px 5px 5px 5px;
+    
+}
+
+#divCadastro .button{
+    width: 35%;
+    height: max-content;
+    /* background-color: teal; */
+    position: relative;
+    left: 33%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#divCadastro .button button{
+    background-color: white;
+    height: 20px;
+    width: 100px;
+    border-radius: 5px 5px 5px 5px;
+}

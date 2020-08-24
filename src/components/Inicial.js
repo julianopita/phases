@@ -1,11 +1,11 @@
 import Cadastro from './Cadastro.js';
-
+import Login from './Login.js';
 
 const Inicial = {
     name : "inicial",
     template : `
         <div id="inicial">
-            <cadastro/>
+            <login/>
 
             <link rel="stylesheet" href="../../styles/inicial.css">
         </div>
@@ -16,7 +16,8 @@ const Inicial = {
         }
     },
     components : {
-        Cadastro
+        Cadastro,
+        Login
     }
 }
 

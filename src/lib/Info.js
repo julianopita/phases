@@ -3,15 +3,15 @@ var Info;
 
 
 export default Info = {
-    "descricao" : (des)=>{
+    descricao : (des)=>{
         console.log("Descricao :"+des);
         var descricao = document.getElementById("descricao");
-        descricao.innerHTML = des;
+        descricao.innerHTML = "Descricao : "+des;
     },
-    "area" : (area)=>{
+    area : (area)=>{
         console.log("Area :"+area);
         var a = document.getElementById("area");
-        a.innerHTML = Math.ceil(area);
+        a.innerHTML = "Area : "+Math.ceil(area);
     },
     // "descricao" : (des)=>{
     //     console.log("Descricao :"+des);

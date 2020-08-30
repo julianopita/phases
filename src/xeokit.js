@@ -13,7 +13,6 @@ let clientNomads = function(bimServerAddress,poid,canvasId, roid){
         canvasId: canvasId
     });
 
-    document.getElementById(canvasId).style.height = '650px';
 
     const bimServerLoader = new BIMServerLoaderPlugin(viewer, {
         bimServerClient: bimServerClient

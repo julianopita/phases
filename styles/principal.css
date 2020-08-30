@@ -6,7 +6,7 @@
 
 #leftSide{
     display: grid;
-    grid-template-rows: .5fr 6fr 1.2fr;
+    grid-template-rows: .5fr 7fr 1.2fr;
 }
 
 .canvasDiv{
@@ -18,5 +18,9 @@
 }
 
 .infoSpace{
+    position: relative;
+    z-index: 25;
     background-color: #a1a1a1;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }

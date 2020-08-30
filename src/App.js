@@ -2,6 +2,8 @@ import NavBar from './components/NabBar.js';
 import CanvasComponent from './components/Canvas.js';
 import clientNomads from './xeokit.js';
 import Forum from './components/Forum.js';
+import Button from './components/Button.js';
+import infoComponent from './components/infoComponent.js';
 const bimServerAddress = "http://plat-nomads.ddns.net:8080/bimserver/";
 const poid = 131073;
 const roid = 65539;
@@ -14,7 +16,9 @@ const App = {
     components : {
         NavBar,
         CanvasComponent,
-        Forum
+        Forum,
+        Button,
+        infoComponent
     },
 
 
@@ -28,13 +32,18 @@ const App = {
 
 
                 <div id="leftSide">
-                    <div class="generalInfo" > </div>
+                    <div class="generalInfo" >
+                        <Button/>
+                    </div>
                     
                     <div class="canvasDiv">
                         <CanvasComponent/>
                     </div>
                     
-                    <div class="infoSpace"></div>
+                    <div class="infoSpace">
+                        <infoComponent/>
+                        <div> </div>
+                    </div>
         
                 </div>
                 
@@ -49,7 +58,7 @@ const App = {
     },
 
     mounted(){
-        // let a = new clientNomads(bimServerAddress,poid,"c1", roid);
+        let a = new clientNomads(bimServerAddress,poid,"c1", roid);
         
     }
 

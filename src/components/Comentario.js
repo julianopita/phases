@@ -20,6 +20,7 @@ const Comentario = {
                 </div>
             </div>
             <link rel="stylesheet" href="../../styles/comentario.css">
+
         </div>
     `,
     data(){
@@ -73,8 +74,8 @@ const Comentario = {
 
     },
     mounted: async function(){
-        // await this.get();
-        // this.manipulaGet(this.coment);
+        await this.get();
+        this.manipulaGet(this.coment);
 
 
     }

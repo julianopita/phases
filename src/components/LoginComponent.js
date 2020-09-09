@@ -11,7 +11,7 @@ var LoginComponent = {
             <Outdoor/>
             <UserArea/>
 
-            <link rel="stylesheet" href="login.css">
+            <link rel="stylesheet" href="../../styles/login.css">
         </div>
     `,
     components : {

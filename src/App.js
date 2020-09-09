@@ -58,7 +58,7 @@ const App = {
     },
 
     mounted(){
-        let a = new clientNomads(bimServerAddress,poid,"c1", roid);
+        // let a = new clientNomads(bimServerAddress,poid,"c1", roid);
         
     }
 

@@ -1,21 +1,23 @@
 import Outdoor from './outdoorInicial.js';
 import UserArea from './userArea.js';
-               
 
 
+
+console.log(Outdoor)
+let login = Outdoor[0]
 
 var LoginComponent = {
     name : "login-component",
     template : `
         <div id="loginComponent">
-            <Outdoor/>
+            <login/>
             <UserArea/>
 
             <link rel="stylesheet" href="../../styles/login.css">
         </div>
     `,
     components : {
-        Outdoor,UserArea
+        login,UserArea
     }
 }
 

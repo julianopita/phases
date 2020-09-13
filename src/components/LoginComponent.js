@@ -11,7 +11,7 @@ var LoginComponent = {
         <div id="loginComponent">
             <login/>
             <UserArea/>
-
+fdsfsdf
             <link rel="stylesheet" href="../styles/login.css">
         </div>
     `,

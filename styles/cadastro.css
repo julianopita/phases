@@ -41,7 +41,7 @@
     text-align: center;
     box-shadow: 5px 0px 5px 0px;
   }
-  #cadastroComponent #user-Area .formulario form input[type='text'], #cadastroComponent #user-Area .formulario form input[type='password'] {
+  #cadastroComponent #user-Area .formulario input[type='text'], #cadastroComponent #user-Area .formulario input[type='password'] {
     position: relative;
     width: 89%;
     background: none;
@@ -55,7 +55,7 @@
     border-radius: 10px 10px 10px 10px;
     color: white;
   }
-  #cadastroComponent #user-Area .formulario form button {
+  #cadastroComponent #user-Area .formulario button {
     position: relative;
     width: 30%;
     background: none;
@@ -67,8 +67,9 @@
     color: white;
     text-align: center;
   }
-  #cadastroComponent #user-Area .formulario form button:hover {
+  #cadastroComponent #user-Area .formulario button:hover {
     background: #2f373b;
+    cursor: pointer;
   }
 }
 
@@ -114,7 +115,7 @@
     border-radius: 10px 10px 10px 10px;
     text-align: center;
   }
-  #cadastroComponent #user-Area .formulario form input[type='text'], #cadastroComponent #user-Area .formulario form input[type='password'] {
+  #cadastroComponent #user-Area .formulario input[type='text'], #cadastroComponent #user-Area .formulario input[type='password'] {
     position: relative;
     width: 89%;
     background: none;
@@ -128,7 +129,7 @@
     border-radius: 10px 10px 10px 10px;
     color: white;
   }
-  #cadastroComponent #user-Area .formulario form button {
+  #cadastroComponent #user-Area .formulario button {
     position: relative;
     width: 30%;
     background: none;
@@ -140,8 +141,9 @@
     color: white;
     text-align: center;
   }
-  #cadastroComponent #user-Area .formulario form button:hover {
+  #cadastroComponent #user-Area .formulario button:hover {
     background: #2f373b;
+    cursor: pointer;
   }
 }
 /*# sourceMappingURL=cadastro.css.map */

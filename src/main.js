@@ -1,18 +1,11 @@
 import App from './App.js';
 import Vue from './lib/vue.js';
-import VueRouter from './lib/vue-router.js';
-import LoginComponent from './components/LoginComponent.js';
-import CadastroComponent from './components/CadastroComponent.js';
+import router from './router/index.js'
 
-Vue.use(VueRouter);
+Vue.config.productionTip = false
 
-
-const app = new Vue({
-    el: '#app',
-    components : {
-        App,
-        LoginComponent,
-        CadastroComponent
-    }
-})
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#app')
 

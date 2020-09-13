@@ -1,8 +1,9 @@
 
 import Vue from '../lib/vue.js';
 import VueRouter from '../lib/vue-router.js';
-// import CadastroComponent from '../views/cadastro/CadastroComponent.vue';
-
+import CadastroComponent from '../components/CadastroComponent.js';
+import LoginComponent from '../components/LoginComponent.js';
+import BimNomads from '../BimNomads.js';
 
 Vue.use(VueRouter)
 
@@ -10,8 +11,19 @@ const routes = [
   {
     path : '/',
     name : 'CadastroComponent',
-    component : '<template><div>asdasd</div></template>'
+    component : CadastroComponent
+  },
+  {
+    path : '/login',
+    name : 'LoginComponent',
+    component : LoginComponent
+  },
+  {
+    path : '/application',
+    name : 'BimNomads',
+    component : BimNomads
   }
+
 
 ]
 

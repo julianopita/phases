@@ -15,7 +15,10 @@ var UserArea  = {
     `,
     methods : {
         cadastro : function () {
-            this.$router.push('/')
+            this.$router.push('/');
+        },
+        application : function () {
+            this.$router.push('application');
         }
     }
 }

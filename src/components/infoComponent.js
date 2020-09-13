@@ -7,7 +7,7 @@ var infoComponent = {
         <div id="infoComponent">
             <div id="descricao"> </div>
             <div id="area"> </div>
-        <link rel="stylesheet" href="../../styles/info.css">
+        <link rel="stylesheet" href="../styles/info.css">
 
         </div>
     `

@@ -19,7 +19,7 @@ const Comentario = {
                     </div>
                 </div>
             </div>
-            <link rel="stylesheet" href="../../styles/comentario.css">
+            <link rel="stylesheet" href="../styles/comentario.css">
 
         </div>
     `,

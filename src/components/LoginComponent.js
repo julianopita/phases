@@ -3,7 +3,6 @@ import UserArea from './userArea.js';
 
 
 
-console.log(Outdoor)
 let login = Outdoor[0]
 
 var LoginComponent = {
@@ -13,7 +12,7 @@ var LoginComponent = {
             <login/>
             <UserArea/>
 
-            <link rel="stylesheet" href="../../styles/login.css">
+            <link rel="stylesheet" href="../styles/login.css">
         </div>
     `,
     components : {

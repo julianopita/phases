@@ -9,7 +9,7 @@ var Button = {
 
 
 
-            <link rel="stylesheet" href="../../styles/button.css">
+            <link rel="stylesheet" href="../styles/button.css">
         </div>
     `,
     data(){

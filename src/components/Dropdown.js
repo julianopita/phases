@@ -11,7 +11,7 @@ const Dropdown = {
                 </div>
             </div>
         </transition>
-        <link rel="stylesheet" href="../../styles/dropdown.css">
+        <link rel="stylesheet" href="../styles/dropdown.css">
 
 
     </div>`,

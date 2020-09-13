@@ -11,7 +11,7 @@ var CadastroComponent = {
             <cadastro/>
             <UserAreaCadastro/>
 
-            <link rel="stylesheet" href="../../styles/cadastro.css">
+            <link rel="stylesheet" href="../styles/cadastro.css">
         </div>
     `,
     components : {

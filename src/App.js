@@ -28,7 +28,7 @@ const App = {
         <NavBar/>
 
         <div id="layoutMain">
-            <link rel="stylesheet" href="../styles/principal.css">
+            <link rel="stylesheet" href="./styles/principal.css">
 
 
                 <div id="leftSide">
@@ -58,7 +58,7 @@ const App = {
     },
 
     mounted(){
-        // let a = new clientNomads(bimServerAddress,poid,"c1", roid);
+        new clientNomads(bimServerAddress,poid,"c1", roid);
         
     }
 

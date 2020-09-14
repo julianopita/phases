@@ -3,7 +3,6 @@ import UserAreaCadastro from './userAreaCadastro.js';
                
 let cadastro = Outdoor[1];
 
-console.log(axios)
 var CadastroComponent = {
     name : "cadastro-component",
     template : `

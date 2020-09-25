@@ -1,0 +1,16 @@
+#inicial{
+    background-color: white;
+    height: 50vh;
+    width: 50vw;
+    position: relative;
+    left: 25%;
+    top: 20vh;
+    border-radius: 15px 15px 15px 15px;
+}
+
+#imgNomads{
+    position: absolute;
+    left: 7%;
+    top: 21%;
+    width: 12%;
+}

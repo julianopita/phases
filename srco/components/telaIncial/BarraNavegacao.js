@@ -1,21 +1,16 @@
-import Dropdown from './Dropdown.js';
-
-
-const Navbar = {
-    name : 'NavBar',
+const BarraNavegacao = {
+    name : 'barra-navegacao',
     template : `
-        <div> 
-            <div id="navbar">
-                <div class="menu-item"><a href="#"> Home </a></div>
-                <div class="menu-item"><a href="#"> Nomads </a></div>  
-                <Dropdown title="Visitante" :items="visitante" />
+        <div id="barra-navegacao"> 
+            <div class="item-navegacao">
+                <div class="menu-item"><a href="#"> U S U A R I O </a></div>
+                <div class="menu-item"><a href="#"> N O M A D S </a></div>
+                <div class="menu-item"><a href="#"> S O B R E </a></div>
             </div>         
-            <link rel="stylesheet" href="../styles/barra_navegacao.css">
         </div>
     `,
 
     components : {
-        Dropdown,
     },
 
     data(){
@@ -39,4 +34,5 @@ const Navbar = {
     }
 }
 
-export default Navbar;
+
+export default BarraNavegacao;

@@ -3,13 +3,14 @@ import TelaLogin from './components/TelaLogin.js';
 import Plataforma from './components/plataforma/Plataforma.js'
 const Template = `
     <div>
-        <tela-cadastro/>
+        <plataforma/>
     </div>
 ` 
 export default {
     name : 'App',
     components : {
-        TelaCadastro
+        TelaCadastro,TelaLogin,
+        Plataforma
     } ,
     template : Template
   }

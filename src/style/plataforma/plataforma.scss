@@ -3,8 +3,8 @@ $corFormulario : #75767B;
 $input : #f2f3f6da;
 $defaulColor : black;
 $hoverButton : #b6b6b6;
-
-
+$fundoForum : #F4F5FF;
+$fundoComentario : #D5D9F0;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
 
@@ -53,14 +53,49 @@ $hoverButton : #b6b6b6;
 
 
 #forum{
-    background-color: $corFormulario;
-    #comentario{
+    height: 94vh;
+    li{
+        list-style: none;
+    }
 
+    .forumName{
+        // position: relative;
+        width: max(100%);
+        height: 60px;
+        text-align: center;
+        margin-top: 30px;
+        align-content: center;
+        border-style: none none solid none ;
+        opacity: 0.4;
+    }
+
+    background-color: $fundoForum;
+    overflow-y: scroll;
+    
+    .forumArea{
+        .comentario{
+
+            padding-top: 20px;
+            .perfil{
+                font-size: 12px;
+                margin-left: 15px;
+            }
+            .texto{
+                margin: 15px;
+                margin-left: 50px;
+                padding: 7px;
+                background-color: $fundoComentario;
+                border-radius: 10px 10px 10px 10px;
+                font-size: 14px;
+            }
+        }
     }
     #resposta{
 
     }
-    #novoComentario{
-        
-    }
+
 }
+
+/* Line 2 */
+
+

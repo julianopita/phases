@@ -3,6 +3,8 @@ import Vue from './lib/vue.js';
 // import router from './router/index.js'
 
 
+console.log(axios)
+
 
 Vue.config.productionTipimport = false;
 

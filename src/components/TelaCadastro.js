@@ -8,8 +8,8 @@ const TelaCadastro = {
         <div id="tela-cadastro">
             <barra-navegacao/>
             <img src="assets/cadastroImagem.png">
-            <formulario :items="formItens"/>
-            <link rel="stylesheet" href="srco/style/cadastro/tela_cadastro.css">
+            <formulario :items="formItens" :pag="cadastro" />
+            <link rel="stylesheet" href="src/style/cadastro/tela_cadastro.css">
         </div>
     `,
     components : {
@@ -42,9 +42,14 @@ const TelaCadastro = {
                     type : "I N T E R E S S E",
                     conteudo : ""
                 },
+            },
+            cadastro : {
+                tipo : "C A D A S T R O",
+                mensagem : "Possuo Cadastro!"
             }
         }
-    }
+    },
+
 }
 
 

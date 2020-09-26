@@ -7,18 +7,20 @@ const Formulario = {
                     <input v-model="item.conteudo" :placeholder=items[i].type />
                 </li>
             </div>
-                <button @click="cadastra"><img src="assets/seta.png"/></button>
+            <div class="button-class">
+                <button @click="cadastra">{{pag.tipo}}</button>
+                <a>{{pag.mensagem}}</a>
+            </div>
         </div>
     `,
-    props : ['items'],
+    props : ['items','pag'],
     data(){
         return{
         }
     },
     methods : {
         cadastra : function(){
-            let userInfo = `${this.userName}&${this.senha}&${this.nomeCompleto}&${this.email}&${this.cep}&${this.interesse}`;
-            console.log(this.items)
+            // let userInfo = `${this.userName}&${this.senha}&${this.nomeCompleto}&${this.email}&${this.cep}&${this.interesse}`;
         }
     }
 }

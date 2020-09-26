@@ -1,20 +1,21 @@
 $fundo : #DBDBDB;
 $corFormulario : #75767B;
+$hoverButton : #b6b6b6;
 $input : #f2f3f6da;
-$defaulColor : black;
+$defaultColor : black;
 
 
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
 
 
-#tela-cadastro{
+#tela-login{
     font-family: 'Roboto', sans-serif;
     height: 100vh;
     background-color: $fundo;
     position: relative;
     #barra-navegacao{
-        background-color: $defaulColor;
+        background-color: $defaultColor;
         height: 60px;
         display: flex;
         align-items: center;
@@ -47,17 +48,17 @@ $defaulColor : black;
 
     #formulario{
         position: absolute;
-        top: 62%;
+        top: 60%;
         left: 50%;
         margin-right: -50%;
         transform: translate(-50%, -50%);
         background-color: $corFormulario;
         width: 564px;
-        height: 650px;
+        height: 294px;
         border-radius: 20px 20px 20px 20px;
         .bloco-entradas{
             // position: relative;
-            margin-top: 120px;
+            margin-top: 60px;
             margin-left: 50%;
             transform: translate(-70%, 0);
             input{
@@ -80,13 +81,30 @@ $defaulColor : black;
             }
         }
     }
-    button{
+    .button-class{
+        display: flex;
+        flex-flow: column;
         position: relative;
-        left: 50%;
+        left: 90%;
+        a{
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Roboto';
+            font-size: 14px;
+            font-weight: 350;
+            position: relative;
+            bottom: 2px;
+        }
+        button{
+            cursor: pointer;
+            box-shadow: 0px 2px 10px;
+            border-radius: 10px 10px 10px 10px;
+            width: 120px;
+            height: 50px;
+            &:hover{
+                background-color: $hoverButton;
+            }
+        }
         transform: translate(-50%,0);
-        box-shadow: 0px 3px 3px;
-        width: 60px;
-        height: 60px;
-        border-radius: 30px 30px 30px 30px;
     }
 }

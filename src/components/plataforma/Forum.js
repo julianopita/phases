@@ -1,5 +1,5 @@
 import Comentario from './forum/Comentario.js';
-
+import NovoComentario from './forum/NovoComentario.js';
 
 
 const Forum = {
@@ -15,10 +15,15 @@ const Forum = {
                     <comentario :item=item />
                 </li>
             </div>
+            <div class="comentarioForum">
+                <novo-comentario :cols=cols :rows=rows />
+            </div>
         </div>
     `,
     data(){
         return {
+            cols : 60,
+            rows : 5,
             comentarios : null
         }
     },
@@ -35,7 +40,7 @@ const Forum = {
         this.getComentarios();
     },
     components : {
-        Comentario
+        Comentario, NovoComentario
     }
 }
 

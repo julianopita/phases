@@ -1,3 +1,6 @@
+import NovoComentario from './NovoComentario.js';
+
+
 const Comentario = {
     name : "comentario",
     template : `
@@ -5,13 +8,24 @@ const Comentario = {
             <div class="perfil">
                 <span>{{item.user_name}}</span>
             </div>
-            
             <div class="texto">
                 {{item.discussion}}
             </div>
+            <div class="respostas">
+                <novo-comentario :cols=cols :rows=rows />
+            </div>
         </div>
     `,
-    props: ['item']
+    props: ['item'],
+    data(){
+        return{
+            cols : 50,
+            rows : 6,
+        }
+    },
+    components : {
+        NovoComentario
+    }
 }
 
 

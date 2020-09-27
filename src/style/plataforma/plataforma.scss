@@ -5,6 +5,11 @@ $defaulColor : black;
 $hoverButton : #b6b6b6;
 $fundoForum : #F4F5FF;
 $fundoComentario : #D5D9F0;
+$novoComentario : #7A87D1;
+$buttonComentario : #7383AA;
+
+
+
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
 
@@ -53,28 +58,34 @@ $fundoComentario : #D5D9F0;
 
 
 #forum{
-    height: 94vh;
+    // height: 94vh;
+    border: .5px black;
+    border-style: none none none solid;
     li{
         list-style: none;
     }
+    display: grid;
+    grid-template-rows: 5% 75% 20%;
+    height: 94vh;
 
     .forumName{
         // position: relative;
         width: max(100%);
-        height: 60px;
         text-align: center;
-        margin-top: 30px;
+        margin-top: 10px;
         align-content: center;
         border-style: none none solid none ;
         opacity: 0.4;
     }
 
     background-color: $fundoForum;
-    overflow-y: scroll;
     
     .forumArea{
+        overflow-y: scroll;
         .comentario{
-
+            .respostas{
+                margin-left: 80px;
+            }
             padding-top: 20px;
             .perfil{
                 font-size: 12px;
@@ -89,12 +100,53 @@ $fundoComentario : #D5D9F0;
                 font-size: 14px;
             }
         }
-    }
-    #resposta{
 
     }
 
+    .comentarioForum{
+        border: 1px gray;
+        border-style: solid none none none;
+        position: relative;
+        left: 50%;
+        top: 20%;
+        transform: translate(-50%,0);
+    }
 }
+
+
+#novoComentario{
+    margin-left: 50px;
+    display: inline;
+
+    textarea{
+        border: none;
+        resize: none;
+        color: white;
+        padding: 10px;
+        border-radius: 20px;
+        background-color: $novoComentario;        
+    }
+    button{
+        cursor: pointer;
+        box-shadow: 0px 0px 1px 0px;
+        background-color: $buttonComentario;
+        border-radius: 25px;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        bottom: 50px;
+        border: none;
+        img{
+            position: relative;
+            left: 1px;
+            bottom: 2px;
+            width: 50%;
+        }
+    }
+}
+
+
+
 
 /* Line 2 */
 

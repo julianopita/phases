@@ -8,7 +8,7 @@ const TelaCadastro = {
         <div id="tela-cadastro">
             <barra-navegacao/>
             <img src="assets/cadastroImagem.png">
-            <formulario :items="formItens" :pag="cadastro" />
+            <formulario :items="formItens" :goTo=paraLogin :pag="cadastro" />
             <link rel="stylesheet" href="src/style/cadastro/tela_cadastro.css">
         </div>
     `,
@@ -19,28 +19,34 @@ const TelaCadastro = {
         return{
             formItens : {
                 nomeCompleto : {
-                    type : "N O M E C O M P L E TO",
-                    conteudo : ""
+                    texto : "N O M E C O M P L E TO",
+                    conteudo : "",
+                    type :  "text"
                 },
                 userName : {
-                    type : "U S E R N A M E",
-                    conteudo : ""
+                    texto : "U S E R N A M E",
+                    conteudo : "",
+                    type :  "text"
                 },
                 password : {
-                    type : "S E N H A",
-                    conteudo : ""
+                    texto : "S E N H A",
+                    conteudo : "",
+                    type :  "password"
                 },
                 email : {
-                    type : "E M A I L",
-                    conteudo : ""
+                    texto : "E M A I L",
+                    conteudo : "",
+                    type :  "text"
                 },
                 cep : {
-                    type : "C E P",
-                    conteudo : ""
+                    texto : "C E P",
+                    conteudo : "",
+                    type :  "text"
                 },
                 interesse : {
-                    type : "I N T E R E S S E",
-                    conteudo : ""
+                    texto : "I N T E R E S S E",
+                    conteudo : "",
+                    type :  "text"
                 },
             },
             cadastro : {
@@ -49,8 +55,25 @@ const TelaCadastro = {
             }
         }
     },
+    methods : {
+        paraLogin: function(){
+            this.$router.push('login');
+        }
+    }
 
 }
 
 
 export default TelaCadastro;
+
+
+            // await axios
+            // .post("http://localhost:2000/cadastro/usuario",{
+            //     nome : this.items.userName.conteudo,
+            //     senha : this.items.password.conteudo
+            // })
+            // .then((rs)=>{
+            //     if(rs.status == 200){
+            //         this.$router.push('login')
+            //     }
+            // })

@@ -101,6 +101,10 @@
 }
 
 #tela-cadastro .button-class a {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: white;
   cursor: pointer;
   margin-top: 20px;
   font-family: 'Roboto';
@@ -112,6 +116,7 @@
 }
 
 #tela-cadastro .button-class button {
+  border: none;
   cursor: pointer;
   -webkit-box-shadow: 0px 2px 10px;
           box-shadow: 0px 2px 10px;

@@ -101,6 +101,10 @@
 }
 
 #tela-login .button-class a {
+  color: white;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   cursor: pointer;
   margin-top: 20px;
   font-family: 'Roboto';
@@ -111,6 +115,7 @@
 }
 
 #tela-login .button-class button {
+  border: none;
   cursor: pointer;
   -webkit-box-shadow: 0px 2px 10px;
           box-shadow: 0px 2px 10px;

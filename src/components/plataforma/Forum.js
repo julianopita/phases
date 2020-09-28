@@ -30,8 +30,8 @@ const Forum = {
     methods: {
         getComentarios : async function(){
             await axios
-            .get("https://projetos.descubra.net.br/bimnomads/busca_msg.php")
-            .then(response => (this.comentarios = response));
+            .get("http://localhost:2000/comentario/list")
+            .then(response => (this.comentarios = response.data));
             console.log(this.comentarios)
 
         }

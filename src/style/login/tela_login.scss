@@ -87,6 +87,8 @@ $defaultColor : black;
         position: relative;
         left: 90%;
         a{
+            color: white;
+            width: fit-content;
             cursor: pointer;
             margin-top: 20px;
             font-family: 'Roboto';
@@ -96,6 +98,7 @@ $defaultColor : black;
             bottom: 2px;
         }
         button{
+            border: none;
             cursor: pointer;
             box-shadow: 0px 2px 10px;
             border-radius: 10px 10px 10px 10px;

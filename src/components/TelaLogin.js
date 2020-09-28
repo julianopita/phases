@@ -8,7 +8,7 @@ const TelaLogin = {
         <div id="tela-login">
             <barra-navegacao/>
             <img src="assets/loginImagem.png">
-            <formulario :items="formItens" :pag="login"/>
+            <formulario :items="formItens" :goTo=paraCadastro :pag="login" :metodo=loginFunc />
             <link rel="stylesheet" href="src/style/login/tela_login.css">
         </div>
     `,
@@ -19,18 +19,45 @@ const TelaLogin = {
         return{
             formItens : {
                 userName : {
-                    type : "U S E R N A M E",
-                    conteudo : ""
+                    texto : "U S E R N A M E",
+                    conteudo : "",
+                    type : "text"
                 },
                 password : {
-                    type : "S E N H A",
-                    conteudo : ""
+                    texto : "S E N H A",
+                    conteudo : "",
+                    type : "password"
                 }
             },
             login : {
                 tipo : "L O G I N",
                 mensagem : "Não tenho cadastro!"
             }
+        }
+    },
+    methods : {
+        loginFunc : async function(items){
+            await axios
+            .post("http://localhost:2000/login/usuario",{
+                nome : items.userName.conteudo,
+                senha : items.password.conteudo
+            })
+            .then( (res)=>{
+                if(res.status == 204){
+                    console.log('Usuario Não Encontrado');
+                    alert("Usuario Não Cadastrado!!")
+                }else{
+
+                    console.log(res);
+                    sessionStorage.setItem('usuario',res.data.nome);
+                    sessionStorage.setItem('id',res.data.id);
+                    
+                    this.$router.push('plataforma');
+                }
+            })
+        },
+        paraCadastro: function(){
+            this.$router.push('/');
         }
     }
 }

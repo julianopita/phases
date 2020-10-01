@@ -13,8 +13,8 @@ const Plataforma = {
                     <modelo/>
                     <div class="infoName">I N F O R M A Ç Õ E S</div>
                     <div class="infoBar">
-                        <div>adasdasd</div>
-                        <div>xczxczxcx</div>
+                        <div class="click">asd</div>
+                        <div class="fixed">das</div>
                     </div>
                 </div>
                 <forum/>

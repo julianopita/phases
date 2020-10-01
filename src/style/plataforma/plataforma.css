@@ -30,6 +30,19 @@
       grid-template-columns: 35% 65%;
 }
 
+#plataforma .modelo-forum div .infoBar .click {
+  padding: 20px;
+  padding-left: 40px;
+  margin-top: 40px;
+  border-style: none solid none none;
+  border-width: 1px;
+}
+
+#plataforma .modelo-forum div .infoBar .fixed {
+  padding: 20px;
+  margin-top: 40px;
+}
+
 #plataforma #barra-navegacao {
   background-color: black;
   height: 60px;

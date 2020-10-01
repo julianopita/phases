@@ -37,6 +37,17 @@ $buttonComentario : #7383AA;
             .infoBar{
                 display: grid;
                 grid-template-columns: 35% 65%;
+                .click{
+                    padding: 20px;
+                    padding-left: 40px;
+                    margin-top: 40px;
+                    border-style: none solid none none;
+                    border-width: 1px;
+                }
+                .fixed{
+                    padding: 20px;
+                    margin-top: 40px;
+                }
             }
         }
     }

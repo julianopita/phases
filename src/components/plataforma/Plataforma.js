@@ -9,7 +9,14 @@ const Plataforma = {
         <div id="plataforma">
             <barra-navegacao/>
             <div class="modelo-forum">
-                <modelo/>
+                <div>
+                    <modelo/>
+                    <div class="infoName">I N F O R M A Ç Õ E S</div>
+                    <div class="infoBar">
+                        <div>adasdasd</div>
+                        <div>xczxczxcx</div>
+                    </div>
+                </div>
                 <forum/>
             </div>
             <link rel="stylesheet" href="src/style/plataforma/plataforma.css">

@@ -5,8 +5,6 @@ const Modelo = {
     template : `
         <div id="modelo">
             <canvaComponent/>
-            <div>
-            <
         </div>
     `,
     components : {

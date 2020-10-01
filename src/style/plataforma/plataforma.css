@@ -13,6 +13,23 @@
       grid-template-columns: 70% 30%;
 }
 
+#plataforma .modelo-forum div .infoName {
+  padding-top: 1%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  height: 40px;
+  border-style: solid none none none;
+  border-color: #75767B;
+}
+
+#plataforma .modelo-forum div .infoBar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 35% 65%;
+      grid-template-columns: 35% 65%;
+}
+
 #plataforma #barra-navegacao {
   background-color: black;
   height: 60px;

@@ -24,6 +24,21 @@ $buttonComentario : #7383AA;
     .modelo-forum{
         display: grid;
         grid-template-columns: 70% 30%;
+        div{
+            .infoName{
+                padding-top: 1%;
+                background-color: $defaulColor;
+                color: white;
+                text-align: center;
+                height: 40px;
+                border-style: solid none none none;
+                border-color: $corFormulario;
+            }
+            .infoBar{
+                display: grid;
+                grid-template-columns: 35% 65%;
+            }
+        }
     }
 
 

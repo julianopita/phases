@@ -1,6 +1,6 @@
-import BarraNavegacao from './telaIncial/BarraNavegacao.js'
-import Formulario from './telaIncial/Formulario.js';
-
+import BarraNavegacao from '../components/telaIncial/BarraNavegacao.js'
+import Formulario from '../components/telaIncial/Formulario.js';
+import axiosInstance from '../connection/index.js';
 
 const TelaLogin = {
     name : "tela-login",
@@ -37,23 +37,21 @@ const TelaLogin = {
     },
     methods : {
         loginFunc : async function(items){
-            await axios
-            .post("http://localhost:2000/login/usuario",{
-                nome : items.userName.conteudo,
-                senha : items.password.conteudo
+            await axiosInstance
+            .post("/login/usuario",{
+                userName : items.userName.conteudo,
+                senha : items.password.conteudo,
             })
-            .then( (res)=>{
+            .then((res)=>{
                 if(res.status == 204){
-                    console.log('Usuario Não Encontrado');
-                    alert("Usuario Não Cadastrado!!")
+                    alert('Usuario nao encontrado');
                 }else{
-
-                    console.log(res);
-                    sessionStorage.setItem('usuario',res.data.nome);
+                    alert('Usuario Encontrado!!');
                     sessionStorage.setItem('id',res.data.id);
-                    
-                    this.$router.push('plataforma');
+                    this.$router.push('plataforma')
                 }
+
+            }).catch((err)=>{
             })
         },
         paraCadastro: function(){

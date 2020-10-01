@@ -1,6 +1,6 @@
-import BarraNavegacao from './telaIncial/BarraNavegacao.js'
-import Formulario from './telaIncial/Formulario.js';
-
+import BarraNavegacao from '../components/telaIncial/BarraNavegacao.js'
+import Formulario from '../components/telaIncial/Formulario.js';
+import axiosInstance from '../connection/index.js';
 
 const TelaCadastro = {
     name : "tela-cadastro",
@@ -8,7 +8,7 @@ const TelaCadastro = {
         <div id="tela-cadastro">
             <barra-navegacao/>
             <img src="assets/cadastroImagem.png">
-            <formulario :items="formItens" :goTo=paraLogin :pag="cadastro" />
+            <formulario :items="formItens" :goTo=paraLogin :pag="cadastro" :metodo="cadastroApi"/>
             <link rel="stylesheet" href="src/style/cadastro/tela_cadastro.css">
         </div>
     `,
@@ -58,6 +58,20 @@ const TelaCadastro = {
     methods : {
         paraLogin: function(){
             this.$router.push('login');
+        },
+        cadastroApi : async function(item){
+            await axiosInstance.post('cadastro/usuario',{
+                nome : item.nomeCompleto.conteudo,
+                senha : item.password.conteudo,
+                userName : item.userName.conteudo,
+                email : item.email.conteudo,
+                cep : item.cep.conteudo,
+                interesse : item.interesse.conteudo
+
+            }).then((response)=>{
+                alert('Usuario Cadastrado');
+                this.$router.push('login');
+            })
         }
     }
 
@@ -67,13 +81,3 @@ const TelaCadastro = {
 export default TelaCadastro;
 
 
-            // await axios
-            // .post("http://localhost:2000/cadastro/usuario",{
-            //     nome : this.items.userName.conteudo,
-            //     senha : this.items.password.conteudo
-            // })
-            // .then((rs)=>{
-            //     if(rs.status == 200){
-            //         this.$router.push('login')
-            //     }
-            // })

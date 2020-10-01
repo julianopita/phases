@@ -32,7 +32,7 @@ const Forum = {
             await axios
             .get("http://localhost:2000/comentario/list")
             .then(response => (this.comentarios = response.data));
-            console.log(this.comentarios)
+            console.log(this.comentarios);
 
         }
     },

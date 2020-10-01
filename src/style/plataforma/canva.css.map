@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAA;EACF,QAAQ,EAAE,QAAQ;EAClB,gBAAgB,EAAE,WAAW;EAC7B,MAAM,EAAE,IAAI;CAQf;;AAXD,AAII,MAJE,CAIF,MAAM,CAAA;EACF,QAAQ,EAAE,QAAQ;EAClB,gBAAgB,EAAE,KAAK;EACvB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;CAEf",
+    "sources": [
+        "canva.scss"
+    ],
+    "names": [],
+    "file": "canva.css"
+}

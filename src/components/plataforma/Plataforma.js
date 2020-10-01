@@ -1,6 +1,6 @@
 import BarraNavegacao from '../telaIncial/BarraNavegacao.js';
 import Forum from './Forum.js';
-import Modelo from './Modelo.js';
+import Modelo from './modelo/Modelo.js';
 
 
 const Plataforma = {

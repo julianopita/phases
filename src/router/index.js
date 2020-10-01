@@ -2,8 +2,8 @@
 import Vue from '../lib/vue.js';
 import VueRouter from '../lib/vue-router.js';
 import Plataforma from '../components/plataforma/Plataforma.js';
-import Cadastro from '../components/TelaCadastro.js';
-import Login from '../components/TelaLogin.js';
+import Cadastro from '../view/TelaCadastro.js';
+import Login from '../view/TelaLogin.js';
 
 
 Vue.use(VueRouter)

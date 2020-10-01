@@ -18,7 +18,5 @@ export default {
     components : {
     } ,
     template : Template,
-    mounted(){
-        new clientNomads(bimServerAddress,poid,"c1", roid);
-    }
+
   }

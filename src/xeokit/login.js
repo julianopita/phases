@@ -1,6 +1,6 @@
-import {BIMServerLoaderPlugin} from "../../xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerLoaderPlugin.js";
-import {Viewer} from "../../node_modules/@xeokit/xeokit-sdk/src/viewer/Viewer.js";
-import BimServerClient from "../../xeokit/src/plugins/BIMServerLoaderPlugin/BIMServerClient/bimserverclient.js";
+import {BIMServerLoaderPlugin} from '../../node_modules/@xeokit/xeokit-sdk/src/plugins/BIMServerLoaderPlugin/BIMServerLoaderPlugin.js'
+import {Viewer} from '../../node_modules/@xeokit/xeokit-sdk/src/viewer/Viewer.js';
+import BimServerClient from '../../node_modules/@xeokit/xeokit-sdk/src/plugins/BIMServerLoaderPlugin/BIMServerClient/bimserverclient.js';
 
 
 const username = "platnomads@gmail.com";

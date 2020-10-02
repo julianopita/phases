@@ -1,7 +1,37 @@
 #canva {
   position: relative;
-  background-color: yellowgreen;
   height: 72vh;
+}
+
+#canva .botoes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 30px;
+}
+
+#canva .botoes #button1 {
+  position: absolute;
+  right: 200px;
+  z-index: 100;
+  margin-left: 10px;
+}
+
+#canva .botoes #button2 {
+  position: absolute;
+  right: 120px;
+  z-index: 100;
+  margin-left: 10px;
+}
+
+#canva .botoes #button3 {
+  position: absolute;
+  z-index: 100;
+  right: 43px;
+  margin-left: 10px;
 }
 
 #canva canvas {

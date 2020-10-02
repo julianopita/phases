@@ -1,7 +1,31 @@
 #canva{
     position: relative;
-    background-color: yellowgreen;
     height: 72vh;
+
+    .botoes{
+        // position: absolute;
+        display: flex;
+        justify-content: flex-end;
+        height: 30px;
+        #button1{
+            position: absolute;
+            right: 200px;
+            z-index: 100;
+            margin-left: 10px;
+        }
+        #button2{
+            position: absolute;
+            right: 120px;
+            z-index: 100;
+            margin-left: 10px;
+        }
+        #button3{
+            position: absolute;
+            z-index: 100;
+            right: 43px;
+            margin-left: 10px;
+        }
+    }
     canvas{
         position: absolute;
         background-color: white;

@@ -26,6 +26,8 @@ $buttonComentario : #7383AA;
         grid-template-columns: 70% 30%;
         div{
             .infoName{
+                position: relative;
+                top: 30px;
                 padding-top: 1%;
                 background-color: $defaulColor;
                 color: white;

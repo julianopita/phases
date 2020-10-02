@@ -1,20 +1,43 @@
-import Info from "./Info.js";
+import {infoClicked} from '../components/plataforma/Plataforma.js'
 
-var click;
 
-var lastEntity = null;
-var count = 0;
 
-export default click = (viewer,bimServerClient,roid) =>{
+let lastEntity = null;
+
+
+const click = function(viewer,bimServerClient,roid){
+
+
+    function calls(hit,roid){
+
+        bimServerClient
+        .call("LowLevelInterface", "getDataObjectByGuid",
+            {roid: roid , guid: hit.entity.id},
+
+            function(IfcBuildingData){
+
+                bimServerClient
+                .call("ServiceInterface", "getArea",  {roid: roid , oid: IfcBuildingData.oid},             
+                    function(area){
+                        document.getElementById('area').innerHTML = area+'m²';
+                    });
+            
+                bimServerClient
+                .call("LowLevelInterface", "getDataObjectByOid",  {roid: roid , oid: IfcBuildingData.oid}, 
+                    function(data){
+                        document.getElementById('descricao').innerHTML = data.name;
+            })    
+        });
+    }
+
     viewer.scene.input.on("mouseclicked",async function (coords) {
 
-        var hit = viewer.scene.pick({
+        let hit = viewer.scene.pick({
         canvasPos: coords,
         pickSurface : true
         });
 
         if (hit) {
-            // console.log(hit);
             if (!lastEntity || hit.entity.id !== lastEntity.id) {
                 await calls(hit,roid);
                 if (lastEntity) {
@@ -30,28 +53,7 @@ export default click = (viewer,bimServerClient,roid) =>{
             }
         }
     });
-
-
-    function calls(hit,roid){
-        bimServerClient.call("LowLevelInterface", "getDataObjectByGuid",
-        {roid: roid , guid: hit.entity.id},
-        function(IfcBuildingData){
-
-
-
-            bimServerClient.call("ServiceInterface", "getArea",  {roid: roid , oid: IfcBuildingData.oid},             
-                function(area){
-                    Info.area(area);
-                });
-           
-            bimServerClient.call("LowLevelInterface", "getDataObjectByOid",  {roid: roid , oid: IfcBuildingData.oid}, 
-                function(data){
-                    // console.log(data);
-                    Info.descricao(data.name);
-                })    
-        });
-
-               
-    }
 }
+
+export default click;
 

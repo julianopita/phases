@@ -1,7 +1,7 @@
 
 import Vue from '../lib/vue.js';
 import VueRouter from '../lib/vue-router.js';
-import Plataforma from '../components/plataforma/Plataforma.js';
+import {Plataforma} from '../components/plataforma/Plataforma.js';
 import Cadastro from '../view/TelaCadastro.js';
 import Login from '../view/TelaLogin.js';
 

@@ -10,7 +10,7 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  height: 30px;
+  height: 0px;
 }
 
 #canva .botoes #button1 {

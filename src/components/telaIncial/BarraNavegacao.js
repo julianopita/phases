@@ -3,9 +3,9 @@ const BarraNavegacao = {
     template : `
         <div id="barra-navegacao"> 
             <div class="item-navegacao">
-                <div class="menu-item"><a href="#"> U S U A R I O </a></div>
-                <div class="menu-item"><a href="#"> N O M A D S </a></div>
-                <div class="menu-item"><a href="#"> S O B R E </a></div>
+                <div class="menu-item"><a href="#"> início </a></div>
+                <div class="menu-item"><a href="#"> registro </a></div>
+                <div class="menu-item"><a href="#"> sobre </a></div>
             </div>         
         </div>
     `,
@@ -17,11 +17,11 @@ const BarraNavegacao = {
         return{
             visitante : [
                 {
-                    title : 'Cadastro',
+                    title : 'início',
                     link : '#'
                 },
                 {
-                    title : 'Login',
+                    title : 'registro',
                     link : '#'
                 },
                 {

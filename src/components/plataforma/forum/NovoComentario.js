@@ -2,7 +2,7 @@ const NovoComentario = {
     name : 'novo-comentario',
     template : `
         <div id="novoComentario">
-            <textarea  :cols=cols :rows=rows placeholder="Comente Aqui!">
+            <textarea  :cols=cols :rows=rows placeholder="nova conversa">
             </textarea>
             <button><img src="assets/setaBranca.png" /></button>
         </div>

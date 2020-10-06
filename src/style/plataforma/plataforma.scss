@@ -1,12 +1,12 @@
 $fundo : #DBDBDB;
 $corFormulario : #75767B;
 $input : #f2f3f6da;
-$defaulColor : black;
+$defaulColor : #8b8b8b;
 $hoverButton : #b6b6b6;
-$fundoForum : #F4F5FF;
+$fundoForum : #DBDBDB;
 $fundoComentario : #D5D9F0;
-$novoComentario : #7A87D1;
-$buttonComentario : #7383AA;
+$novoComentario : #ffffff;
+$buttonComentario : #8b8b8b;
 
 
 
@@ -15,7 +15,7 @@ $buttonComentario : #7383AA;
 
 
 #plataforma{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Arial', sans-serif;
     height: 100vh;
     background-color: $fundo;
     position: relative;
@@ -43,7 +43,7 @@ $buttonComentario : #7383AA;
                     padding: 20px;
                     padding-left: 40px;
                     margin-top: 40px;
-                    border-style: none solid none none;
+                    border-style: none none none none;
                     border-width: 1px;
                 }
                 .fixed{
@@ -64,7 +64,7 @@ $buttonComentario : #7383AA;
         .item-navegacao{
             // width: max-content;
             position: relative;
-            left: 50%;
+            left: 90%;
             transform: translate(-50%,0);
         }
         div{
@@ -74,8 +74,8 @@ $buttonComentario : #7383AA;
             display: inline;
         }
         a{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-size: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Arial', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
             font-weight: 300;
             color: white;
             text-decoration: none;
@@ -87,13 +87,13 @@ $buttonComentario : #7383AA;
 
 #forum{
     // height: 94vh;
-    border: .5px black;
-    border-style: none none none solid;
+    // border: .5px black;
+    border-style: none none none none;
     li{
         list-style: none;
     }
     display: grid;
-    grid-template-rows: 5% 75% 20%;
+    grid-template-rows: 5% 77% 19%;
     height: 94vh;
 
     .forumName{
@@ -102,7 +102,7 @@ $buttonComentario : #7383AA;
         text-align: center;
         margin-top: 10px;
         align-content: center;
-        border-style: none none solid none ;
+        border-style: none none none none ;
         opacity: 0.4;
     }
 
@@ -124,8 +124,8 @@ $buttonComentario : #7383AA;
                 margin-left: 50px;
                 padding: 7px;
                 background-color: $fundoComentario;
-                border-radius: 10px 10px 10px 10px;
-                font-size: 14px;
+                border-radius: 5px 5px 5px 5px;
+                font-size: 20px;
             }
         }
 
@@ -133,7 +133,7 @@ $buttonComentario : #7383AA;
 
     .comentarioForum{
         border: 1px gray;
-        border-style: solid none none none;
+        border-style: none none none none;
         position: relative;
         left: 50%;
         top: 20%;
@@ -151,22 +151,22 @@ $buttonComentario : #7383AA;
         resize: none;
         color: white;
         padding: 10px;
-        border-radius: 20px;
+        border-radius: 5px;
         background-color: $novoComentario;        
     }
     button{
         cursor: pointer;
-        box-shadow: 0px 0px 1px 0px;
+        box-shadow: 0px 0px 0px 0px;
         background-color: $buttonComentario;
         border-radius: 25px;
         width: 30px;
         height: 30px;
         position: relative;
-        bottom: 50px;
+        bottom: 40px;
         border: none;
         img{
             position: relative;
-            left: 1px;
+            left: 2px;
             bottom: 2px;
             width: 50%;
         }

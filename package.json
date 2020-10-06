@@ -4,7 +4,8 @@
   "description": "Plataforma Bim Nomads",
   "main": "index.js",
   "dependencies": {
-    "@xeokit/xeokit-sdk": "^1.4.4"
+    "@xeokit/xeokit-sdk": "^1.4.4",
+    "axios": "^0.20.0"
   },
   "devDependencies": {},
   "scripts": {

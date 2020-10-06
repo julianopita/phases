@@ -7,7 +7,7 @@ const Forum = {
     template : `
         <div id="forum" v-if="comentarios != null">
             <div class="forumName">
-                 F O R U M
+                 
             </div>
             
             <div class="forumArea">
@@ -30,7 +30,7 @@ const Forum = {
     methods: {
         getComentarios : async function(){
             await axios
-            .get("http://localhost:2000/comentario/list")
+            .get("http://plat-nomads.ddns.net:8060/comentario/list")
             .then(response => (this.comentarios = response.data));
             console.log(this.comentarios);
 

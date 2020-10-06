@@ -19,19 +19,19 @@ const TelaLogin = {
         return{
             formItens : {
                 userName : {
-                    texto : "U S E R N A M E",
+                    texto : "nome de usuário",
                     conteudo : "",
                     type : "text"
                 },
                 password : {
-                    texto : "S E N H A",
+                    texto : "senha",
                     conteudo : "",
                     type : "password"
                 }
             },
             login : {
-                tipo : "L O G I N",
-                mensagem : "Não tenho cadastro!"
+                tipo : "entrar",
+                mensagem : "não tenho cadastro"
             }
         }
     },

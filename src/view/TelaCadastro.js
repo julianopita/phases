@@ -19,39 +19,39 @@ const TelaCadastro = {
         return{
             formItens : {
                 nomeCompleto : {
-                    texto : "N O M E C O M P L E TO",
+                    texto : "nome completo",
                     conteudo : "",
                     type :  "text"
                 },
                 userName : {
-                    texto : "U S E R N A M E",
+                    texto : "nome de usuário",
                     conteudo : "",
                     type :  "text"
                 },
                 password : {
-                    texto : "S E N H A",
+                    texto : "senha",
                     conteudo : "",
                     type :  "password"
                 },
                 email : {
-                    texto : "E M A I L",
+                    texto : "e-mail",
                     conteudo : "",
                     type :  "text"
                 },
                 cep : {
-                    texto : "C E P",
+                    texto : "CEP",
                     conteudo : "",
                     type :  "text"
                 },
                 interesse : {
-                    texto : "I N T E R E S S E",
+                    texto : "interesse",
                     conteudo : "",
                     type :  "text"
                 },
             },
             cadastro : {
-                tipo : "C A D A S T R O",
-                mensagem : "Possuo Cadastro!"
+                tipo : "enviar",
+                mensagem : "já possuo cadastro"
             }
         }
     },

@@ -22,13 +22,13 @@ const Plataforma = {
             <div class="modelo-forum">
                 <div>
                     <modelo/>
-                    <div class="infoName">I N F O R M A Ç Õ E S</div>
+                    <div class="infoName"></div>
                     <div class="infoBar">
                         <div class="click">
                             <div id="descricao"> </div>
                             <div id="area"> </div>
                         </div>
-                        <div class="fixed">das</div>
+                        <div class="fixed">informaçoes gerais</div>
                     </div>
                 </div>
                 <forum/>

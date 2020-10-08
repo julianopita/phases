@@ -1,8 +1,9 @@
 import clientNomads from '../../../xeokit/index.js';
 const bimServerAddress = "http://plat-nomads.ddns.net:8080/bimserver/";
-const poid = 131073;
-const roid = 65539;
+const poid1 = 720897;
+const roid1 = 720899;
 
+    
 const canvaComponent = {
     name : 'canvaComponent',
     template : `
@@ -10,7 +11,7 @@ const canvaComponent = {
         <div class="botoes">
             <button id="button1" @click="canvasUm">1</button>
             <button id="button2" @click="canvasDois">2</button>
-            <button id="button3" @click="canvasTres">3</button>
+            <button id="button3" @click="canvasTres">3</button>            
         </div>
     <div id="modelos">
         <canvas id='c1' style="background:white"></canvas>
@@ -20,7 +21,9 @@ const canvaComponent = {
         <link rel="stylesheet" href="src/style/plataforma/canva.css">
     </div>`,
     mounted(){
-        new clientNomads(bimServerAddress,poid,"c1", roid);
+        new clientNomads(bimServerAddress,poid1,"c1", roid1);
+        new clientNomads(bimServerAddress,poid2,"c2", roid2);
+        new clientNomads(bimServerAddress,poid3,"c3", roid3);
         document.getElementById('c1').style.zIndex = 10;
     },
     methods : {
@@ -37,10 +40,9 @@ const canvaComponent = {
             this.changeCanvas('c2','c3','c1');            
         },
         canvasTres : function(){
-            this.changeCanvas('c3','c3','c2');            
-        }
-
-
+            this.changeCanvas('c3','c1','c2');            
+        },
+        
     }
 }
 

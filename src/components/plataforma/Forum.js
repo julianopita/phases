@@ -1,42 +1,35 @@
 import Comentario from './forum/Comentario.js';
 import NovoComentario from './forum/NovoComentario.js';
-
+import axiosInstance from '../../connection/index.js';
 
 const Forum = {
     name : 'forum',
     template : `
-        <div id="forum" v-if="comentarios != null">
-            <div class="forumName">
-                 
-            </div>
-            
-            <div class="forumArea">
-                <li v-for="(item,i) in comentarios.data" :key="i" >
-                    <comentario :item=item />
+        <div id="forum">
+            <ul>
+                <li v-for="(item,i) in comentarios" :key="i">
+                    <p>{{item.comentario}}</p>
                 </li>
-            </div>
-            <div class="comentarioForum">
-                <novo-comentario :cols=cols :rows=rows />
-            </div>
+            </ul>
         </div>
     `,
     data(){
         return {
             cols : 60,
             rows : 5,
-            comentarios : null
+            comentarios : ''
         }
     },
     methods: {
         getComentarios : async function(){
-            await axios
-            .get("http://plat-nomads.ddns.net:8060/comentario/list")
+            await axiosInstance
+            .get("/comentario/list")
             .then(response => (this.comentarios = response.data));
             console.log(this.comentarios);
 
         }
     },
-    created(){
+    mounted(){
         this.getComentarios();
     },
     components : {

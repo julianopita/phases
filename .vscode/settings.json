@@ -1,8 +1,0 @@
-{
-    "explorer.compactFolders": false,
-    "css.fileExtensions": [
-        "css",
-        "scss"
-    ],
-    "html.suggest.html5": true
-}

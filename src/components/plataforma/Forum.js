@@ -8,7 +8,8 @@ const Forum = {
         <div id="forum">
             <ul>
                 <li v-for="(item,i) in comentarios" :key="i">
-                    <p>{{item.comentario}}</p>
+                    <comentario :item=item>
+                    </comentario>
                 </li>
             </ul>
         </div>

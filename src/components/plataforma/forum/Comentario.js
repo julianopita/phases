@@ -5,17 +5,18 @@ const Comentario = {
     name : "comentario",
     template : `
         <div class="comentario">
-            <p>{{item.idUsuario}}<p>
-            <p>{{item.comentario}}<p>
+            {{index}}
+            <p>{{item.userName}}</p>
+            <p>{{item.comentario}}</p>
             <ul>
                 <li v-for="(resposta,i) in item.resposta">                    
-                    {{resposta}}
+                    <p>{{resposta.userName}}</p>
+                    <p>{{resposta.comentario}}</p>
                 </li>
-            <ul>
-            <novo-comentario/>
+            </ul>
         </div>
     `,
-    props: ['item'],
+    props: ['item','index'],
     data(){
         return{
             cols : 50,

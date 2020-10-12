@@ -48,6 +48,7 @@ const TelaLogin = {
                 }else{
                     alert('Usuario Encontrado!!');
                     sessionStorage.setItem('id',res.data.id);
+                    // sessionStorage.setItem('userName',i);
                     this.$router.push('plataforma')
                 }
 

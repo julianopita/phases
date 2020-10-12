@@ -1,16 +1,30 @@
+import socket from "../../../connection/socket.js";
+
 const NovoComentario = {
     name : 'novo-comentario',
     template : `
         <div id="novoComentario">
-            <textarea  :cols=cols :rows=rows placeholder="nova conversa">
+            <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa">
             </textarea>
-            <button><img src="assets/setaBranca.png" /></button>
+            <button @click="comentar" >Submit</button>
         </div>
     `,
-    props : ['cols','rows'],
+    props : ['cols','rows','comentar'],
     data(){
         return{
+            comentario : ''
         }
+    },
+    methods : {
+        // comentar : async function() {
+        //     await socket.emit('comentar',{
+        //         userName : "Victor",
+        //         comentario : this.comentario,
+        //         idUsuario : "4",
+        //         respostas : []
+        //     });
+        //     this.comentario = null;
+        // }
     }
 }
 

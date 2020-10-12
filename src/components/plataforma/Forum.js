@@ -1,20 +1,26 @@
 import Comentario from './forum/Comentario.js';
 import NovoComentario from './forum/NovoComentario.js';
-import axiosInstance from '../../connection/index.js';
+import socket from '../../connection/socket.js';
+
 
 const Forum = {
     name : 'forum',
     template : `
         <div id="forum">
-            <ul>
+            <ul class="containerForum">
                 <li v-for="(item,i) in comentarios" :key="i">
                     <comentario :item=item :index=i >
                     </comentario>
                 </li>
             </ul>
-            <input v-model="novo_comentario" ></input>
-            <button @click="postComentario" >botao</button>
-            {{novo_comentario}}
+
+            <div class="novo-comentario">
+                <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa">
+                </textarea>
+                <button @click="comentar" >Submit</button>
+            </div>
+
+
             <link rel="stylesheet" href="src/style/plataforma/forum.css">
         </div>
     `,
@@ -23,44 +29,26 @@ const Forum = {
             cols : 60,
             rows : 5,
             comentarios : [],
-            novo_comentario : '',
+            comentario : '',
         }
     },
     methods: {
-        getComentarios : async function(){
-            await axiosInstance
-            .get("/comentario/list")
-            .then(response => (this.comentarios = response.data))
-            .catch((err)=>{
-                console.log({getComentarios : err});
-            });
 
-        },
-        postComentario : async function(){
-            await axiosInstance
-            .post("/comentario/cadastro",{
-                userName : 'Victor',
-                comentario : this.novo_comentario,
-                idUsuario : 'asdasdsad'
-
-            })
-            .then(response =>{
-                this.comentarios.push({
-                    userName : 'Victor',
-                    comentario : this.novo_comentario,
-                    idUsuario : 'asdasdsad',
-                    idComentario : response.data.idComentario
-                })
-            })
-            .catch((err)=>{
-                console.log({postComentarios : err});
+        comentar : async function() {
+            await socket.emit('comentar',{
+                userName : "Victor",
+                comentario : this.comentario,
+                idUsuario : "4",
+                respostas : []
             });
-            console.log(this.comentarios);
+            this.comentario = '';
         }
+
     },
-    mounted: async function(){
-        await this.getComentarios();
-        console.log(this.comentarios);
+    mounted: function(){
+        socket.on('listComentariosInicial',(data)=>{
+            this.comentarios = data;
+        })
     },
     components : {
         Comentario, NovoComentario
@@ -68,4 +56,4 @@ const Forum = {
 }
 
 
-export default Forum;
+export default Forum    ;

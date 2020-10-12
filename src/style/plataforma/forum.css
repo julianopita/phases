@@ -1,1 +1,9 @@
-/* No CSS *//*# sourceMappingURL=forum.css.map */
+#forum .containerForum {
+  height: 70.3vh;
+  overflow-y: scroll;
+}
+
+#forum .comentario .divComentario {
+  background-color: white;
+}
+/*# sourceMappingURL=forum.css.map */

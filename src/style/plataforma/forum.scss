@@ -12,5 +12,14 @@ $buttonComentario : #8b8b8b;
 
 
 #forum{
-   
+
+    .containerForum{
+        height: 70.3vh;
+        overflow-y: scroll;
+    }
+   .comentario{
+       .divComentario{
+           background-color: white;
+       }
+   }
 }

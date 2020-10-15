@@ -77,7 +77,9 @@ const TelaCadastro = {
         cadastro : {
             tipo : "enviar",
             mensagem : "já possuo cadastro"
-            }
+            },
+        booleano : false
+
         }
     },
     methods : {
@@ -85,22 +87,21 @@ const TelaCadastro = {
             this.$router.push('login');
         },
         cadastroApi : async function(item){
-            // console.log(item);
-            const booleano = this.validaCadastro(item);
-            
-            if(booleano == true){
+            console.log(this.booleano);
+            await this.validaCadastro(item);
+            console.log(this.booleano);
+            if(this.booleano == true){
                 await axiosInstance.post('cadastro/usuario',{
-                    name : item.nomeCompleto.conteudo,
-                    senha : item.password.conteudo,
-                    userName : item.userName.conteudo,
-                    email : item.email.conteudo,
-                    cep : item.cep.conteudo,
-                    interesse : item.interesse.conteudo
+                    name : item.formItem.nomeCompleto.conteudo,
+                    senha : item.formItem.password.conteudo,
+                    userName : item.formItem.userName.conteudo,
+                    email : item.formItem.email.conteudo,
+                    cep : item.formItem.cep.conteudo,
+                    interesse : item.formItem.interesse.conteudo
     
                 }).then((response)=>{
                     alert('Usuario Cadastrado');
-                    this.$router.push('login');
-    
+                    this.paraLogin();
     
                 }).catch((err)=>{
                     alert(err);
@@ -118,7 +119,7 @@ const TelaCadastro = {
                 count++;
             }
             //valida senha
-            if(item.formItem.password.conteudo.length < 5){
+            if(item.formItem.password.conteudo != null && item.formItem.password.conteudo.length < 5){
                 item.formErros.password.valido = false;
                 count++;
             }
@@ -139,11 +140,11 @@ const TelaCadastro = {
                 count++;
                 console.log(err);
             })
-
-            if(count != 0){
-                return false;
-            }else{
-                return true;
+            console.log(count);
+            
+            //caso não haja erro a flag vai pra true
+            if(count == 0){
+                this.booleano = true;
             }
 
         }

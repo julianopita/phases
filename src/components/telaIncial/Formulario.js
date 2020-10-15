@@ -13,6 +13,10 @@ const Formulario = {
     name : "formulario",
     template : `
         <div id="formulario">
+            <div>
+                <ul>
+                </ul>
+            </div>
             <div class="bloco-entradas">
                 <li v-for="(item, i) in items.formItem" :key="i">
                     <input v-model="item.conteudo" 

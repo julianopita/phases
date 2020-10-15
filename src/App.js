@@ -15,5 +15,8 @@ export default {
     components : {
     } ,
     template : Template,
+    beforeDestroy(){
+        sessionStorage.clear();
+    }
 
   }

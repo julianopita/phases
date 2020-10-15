@@ -4,9 +4,8 @@ const Comentario = {
     name : "comentario",
     template : `
         <div class="comentario">
-
+            
             <div class="divComentario">
-                {{index}}
                 <p>{{item.userName}}</p>
                 <p>{{item.comentario}}</p>
             </div>
@@ -17,6 +16,8 @@ const Comentario = {
                     <p>{{resposta.comentario}}</p>
                 </li>
             </ul>
+
+
             <div class="nova-resposta">
                 <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa">
                 </textarea>
@@ -34,11 +35,18 @@ const Comentario = {
     },
     methods : {
         responder : function (index) {
+
+            const userName = sessionStorage.getItem('userName');
+            const idUsuario = sessionStorage.getItem('id');
+            console.log(userName);
+            console.log(idUsuario);
+            console.log(index);
+
             socket.emit('resposta',{
                 idComentario : index+1,
-                idUsuario : '4',
+                idUsuario : idUsuario,
                 comentario : this.comentario,
-                userName : 'Victor'
+                userName : userName
             });
             this.comentario = '';
         }

@@ -1,7 +1,7 @@
 import Comentario from './forum/Comentario.js';
 import NovoComentario from './forum/NovoComentario.js';
 import socket from '../../connection/socket.js';
-
+import axiosInstance from  '../../connection/index.js';
 
 const Forum = {
     name : 'forum',
@@ -35,18 +35,27 @@ const Forum = {
     methods: {
 
         comentar : async function() {
+
+            const userName = sessionStorage.getItem('userName');
+            const idUsuario = sessionStorage.getItem('id');
+            console.log(userName,idUsuario);
             await socket.emit('comentar',{
-                userName : "Victor",
+                userName : userName,
                 comentario : this.comentario,
-                idUsuario : "4",
+                idUsuario : idUsuario,
                 respostas : []
             });
             this.comentario = '';
-        }
-
+        },
     },
-    mounted: function(){
-        socket.on('listComentariosInicial',(data)=>{
+    mounted: async function(){
+
+        await axiosInstance.get('/comentario/list')
+        .then((response)=>{
+            this.comentarios = response.data;
+        })
+
+        await socket.on('listComentariosInicial',(data)=>{
             this.comentarios = data;
         })
     },
@@ -56,4 +65,4 @@ const Forum = {
 }
 
 
-export default Forum    ;
+export default Forum;

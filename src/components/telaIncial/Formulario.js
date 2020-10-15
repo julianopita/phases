@@ -1,14 +1,4 @@
 
-
-
-
-{/* 
- */}
-
-
-
-
-
 const Formulario = {
     name : "formulario",
     template : `

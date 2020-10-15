@@ -20,32 +20,32 @@ const TelaCadastro = {
             formItens : {
                 nomeCompleto : {
                     texto : "nome completo",
-                    conteudo : "",
+                    conteudo : null,
                     type :  "text"
                 },
                 userName : {
                     texto : "nome de usuário",
-                    conteudo : "",
+                    conteudo : null,
                     type :  "text"
                 },
                 password : {
                     texto : "senha",
-                    conteudo : "",
+                    conteudo : null,
                     type :  "password"
                 },
                 email : {
                     texto : "e-mail",
-                    conteudo : "",
+                    conteudo : null,
                     type :  "text"
                 },
                 cep : {
                     texto : "CEP",
-                    conteudo : "",
+                    conteudo : null,
                     type :  "text"
                 },
                 interesse : {
                     texto : "interesse",
-                    conteudo : "",
+                    conteudo : null,
                     type :  "text"
                 },
             },
@@ -60,8 +60,13 @@ const TelaCadastro = {
             this.$router.push('login');
         },
         cadastroApi : async function(item){
+
+
+            console.log(item);
+
+
             await axiosInstance.post('cadastro/usuario',{
-                nome : item.nomeCompleto.conteudo,
+                name : item.nomeCompleto.conteudo,
                 senha : item.password.conteudo,
                 userName : item.userName.conteudo,
                 email : item.email.conteudo,
@@ -71,6 +76,10 @@ const TelaCadastro = {
             }).then((response)=>{
                 alert('Usuario Cadastrado');
                 this.$router.push('login');
+
+
+            }).catch((err)=>{
+                alert(err);
             })
         }
     }

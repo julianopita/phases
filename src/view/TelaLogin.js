@@ -37,6 +37,9 @@ const TelaLogin = {
     },
     methods : {
         loginFunc : async function(items){
+            console.log(items);
+
+            
             await axiosInstance
             .post("/login/usuario",{
                 userName : items.userName.conteudo,

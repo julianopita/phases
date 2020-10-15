@@ -1,10 +1,23 @@
+
+
+
+
+{/* 
+ */}
+
+
+
+
+
 const Formulario = {
     name : "formulario",
     template : `
         <div id="formulario">
             <div class="bloco-entradas">
-                <li v-for="(item, i) in items" :key="i">
-                    <input v-model="item.conteudo" :placeholder=items[i].texto :type=items[i].type />
+                <li v-for="(item, i) in items.formItem" :key="i">
+                    <input v-model="item.conteudo" 
+                    :placeholder=items.formItem[i].texto 
+                    :type=items.formItem[i].type />
                 </li>
             </div>
             <div class="button-class">
@@ -25,6 +38,9 @@ const Formulario = {
         mudaPag : function (){
             this.goTo();
         }
+    },
+    mounted (){
+        console.log(this.items);
     }
 }
 

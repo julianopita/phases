@@ -1,3 +1,7 @@
+#forum p {
+  line-height: 15px;
+}
+
 #forum ul {
   list-style-type: none;
 }
@@ -13,6 +17,9 @@
 
 #forum .comentario .divComentario {
   background-color: white;
+  padding-left: 7px;
+  padding-bottom: 1px;
+  padding-top: 1px;
 }
 
 #forum .comentario .dados {
@@ -24,7 +31,7 @@
 }
 
 #forum .comentario .texto {
-  font-size: 14pt;
+  font-size: 12pt;
   font-weight: bold;
   color: black;
   -webkit-box-pack: left;
@@ -47,6 +54,55 @@
 }
 
 #forum .comentario .tag {
+  margin-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 10pt;
+  color: white;
+  background: #fc6161;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+#forum .respostas {
+  display: block;
+}
+
+#forum .respostas .dados {
+  font-size: 10pt;
+  color: #75767B;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+#forum .respostas .texto {
+  font-size: 12pt;
+  font-weight: bold;
+  color: black;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+#forum .respostas .interesse {
+  margin-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 10pt;
+  color: white;
+  background: #7dd9f5;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+#forum .respostas .tag {
   margin-right: 5px;
   padding-top: 2px;
   padding-bottom: 2px;

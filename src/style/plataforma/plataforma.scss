@@ -13,6 +13,7 @@ $buttonComentario : #8b8b8b;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
 
+//Annotation styles
 .annotation-marker {
   color: #ffffff;
   line-height: 1.8;
@@ -31,6 +32,7 @@ $buttonComentario : #8b8b8b;
 }
 
 .annotation-label {
+  visibility: hidden;
   position: absolute;
   max-width: 250px;
   min-height: 50px;
@@ -84,6 +86,7 @@ $buttonComentario : #8b8b8b;
   font: normal 14px arial, serif;
 }
 
+//TreeView Styles
 #treeViewContainer {
     padding-top: 25px;
     pointer-events: all;
@@ -163,7 +166,7 @@ $buttonComentario : #8b8b8b;
     padding-right: 5px;
   }
 
-
+//Platform styles
 #plataforma{
     font-family: 'Arial', sans-serif;
     height: 100vh;
@@ -176,16 +179,30 @@ $buttonComentario : #8b8b8b;
         grid-template-columns: 70% 30%;
         div{
             .infoName{
+                display: grid;
+                grid-template-columns: 50% 50%;
                 position: relative;
-                top: 30px;
-                padding-top: 1%;
+                top: 30px;                
                 background-color: $defaulColor;
-                color: white;
-                text-align: center;
+                color: white;                
                 height: 40px;
                 border-style: solid none none none;
                 border-color: $corFormulario;
+            
+
+            .left{
+              padding-top: 3%;
+              padding-left: 30%;
+              text-align: left;
             }
+
+            .right{
+              padding-top: 3%;
+              padding-right: 30%;
+              text-align: right;
+            }
+          }
+            
             .infoBar{
                 display: grid;
                 grid-template-columns: 35% 65%;
@@ -214,7 +231,7 @@ $buttonComentario : #8b8b8b;
         .item-navegacao{
             // width: max-content;
             position: relative;
-            left: 90%;
+            left: 85%;
             transform: translate(-50%,0);
         }
         div{
@@ -229,6 +246,18 @@ $buttonComentario : #8b8b8b;
             font-weight: 300;
             color: white;
             text-decoration: none;
+        }
+        .logo{
+          align-content: left;
+          justify-content: center;          
+          background-color: white;
+          margin-left: 0px;
+          margin-top: 0px;        
+        }
+        img{
+          height: 60px;
+          padding: 10px;
+          background-color: white;
         }
     }
 }

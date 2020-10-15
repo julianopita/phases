@@ -18,6 +18,7 @@
 }
 
 .annotation-label {
+  visibility: hidden;
   position: absolute;
   max-width: 250px;
   min-height: 50px;
@@ -164,15 +165,29 @@
 }
 
 #plataforma .modelo-forum div .infoName {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
   position: relative;
   top: 30px;
-  padding-top: 1%;
   background-color: #8b8b8b;
   color: white;
-  text-align: center;
   height: 40px;
   border-style: solid none none none;
   border-color: #75767B;
+}
+
+#plataforma .modelo-forum div .infoName .left {
+  padding-top: 3%;
+  padding-left: 30%;
+  text-align: left;
+}
+
+#plataforma .modelo-forum div .infoName .right {
+  padding-top: 3%;
+  padding-right: 30%;
+  text-align: right;
 }
 
 #plataforma .modelo-forum div .infoBar {
@@ -208,7 +223,7 @@
 
 #plataforma #barra-navegacao .item-navegacao {
   position: relative;
-  left: 90%;
+  left: 85%;
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
 }
@@ -227,6 +242,23 @@
   font-weight: 300;
   color: white;
   text-decoration: none;
+}
+
+#plataforma #barra-navegacao .logo {
+  -ms-flex-line-pack: left;
+      align-content: left;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+#plataforma #barra-navegacao img {
+  height: 60px;
+  padding: 10px;
+  background-color: white;
 }
 
 /* Line 2 */

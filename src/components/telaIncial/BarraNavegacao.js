@@ -1,11 +1,16 @@
 const BarraNavegacao = {
     name : 'barra-navegacao',
     template : `
-        <div id="barra-navegacao"> 
+        <div id="barra-navegacao">
+            <div class="logo">
+                <img src="../../../assets/logo.png"
+                height=60px padding=10px background-color = white></img>
+            </div>
             <div class="item-navegacao">
                 <div class="menu-item"><a href="#"> início </a></div>
                 <div class="menu-item"><a href="#"> registro </a></div>
                 <div class="menu-item"><a href="#"> sobre </a></div>
+                <div class="menu-item"><a href="#"> ajuda </a></div>
             </div>         
         </div>
     `,
@@ -26,6 +31,10 @@ const BarraNavegacao = {
                 },
                 {
                     title : 'About',
+                    link : '#'
+                },
+                {
+                    title : 'help',
                     link : '#'
                 }
 

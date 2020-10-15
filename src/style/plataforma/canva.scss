@@ -1,29 +1,105 @@
 #canva{
     position: relative;
     height: 72vh;
+    
 
     .botoes{
         //position: absolute;
         display: flex;
         justify-content: flex-end;
-        height: 0px;
+        height: 40px;
+        background-color: #ffffff;        
+                
         #button1{
             position: absolute;
             right: 200px;
             z-index: 100;
             margin-left: 10px;
+            color: #ffffff;
+            line-height: 1.8;
+            text-align: center;
+            font-family: "Arial";
+            font-weight: normal;
+            position: absolute;            
+            border-radius: 5px;
+            border: 2px solid #ffffff;
+            background: #75767B;
+                 
         }
         #button2{
             position: absolute;
-            right: 120px;
+            right: 110px;
             z-index: 100;
             margin-left: 10px;
+            color: #ffffff;
+            line-height: 1.8;
+            text-align: center;
+            font-family: "Arial";
+            font-weight: normal;
+            position: absolute;            
+            border-radius: 5px;
+            border: 2px solid #ffffff;
+            background: #75767B;
         }
         #button3{
             position: absolute;
             z-index: 100;
-            right: 43px;
+            right: 20px;
             margin-left: 10px;
+            color: #ffffff;
+            line-height: 1.8;
+            text-align: center;
+            font-family: "Arial";
+            font-weight: normal;
+            position: absolute;            
+            border-radius: 5px;
+            border: 2px solid #ffffff;
+            background: #75767B;
+        }
+        #annotations{
+            position: absolute;
+            z-index: 100;
+            right: 290px;
+            margin-left: 10px;
+            color: #ffffff;
+            line-height: 1.8;
+            text-align: center;
+            font-family: "Arial";
+            font-weight: normal;
+            position: absolute;            
+            border-radius: 5px;
+            border: 2px solid #ffffff;
+            background: #75767B;
+        }
+        #measurements{
+            position: absolute;
+            z-index: 100;
+            right: 410px;
+            margin-left: 10px;
+            color: #ffffff;
+            line-height: 1.8;
+            text-align: center;
+            font-family: "Arial";
+            font-weight: normal;
+            position: absolute;            
+            border-radius: 5px;
+            border: 2px solid #ffffff;
+            background: #75767B;
+        }
+        #storeys{
+            position: absolute;
+            z-index: 20000;
+            right: 520px;
+            margin-left: 10px;
+            color: #ffffff;
+            line-height: 1.8;
+            text-align: center;
+            font-family: "Arial";
+            font-weight: normal;
+            position: absolute;            
+            border-radius: 5px;
+            border: 2px solid #ffffff;
+            background: #75767B;
         }
     }
     canvas{

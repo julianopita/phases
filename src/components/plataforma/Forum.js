@@ -21,7 +21,7 @@ const Forum = {
             </div>
 
 
-            <link rel="stylesheet" href="src/style/plataforma/forum.css">
+            <link rel="stylesheet" href="../../src/style/plataforma/forum.css">
         </div>
     `,
     data(){
@@ -36,7 +36,7 @@ const Forum = {
 
         comentar : async function() {
             await socket.emit('comentar',{
-                userName : "Victor",
+                userName : "nome completo",
                 comentario : this.comentario,
                 idUsuario : "4",
                 respostas : []

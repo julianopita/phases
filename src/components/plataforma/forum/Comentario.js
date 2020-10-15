@@ -5,16 +5,17 @@ const Comentario = {
     template : `
         <div class="comentario">
 
-            <div class="divComentario">
-                {{index}}
-                <p>{{item.userName}}</p>
-                <p>{{item.comentario}}</p>
+            <div class="divComentario">                
+                <p class="dados">{{item.userName}} | 15 out 2020 | 4 Comentários</p>
+                <p class="texto">{{item.comentario}}</p>
+                <p><a class="interesse">Morador</a><a class="tag">Implantação</a></p>
             </div>
 
             <ul class="respostas">
                 <li v-for="(resposta,i) in item.resposta">                    
                     <p>{{resposta.userName}}</p>
                     <p>{{resposta.comentario}}</p>
+                    <p>{{resposta.interesse}}</p>
                 </li>
             </ul>
             <div class="nova-resposta">
@@ -22,6 +23,7 @@ const Comentario = {
                 </textarea>
                 <button @click="responder(index)" >Submit</button>
             </div>
+            <link rel="stylesheet" href="../../../src/style/plataforma/forum.css">
         </div>
     `,
     props: ['item','index'],
@@ -36,9 +38,10 @@ const Comentario = {
         responder : function (index) {
             socket.emit('resposta',{
                 idComentario : index+1,
-                idUsuario : '4',
+                idUsuario : "4",
                 comentario : this.comentario,
-                userName : 'Victor'
+                userName : "Nome",
+                interesse : "interesse"
             });
             this.comentario = '';
         }

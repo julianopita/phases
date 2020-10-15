@@ -12,6 +12,13 @@ $buttonComentario : #8b8b8b;
 
 
 #forum{
+    ul{
+        list-style-type: none;
+    }
+
+    li{
+        list-style-type: none;
+    }
 
     .containerForum{
         height: 70.3vh;
@@ -20,6 +27,40 @@ $buttonComentario : #8b8b8b;
    .comentario{
        .divComentario{
            background-color: white;
+       }
+       .dados{
+            font-size: 10pt;
+            color: #75767B;
+            justify-content: left;
+       }
+       .texto{
+            font-size: 14pt;
+            font-weight: bold;
+            color: black;
+            justify-content: left;
+       }
+       .interesse{
+           margin-right: 5px;
+           padding-top: 2px;
+           padding-bottom: 2px;
+           padding-left: 10px;
+           padding-right: 10px;
+           font-size: 10pt;
+           color: white;
+           background: #7dd9f5;
+           justify-content: left;
+       }
+       .tag{
+            margin-right: 5px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 10pt;
+            color: white;
+            background: #fc6161;
+            justify-content: left;
+
        }
    }
 }

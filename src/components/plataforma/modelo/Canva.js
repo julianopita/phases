@@ -24,7 +24,7 @@ const canvaComponent = {
         <link rel="stylesheet" href="src/style/plataforma/canva.css">
     </div>`,
     mounted(){
-        new clientNomads(bimServerAddress,poid1,"c1", roid1);
+        //new clientNomads(bimServerAddress,poid1,"c1", roid1);
         // new clientNomads(bimServerAddress,poid2,"c2", roid2);
         // new clientNomads(bimServerAddress,poid3,"c3", roid3);
         document.getElementById('c1').style.zIndex = 10;

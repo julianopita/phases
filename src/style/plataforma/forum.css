@@ -1,3 +1,11 @@
+#forum ul {
+  list-style-type: none;
+}
+
+#forum li {
+  list-style-type: none;
+}
+
 #forum .containerForum {
   height: 70.3vh;
   overflow-y: scroll;
@@ -5,5 +13,50 @@
 
 #forum .comentario .divComentario {
   background-color: white;
+}
+
+#forum .comentario .dados {
+  font-size: 10pt;
+  color: #75767B;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+#forum .comentario .texto {
+  font-size: 14pt;
+  font-weight: bold;
+  color: black;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+#forum .comentario .interesse {
+  margin-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 10pt;
+  color: white;
+  background: #7dd9f5;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+#forum .comentario .tag {
+  margin-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 10pt;
+  color: white;
+  background: #fc6161;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
 }
 /*# sourceMappingURL=forum.css.map */

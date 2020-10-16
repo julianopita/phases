@@ -8,7 +8,7 @@ const TelaLogin = {
         <div id="tela-login">
             <barra-navegacao/>
             <img src="assets/loginImagem.png">
-            <formulario :items="formItens" :goTo=paraCadastro :pag="login" :metodo=loginFunc />
+            <formulario :items="form" :goTo=paraCadastro :pag="login" :metodo=loginFunc />
             <link rel="stylesheet" href="src/style/login/tela_login.css">
         </div>
     `,
@@ -17,16 +17,21 @@ const TelaLogin = {
     },
     data(){
         return{
-            formItens : {
-                userName : {
-                    texto : "nome de usuário",
-                    conteudo : "",
-                    type : "text"
+            form:{
+                formErros : {
+
                 },
-                password : {
-                    texto : "senha",
-                    conteudo : "",
-                    type : "password"
+                formItem : {
+                    userName : {
+                        texto : "nome de usuário",
+                        conteudo : "",
+                        type : "text"
+                    },
+                    password : {
+                        texto : "senha",
+                        conteudo : "",
+                        type : "password"
+                    }
                 }
             },
             login : {
@@ -42,8 +47,8 @@ const TelaLogin = {
             
             await axiosInstance
             .post("/login/usuario",{
-                userName : items.userName.conteudo,
-                senha : items.password.conteudo,
+                userName : items.formItem.userName.conteudo,
+                senha : items.formItem.password.conteudo,
             })
             .then((res)=>{
                 if(res.status == 204){
@@ -51,11 +56,13 @@ const TelaLogin = {
                 }else{
                     alert('Usuario Encontrado!!');
                     sessionStorage.setItem('id',res.data.id);
-                    // sessionStorage.setItem('userName',i);
+                    sessionStorage.setItem('userName',res.data.userName);
+                    sessionStorage.setItem('interesse',res.data.interesse);
                     this.$router.push('plataforma')
                 }
 
             }).catch((err)=>{
+                console.log(err)
             })
         },
         paraCadastro: function(){

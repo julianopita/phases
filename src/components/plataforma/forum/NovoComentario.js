@@ -6,13 +6,13 @@ const NovoComentario = {
         <div id="novoComentario">
             <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa">
             </textarea>
-            <button @click="comentar" >Submit</button>
+            <button @click="comentar" >Submit</button>                    
         </div>
     `,
     props : ['cols','rows','comentar'],
     data(){
         return{
-            comentario : ''
+            comentario : ''            
         }
     },
     methods : {

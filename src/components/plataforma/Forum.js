@@ -17,6 +17,13 @@ const Forum = {
             <div class="novo-comentario">
                 <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa">
                 </textarea>
+                <label for="tag">Selecione o assunto do comentário:</label>
+                    <select name="tag" id="tag">
+                        <option value="Implantacao">Implantação</option>
+                        <option value="Localização">Localização</option>
+                        <option value="Uso">Uso</option>
+                        <option value="Custo">Custo</option>
+                    </select>
                 <button @click="comentar" >Submit</button>
             </div>
 
@@ -27,7 +34,7 @@ const Forum = {
     data(){
         return {
             cols : 60,
-            rows : 5,
+            rows : 5,            
             comentarios : [],
             comentario : '',
         }
@@ -37,15 +44,12 @@ const Forum = {
         comentar : async function() {
             const interesse = sessionStorage.getItem('interesse');
             const userName = sessionStorage.getItem('userName');
-            const idUsuario = sessionStorage.getItem('id');
-            console.log(userName,idUsuario);
+            const idUsuario = sessionStorage.getItem('id');            
+            console.log(userName,idUsuario, tag.value);
 
             const data = Date(Date.now()).split(' ');
-            const dataBr = data[2]+'/'+data[1]+'/'+data[3];
+            const dataBr = data[2]+'-'+data[1]+'-'+data[3];
             const hora = data[4];
-
-
-
 
             await socket.emit('comentar',{
                 interesse : interesse,
@@ -54,6 +58,7 @@ const Forum = {
                 userName : userName,
                 comentario : this.comentario,
                 idUsuario : idUsuario,
+                tag : tag.value,
                 respostas : []
             });
             this.comentario = '';

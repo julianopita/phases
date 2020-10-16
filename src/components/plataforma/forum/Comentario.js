@@ -38,15 +38,22 @@ const Comentario = {
 
             const userName = sessionStorage.getItem('userName');
             const idUsuario = sessionStorage.getItem('id');
-            console.log(userName);
-            console.log(idUsuario);
-            console.log(index);
+            // console.log(userName);
+            // console.log(idUsuario);
+            // console.log(index);
+
+            const data = Date(Date.now()).split(' ');
+            const dataBr = data[2]+'/'+data[1]+'/'+data[3];
+            const hora = data[4];
+
 
             socket.emit('resposta',{
                 idComentario : index+1,
                 idUsuario : idUsuario,
                 comentario : this.comentario,
-                userName : userName
+                userName : userName,
+                data : dataBr,
+                hora : hora
             });
             this.comentario = '';
         }

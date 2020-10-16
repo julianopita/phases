@@ -39,7 +39,17 @@ const Forum = {
             const userName = sessionStorage.getItem('userName');
             const idUsuario = sessionStorage.getItem('id');
             console.log(userName,idUsuario);
+
+            const data = Date(Date.now()).split(' ');
+            const dataBr = data[2]+'/'+data[1]+'/'+data[3];
+            const hora = data[4];
+
+
+
+
             await socket.emit('comentar',{
+                data : dataBr,
+                hora : hora,
                 userName : userName,
                 comentario : this.comentario,
                 idUsuario : idUsuario,

@@ -35,7 +35,7 @@ const Forum = {
     methods: {
 
         comentar : async function() {
-
+            const interesse = sessionStorage.getItem('interesse');
             const userName = sessionStorage.getItem('userName');
             const idUsuario = sessionStorage.getItem('id');
             console.log(userName,idUsuario);
@@ -48,6 +48,7 @@ const Forum = {
 
 
             await socket.emit('comentar',{
+                interesse : interesse,
                 data : dataBr,
                 hora : hora,
                 userName : userName,

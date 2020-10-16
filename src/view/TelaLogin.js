@@ -57,10 +57,12 @@ const TelaLogin = {
                     alert('Usuario Encontrado!!');
                     sessionStorage.setItem('id',res.data.id);
                     sessionStorage.setItem('userName',res.data.userName);
+                    sessionStorage.setItem('interesse',res.data.interesse);
                     this.$router.push('plataforma')
                 }
 
             }).catch((err)=>{
+                console.log(err)
             })
         },
         paraCadastro: function(){

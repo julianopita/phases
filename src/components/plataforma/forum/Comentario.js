@@ -8,6 +8,9 @@ const Comentario = {
             <div class="divComentario">
                 <p>{{item.userName}}</p>
                 <p>{{item.comentario}}</p>
+                <p>{{item.data}}</p>
+                <p>{{item.hora}}</p>
+                <p>{{item.interesse}}</p>
             </div>
 
             <ul class="respostas">

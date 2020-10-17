@@ -1,5 +1,49 @@
+.novo-comentario {
+  margin-left: 40px;
+  max-width: 500px;
+}
+
+textarea {
+  font-size: 12pt;
+  font-weight: bold;
+  color: black;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  border: none;
+}
+
+.nova-resposta {
+  margin: 0px;
+}
+
+.button-forum {
+  border: none;
+  font-size: 10pt;
+  color: #75767B;
+  background: white;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+.button-resposta {
+  border: none;
+  font-size: 10pt;
+  color: white;
+  font-weight: bold;
+  background: #ffbc40;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  padding-left: 135px;
+  padding-right: 135px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 #forum p {
-  line-height: 15px;
+  line-height: 10px;
 }
 
 #forum ul {
@@ -20,6 +64,8 @@
   padding-left: 7px;
   padding-bottom: 1px;
   padding-top: 1px;
+  margin-bottom: 10px;
+  max-width: 500px;
 }
 
 #forum .comentario .dados {
@@ -69,6 +115,7 @@
 
 #forum .respostas {
   display: block;
+  padding-left: 0px;
 }
 
 #forum .respostas .dados {

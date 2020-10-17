@@ -33,7 +33,7 @@ const Forum = {
     `,
     data(){
         return {
-            cols : 60,
+            cols : 54,
             rows : 5,            
             comentarios : [],
             comentario : '',

@@ -6,14 +6,48 @@ $hoverButton : #b6b6b6;
 $fundoForum : #DBDBDB;
 $fundoComentario : #D5D9F0;
 $novoComentario : #ffffff;
-$buttonComentario : #8b8b8b;
+$buttonComentario : #ee3737;
 
-
-
+.novo-comentario {
+    margin-left: 40px;
+    max-width: 500px;
+}
+textarea{
+    font-size: 12pt;
+    font-weight: bold;
+    color: black;
+    justify-content: left;
+    border:none;    
+   }
+.nova-resposta{
+    margin:0px;
+}
+.button-forum{
+    border: none;    
+    font-size: 10pt;
+    color:#75767B;
+    background: white;
+    justify-content: left;  
+}
+.button-resposta{
+    border: none;    
+    font-size: 10pt;
+    color:white;
+    font-weight: bold;
+    background: #ffbc40;
+    justify-content: left;     
+    
+    padding-left: 135px;
+    padding-right: 135px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
 #forum{
     p{
-        line-height: 15px;
+        line-height: 10px;
+        
+        
     }    
     ul{
         list-style-type: none;
@@ -32,6 +66,8 @@ $buttonComentario : #8b8b8b;
            padding-left: 7px;
            padding-bottom: 1px;
            padding-top: 1px;
+           margin-bottom:10px;
+           max-width: 500px;
        }
        .dados{
             font-size: 10pt;
@@ -67,15 +103,16 @@ $buttonComentario : #8b8b8b;
             justify-content: left;
 
        }
-   }
+   }   
    .respostas{
        display: block;
+       padding-left: 0px;
     
     .dados{
          font-size: 10pt;
          color: #75767B;
-         justify-content: left;
-    }
+         justify-content: left;         
+    }    
     .texto{
          font-size: 12pt;
          font-weight: bold;
@@ -105,5 +142,7 @@ $buttonComentario : #8b8b8b;
          justify-content: left;
 
     }
+    
 }
+
 }

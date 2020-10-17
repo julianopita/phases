@@ -1,42 +1,53 @@
 import socket from '../../../connection/socket.js';
-
 const Comentario = {
     name : "comentario",
     template : `
     <div class="comentario">
             
     <div class="divComentario">
-        <p class="dados">{{item.userName}} | {{item.data}} | {{item.hora}}</p>
+        <p class="dados">{{item.userName}} | {{item.data}} | {{item.hora}} | {{itemsCount}} respostas | <button class="button-forum" @click="showRespostas = !showRespostas" >ver e responder</button></p>
+        <p v-for="(resposta,i) in item.resposta" ></p>
+        
         <p class="texto">{{item.comentario}}</p>                
         <p><a class="interesse">{{item.interesse}}</a><a class="tag">{{item.tag}}</a></p>
     </div>
 
-    <ul class="respostas">
+    <ul class="respostas" v-show = "showRespostas">
         <li v-for="(resposta,i) in item.resposta">                    
             <p class="dados">{{resposta.userName}} | {{resposta.data}} | {{resposta.hora}}</p>
             <p class="texto">{{resposta.comentario}}</p>
             <p><a class="interesse">{{resposta.interesse}}</a></p>
         </li>
-    </ul>
+    
 
 
     <div class="nova-resposta">
-        <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa">
-        </textarea>                
-        <button @click="responder(index)" >Submit</button>
+        <p><textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova resposta"></textarea></p>
+        <p><button class="button-resposta" @click="responder(index)" >Responder</button></p>
+        
     </div>
+    </ul>
     
 </div>
     `,
     props: ['item','index'],
     data(){
         return{
-            cols : 50,
-            rows : 6,
-            comentario : ''
+            cols : 35,
+            rows : 3,
+            comentario : '',
+            showRespostas : false                        
+        }
+    
+    },
+    computed: {
+        itemsCount() {
+            return this.item.resposta.length
         }
     },
-    methods : {
+   
+    methods : {        
+              
         responder : function (index) {
             
             const interesse = sessionStorage.getItem('interesse');

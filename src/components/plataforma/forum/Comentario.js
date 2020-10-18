@@ -5,10 +5,10 @@ const Comentario = {
     <div class="comentario">
             
     <div class="divComentario">
-        <p class="dados">{{item.userName}} | {{item.data}} | {{item.hora}} | {{itemsCount}} respostas | <button class="button-forum" @click="showRespostas = !showRespostas" >ver e responder</button></p>
-        <p v-for="(resposta,i) in item.resposta" ></p>
-        
-        <p class="texto">{{item.comentario}}</p>                
+        <p class="dados">{{item.userName}} | {{item.data}} | {{item.hora}} | <button class="button-like" @click="likeUnlike" >Curtir</button></p>
+        <p v-for="(resposta,i) in item.resposta" ></p>        
+        <p class="texto">{{item.comentario}}</p>
+        <p class="dados">{{itemsCount}} respostas | <button class="button-forum" @click="showRespostas = !showRespostas" >ver e responder</button></p>               
         <p><a class="interesse">{{item.interesse}}</a><a class="tag">{{item.tag}}</a></p>
     </div>
 
@@ -35,7 +35,7 @@ const Comentario = {
         return{
             cols : 35,
             rows : 3,
-            comentario : '',
+            comentario : '',            
             showRespostas : false                        
         }
     
@@ -46,7 +46,18 @@ const Comentario = {
         }
     },
    
-    methods : {        
+    methods : {
+
+        likeUnlike : function() {  
+            const teste = "teste";
+            console.log(teste);          
+            const idUsuarioLikeDislike = sessionStorage.getItem ('id');
+            console.log(idUsuarioLikeDislike);
+            socket.emit('likeDislike',{
+                like : teste,
+                dislike : teste                 
+            });            
+        },        
               
         responder : function (index) {
             

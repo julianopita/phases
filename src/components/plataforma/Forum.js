@@ -10,7 +10,7 @@ const Forum = {
             <ul class="containerForum">
                 <li v-for="(item,i) in comentarios" :key="i">
                     <comentario :item=item :index=i >
-                    </comentario>
+                    </comentario>                    
                 </li>
             </ul>
 
@@ -50,9 +50,11 @@ const Forum = {
             const data = Date(Date.now()).split(' ');
             const dataBr = data[2]+'-'+data[1]+'-'+data[3];
             const hora = data[4];
-
+            const likeDislike = 0;
+            
             await socket.emit('comentar',{
                 interesse : interesse,
+                likeDislike : [],                                
                 data : dataBr,
                 hora : hora,
                 userName : userName,

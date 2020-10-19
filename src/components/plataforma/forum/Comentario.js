@@ -5,8 +5,8 @@ const Comentario = {
     <div class="comentario">
             
     <div class="divComentario">
-        <p class="dados">{{item.userName}} | {{item.data}} | {{item.hora}} | <button class="button-like" @click="likeUnlike" >Curtir</button></p>
-        <p v-for="(resposta,i) in item.resposta" ></p>        
+        <p class="dados">{{item.userName}} | {{item.data}} | {{item.hora}} | </p>
+        <p v-for="(resposta,i) in item.resposta" :key="i"</p>        
         <p class="texto">{{item.comentario}}</p>
         <p class="dados">{{itemsCount}} respostas | <button class="button-forum" @click="showRespostas = !showRespostas" >ver e responder</button></p>               
         <p><a class="interesse">{{item.interesse}}</a><a class="tag">{{item.tag}}</a></p>
@@ -36,7 +36,9 @@ const Comentario = {
             cols : 35,
             rows : 3,
             comentario : '',            
-            showRespostas : false                        
+            showRespostas : false,
+            likes : [],
+            dislikes : []                        
         }
     
     },
@@ -48,16 +50,62 @@ const Comentario = {
    
     methods : {
 
-        likeUnlike : function() {  
-            const teste = "teste";
-            console.log(teste);          
-            const idUsuarioLikeDislike = sessionStorage.getItem ('id');
-            console.log(idUsuarioLikeDislike);
-            socket.emit('likeDislike',{
-                like : teste,
-                dislike : teste                 
-            });            
-        },        
+        like : function(i){
+            console.log('like no comentario : '+i);
+            const idUsuario = sessionStorage.getItem('id');            
+            const checkLike = this.comentarios[i].likes.includes(idUsuario);
+            const checkDislike = this.comentarios[i].dislikes.includes(idUsuario);
+            console.log(checkLike, checkDislike);
+            console.log(this.comentarios[i].likes);
+
+            if(checkDislike == true){
+
+                this.comentarios[i].dislikes = this.comentarios[i].likes.filter(function(value,index,arr){
+                    return value != idUsuario;
+                })
+                console.log(this.comentarios[i].dislikes);
+            }
+            if(checkLike == true){
+                this.comentarios[i].likes = this.comentarios[i].likes.filter(function(value,index,arr){
+                    return value != idUsuario;
+                })
+                console.log(this.comentarios[i].likes);
+
+            }else{
+                this.comentarios[i].likes.push(idUsuario);
+                console.log('usuario adicionado(like) :'+idUsuario);
+                console.log(this.comentarios[i].likes);
+            }
+        },
+
+        dislike : function(i){
+            console.log('dislike no comentario : '+i);
+            const idUsuario = sessionStorage.getItem('id');
+            const checkLike = this.comentarios[i].likes.includes(idUsuario);
+            const checkDislike = this.comentarios[i].dislikes.includes(idUsuario);
+            var dislike = "";
+
+            if(checkDislike == true){
+
+                this.comentarios[i].dislikes = this.comentarios[i].likes.filter(function(value,index,arr){
+                    return value != idUsuario;
+                })
+                console.log(this.comentarios[i].dislikes);
+            }
+            if(checkLike == true){
+                //  dislikes trocar nome
+                this.comentarios[i].likes = this.comentarios[i].likes.filter(function(value,index,arr){
+                    return value != idUsuario;
+                })
+                console.log(this.comentarios[i].likes);
+
+            }else{
+                this.comentarios[i].likes.push(idUsuario);
+                console.log('usuario adicionado(dislike) :'+idUsuario);
+                console.log(this.comentarios[i].likes);                
+            }
+        },
+            
               
         responder : function (index) {
             

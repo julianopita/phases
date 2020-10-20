@@ -8,23 +8,28 @@ const Forum = {
     template : `
         <div id="forum">
             <div id="v-model-multiple-checkboxes">
-            <input type="checkbox" id="ju" value=true @change="" v-model="filterInterest"/>
+                <input type="checkbox" id="ju" value=true @change="" v-model="filterInterest"/>
                 <label for="ju">Ju</label>
-            <input type="checkbox" id="noju" value="NoJu" v-model="filterInterest"/>
+                <input type="checkbox" id="noju" value="NoJu" v-model="filterInterest"/>
                 <label for="noju">No Ju</label>
-            <span> Filtro ativo: {{filterInterest}}</span>
+                <span> Filtro ativo: {{filterInterest}}</span>
             </div>
                   
             <ul class="containerForum">
                 <li v-for="(item,i) in comentarios" :key="i">
+                    likes : {{comentarios[i].likes.length}}
+                    dislikes : {{comentarios[i].dislikes.length}}
                     <comentario :item=item :index=i >                    
-                    </comentario> <span><button class="button-react" @click="like(i)">apoio</button><button class="button-react" @click="dislike(i)">não apoio</button></span>                   
+                    </comentario> 
+                        <span>
+                            <button class="button-react" @click="like(i)">apoio</button>
+                            <button class="button-react" @click="dislike(i)">não apoio</button>
+                        </span>                   
                 </li>
             </ul>
 
             <div class="novo-comentario">
-                <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa">
-                </textarea>
+                <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa"></textarea>
                 <label for="tag">Selecione o assunto do comentário:</label>
                     <select name="tag" id="tag">
                         <option value="Implantacao">Implantação</option>
@@ -48,7 +53,8 @@ const Forum = {
             filterInterest: [],
             likes : [],
             dislikes : [],
-            tag: ''
+            tag: '',
+            quantidadeLikes : []
         }
     },
     methods: {
@@ -63,7 +69,7 @@ const Forum = {
 
             if(checkDislike == true){
 
-                this.comentarios[i].dislikes = this.comentarios[i].likes.filter(function(value,index,arr){
+                this.comentarios[i].dislikes = this.comentarios[i].dislikes.filter(function(value,index,arr){
                     return value != idUsuario;
                 })
                 console.log(this.comentarios[i].dislikes);
@@ -76,8 +82,6 @@ const Forum = {
 
             }else{
                 this.comentarios[i].likes.push(idUsuario);
-                console.log('usuario adicionado(like) :'+idUsuario);
-                console.log(this.comentarios[i].likes);
             }
         },
 
@@ -88,24 +92,19 @@ const Forum = {
             const checkDislike = this.comentarios[i].dislikes.includes(idUsuario);
             var dislike = "";
 
-            if(checkDislike == true){
-
-                this.comentarios[i].dislikes = this.comentarios[i].likes.filter(function(value,index,arr){
-                    return value != idUsuario;
-                })
-                console.log(this.comentarios[i].dislikes);
-            }
             if(checkLike == true){
-                //  dislikes trocar nome
+
                 this.comentarios[i].likes = this.comentarios[i].likes.filter(function(value,index,arr){
                     return value != idUsuario;
                 })
-                console.log(this.comentarios[i].likes);
-
+            }
+            if(checkDislike == true){
+                //  dislikes trocar nome
+                this.comentarios[i].dislikes = this.comentarios[i].dislikes.filter(function(value,index,arr){
+                    return value != idUsuario;
+                })
             }else{
-                this.comentarios[i].likes.push(idUsuario);
-                console.log('usuario adicionado(dislike) :'+idUsuario);
-                console.log(this.comentarios[i].likes);                
+                this.comentarios[i].dislikes.push(idUsuario);
             }
         },        
         

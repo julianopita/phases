@@ -28,7 +28,7 @@ textarea{
     color:#75767B;
     background: white;
     justify-content: left;
-    margin: 10px; 
+    margin-right: 0px; 
 }
 .button-forum{
     border: none;    
@@ -50,8 +50,21 @@ textarea{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+.linhasuperior{
+    background-color: white;
+    padding-left: 7px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    margin-top:20px;
+    margin-bottom: 0px;
+    max-width: 350px;
+    font-size: 10pt;
+    color: #75767B;
+    justify-content: left;
+}
 
-#forum{
+#forum{    
+    overflow-y: scroll;
     p{
         line-height: 10px;
         
@@ -59,13 +72,13 @@ textarea{
     }    
     ul{
         list-style-type: none;
+        height: 60vh;
     }
     li{
         list-style-type: none;
     }
 
     .containerForum{
-        height: 70.3vh;
         overflow-y: scroll;
     }
    .comentario{
@@ -74,8 +87,10 @@ textarea{
            padding-left: 7px;
            padding-bottom: 1px;
            padding-top: 1px;
-           margin-bottom:10px;
-           max-width: 500px;
+           margin-top:0px;
+           margin-bottom:0px;
+           max-width: 350px;
+           overflow: auto; 
        }
        .dados{
             font-size: 10pt;
@@ -119,7 +134,7 @@ textarea{
     .dados{
          font-size: 10pt;
          color: #75767B;
-         justify-content: left;         
+         justify-content: left;                  
     }    
     .texto{
          font-size: 12pt;

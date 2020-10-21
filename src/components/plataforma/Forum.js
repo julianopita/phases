@@ -3,6 +3,12 @@ import NovoComentario from './forum/NovoComentario.js';
 import socket from '../../connection/socket.js';
 import axiosInstance from  '../../connection/index.js';
 
+
+
+sessionStorage.setItem('id','qqcoisa');
+
+
+
 const Forum = {
     name : 'forum',
     template : `
@@ -64,8 +70,8 @@ const Forum = {
             const idUsuario = sessionStorage.getItem('id');            
             const checkLike = this.comentarios[i].likes.includes(idUsuario);
             const checkDislike = this.comentarios[i].dislikes.includes(idUsuario);
-            console.log(checkLike, checkDislike);
-            console.log(this.comentarios[i].likes);
+            // console.log(checkLike, checkDislike);
+            // console.log(this.comentarios[i].likes);
 
             if(checkDislike == true){
 
@@ -83,6 +89,18 @@ const Forum = {
             }else{
                 this.comentarios[i].likes.push(idUsuario);
             }
+
+
+            const likes = this.comentarios[i].likes;
+            const dislikes = this.comentarios[i].dislikes; 
+            console.log(idUsuario);
+            const objLikes = {
+                idComentario : i,
+                likes: likes,
+                deslikes : dislikes
+            }
+            console.log(objLikes);
+            socket.emit('reacoes',objLikes);
         },
 
         dislike : function(i){
@@ -105,7 +123,17 @@ const Forum = {
                 })
             }else{
                 this.comentarios[i].dislikes.push(idUsuario);
+            } 
+            const likes = this.comentarios[i].likes;
+            const dislikes = this.comentarios[i].dislikes; 
+            console.log(idUsuario);
+            const objLikes = {
+                idComentario : i,
+                likes: likes,
+                dislikes : dislikes
             }
+            console.log(objLikes);
+            socket.emit('reacoes',objLikes);
         },        
         
 

@@ -59,7 +59,7 @@ const clientNomads = function(bimServerAddress,poid,canvasId, roid){
        
         const annotations = new AnnotationsPlugin(viewer, {
 
-        markerHTML: "<div class='annotation-marker' style='background-color: {{markerBGColor}};'>{{glyph}}</div>",
+        markerHTML: "<div  class='annotation-marker' style='background-color: {{markerBGColor}}; visibility: hidden;'>{{glyph}}</div>",
         labelHTML: "<div class='annotation-label' style='background-color: {{labelBGColor}};'>\
             <div class='annotation-title'>{{title}}</div>\
             <div class='annotation-desc'>{{description}}</div>\
@@ -74,8 +74,16 @@ const clientNomads = function(bimServerAddress,poid,canvasId, roid){
         }
     });
 
-    let numAnnotations = 0;
-    let annoControl = 0
+    annotations.on("markerMouseEnter", (annotation) => {
+        annotation.setLabelShown(true);
+    });
+
+    annotations.on("markerMouseLeave", (annotation) => {
+        annotation.setLabelShown(false);
+    });
+
+    var numAnnotations = 0;
+    var annoControl = 0;    
     
     viewer.scene.input.on("keydown", (keyCode) => {
         if (annoControl == 0 && keyCode == 70) { 
@@ -84,7 +92,8 @@ const clientNomads = function(bimServerAddress,poid,canvasId, roid){
         
         //read JSON of spaces Guid fed by the apiInfo
         const spaceJSON = $.getJSON("../annotationData.json",function(json) {            
-            const spaceGuid = spaceJSON.responseJSON;            
+            const spaceGuid = spaceJSON.responseJSON;
+            console.log(spaceGuid);            
 
             //iterate over the JSON and use each of the space GUID to create an annotation
             for (var value of Object.values(spaceGuid)) {
@@ -104,10 +113,10 @@ const clientNomads = function(bimServerAddress,poid,canvasId, roid){
                     worldPos: [locX,locY,locZ],
                     occludable: false,
                     markerShown: true,
-                    labelShown: true,
+                    labelShown: false,
 
                     values: {
-                        glyph: "" + numAnnotations++,
+                        glyph: "i",
                         title: name,
                         description: "",
                         markerBGColor: "green"
@@ -123,6 +132,7 @@ const clientNomads = function(bimServerAddress,poid,canvasId, roid){
     console.log("nope");
 };
 });
+
 
     const bimServerLoader = new BIMServerLoaderPlugin(viewer, {
         bimServerClient: bimServerClient

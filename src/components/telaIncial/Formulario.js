@@ -1,4 +1,4 @@
-
+const interesses = {};
 const Formulario = {
     name : "formulario",
     template : `
@@ -13,6 +13,17 @@ const Formulario = {
                     :placeholder=items.formItem[i].texto 
                     :type=items.formItem[i].type />
                 </li>
+                <li>
+                <!-- v-show="a" id="show" name="show"> -->
+                <select class="bloco-opcoes" v-model="interesse" name="interesse" id="interesse"> 
+                    <option value = "">Relação</option>
+                    <option value = "estudante">Estudante</option>
+                    <option value = "professor">Professor</option>
+                    <option value = "educador">Educador</option>
+                    <option value = "tecnico">Técnico</option>
+                    <option value = "gestor">Gestor público</option>
+                </select>
+                </li>
             </div>
             <div class="button-class">
                 <button @click="buttonFunc">{{pag.tipo}}</button>
@@ -20,14 +31,21 @@ const Formulario = {
             </div>
         </div>
     `,
+    
     props : ['items','pag','metodo','goTo'],
     data(){
         return{
+            interesse : {
+                value : '',
+            },                          
         }
     },
     methods : {
-        buttonFunc : async function(){
+        buttonFunc : async function(){ 
+            //let interesses = interesse.value;
+            console.log(interesse);           
             await this.metodo(this.items)
+
         },
         mudaPag : function (){
             this.goTo();
@@ -37,6 +55,7 @@ const Formulario = {
         console.log(this.items);
     }
 }
+console.log(interesses);
 
 
 export default Formulario;

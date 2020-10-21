@@ -15,8 +15,8 @@ const TelaCadastro = {
     components : {
         BarraNavegacao, Formulario
     },
-    data(){
-        return{
+    data(){        
+        return{ 
             form : {
                 formErros : {
                     campoVazio : {
@@ -67,21 +67,23 @@ const TelaCadastro = {
                         conteudo : null,
                         type :  "text"
                     },
-                    interesse : {
-                        texto : "interesse",
-                        conteudo : null,
-                        type :  "text"
-                    },
-            }
+                    //interesse : {
+                    //    texto : "interesse",
+                    //    conteudo : null,
+                    //    type :  "text"
+                    //},
+            }                        
         },
         cadastro : {
             tipo : "enviar",
             mensagem : "já possuo cadastro"
             },
         booleano : false
-
-        }
+        }        
     },
+    
+            
+     
     methods : {
         paraLogin: function(){
             this.$router.push('login');
@@ -97,7 +99,7 @@ const TelaCadastro = {
                     userName : item.formItem.userName.conteudo,
                     email : item.formItem.email.conteudo,
                     cep : item.formItem.cep.conteudo,
-                    interesse : item.formItem.interesse.conteudo
+                    interesse : interesse.value,
     
                 }).then((response)=>{
                     alert('Usuario Cadastrado');

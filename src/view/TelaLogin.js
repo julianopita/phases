@@ -4,7 +4,7 @@ import axiosInstance from '../connection/index.js';
 
 const TelaLogin = {
     name : "tela-login",
-    template : `
+    template : `    
         <div id="tela-login">
             <barra-navegacao/>
             <img src="assets/loginImagem.png">
@@ -37,7 +37,10 @@ const TelaLogin = {
             login : {
                 tipo : "entrar",
                 mensagem : "não tenho cadastro"
-            }
+            },
+            show : {
+                a: false
+            }            
         }
     },
     methods : {

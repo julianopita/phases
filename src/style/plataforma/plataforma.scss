@@ -13,6 +13,8 @@ $buttonComentario : #8b8b8b;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
 
+
+//Annotation styles
 .annotation-marker {
   color: #ffffff;
   line-height: 1.8;
@@ -27,10 +29,11 @@ $buttonComentario : #8b8b8b;
   background: black;
   visibility: hidden;
   box-shadow: 5px 5px 15px 1px #000000;
-  z-index: 0;
+  z-index: -20;
 }
 
 .annotation-label {
+  visibility: hidden;
   position: absolute;
   max-width: 250px;
   min-height: 50px;
@@ -44,7 +47,7 @@ $buttonComentario : #8b8b8b;
   border-radius: 8px;
   border: #ffffff solid 2px;
   box-shadow: 5px 5px 15px 1px #000000;
-  z-index: 90000;
+  z-index: -20;
 }
 
 .annotation-label:after {
@@ -55,7 +58,7 @@ $buttonComentario : #8b8b8b;
   border-color: transparent white;
   display: block;
   width: 0;
-  z-index: 1;
+  z-index: -20;
   margin-top: -11px;
   left: -12px;
   top: 20px;
@@ -69,7 +72,7 @@ $buttonComentario : #8b8b8b;
   border-color: transparent #ffffff;
   display: block;
   width: 0;
-  z-index: 0;
+  z-index: -20;
   margin-top: -12px;
   left: -15px;
   top: 20px;
@@ -84,6 +87,7 @@ $buttonComentario : #8b8b8b;
   font: normal 14px arial, serif;
 }
 
+//TreeView Styles
 #treeViewContainer {
     padding-top: 25px;
     pointer-events: all;
@@ -163,10 +167,10 @@ $buttonComentario : #8b8b8b;
     padding-right: 5px;
   }
 
-
+//Platform styles
 #plataforma{
     font-family: 'Arial', sans-serif;
-    height: 100vh;
+    height: 100%;
     background-color: $fundo;
     position: relative;
 
@@ -176,16 +180,30 @@ $buttonComentario : #8b8b8b;
         grid-template-columns: 70% 30%;
         div{
             .infoName{
+                display: grid;
+                grid-template-columns: 50% 50%;
                 position: relative;
-                top: 30px;
-                padding-top: 1%;
+                top: 30px;                
                 background-color: $defaulColor;
-                color: white;
-                text-align: center;
+                color: white;                
                 height: 40px;
                 border-style: solid none none none;
                 border-color: $corFormulario;
+            
+
+            .left{
+              padding-top: 3%;
+              padding-left: 30%;
+              text-align: left;
             }
+
+            .right{
+              padding-top: 3%;
+              padding-right: 30%;
+              text-align: right;
+            }
+          }
+            
             .infoBar{
                 display: grid;
                 grid-template-columns: 35% 65%;
@@ -214,7 +232,7 @@ $buttonComentario : #8b8b8b;
         .item-navegacao{
             // width: max-content;
             position: relative;
-            left: 90%;
+            left: 85%;
             transform: translate(-50%,0);
         }
         div{
@@ -229,6 +247,18 @@ $buttonComentario : #8b8b8b;
             font-weight: 300;
             color: white;
             text-decoration: none;
+        }
+        .logo{
+          align-content: left;
+          justify-content: center;          
+          background-color: white;
+          margin-left: 0px;
+          margin-top: 0px;        
+        }
+        img{
+          height: 60px;
+          padding: 10px;
+          background-color: white;
         }
     }
 }

@@ -13,6 +13,7 @@ const Forum = {
     name : 'forum',
     template : `
         <div id="forum">
+
             <div id="v-model-multiple-checkboxes">
                 <input type="checkbox" id="ju" value=true @change="" v-model="filterInterest"/>
                 <label for="ju">Ju</label>
@@ -21,16 +22,19 @@ const Forum = {
                 <span> Filtro ativo: {{filterInterest}}</span>
             </div>
                   
-            <ul class="containerForum">
+            <ul class="divComentario">
                 <li v-for="(item,i) in comentarios" :key="i">
                     likes : {{comentarios[i].likes.length}}
                     dislikes : {{comentarios[i].dislikes.length}}
-                    <comentario :item=item :index=i >                    
-                    </comentario> 
-                        <span>
-                            <button class="button-react" @click="like(i)">apoio</button>
-                            <button class="button-react" @click="dislike(i)">não apoio</button>
-                        </span>                   
+
+                    <p class="linhasuperior">{{item.userName}} | {{item.data}} | {{item.hora}} |
+                    
+                        <button class="button-react" @click="like(i)">apoio</button>0 |<button class="button-react" @click="dislike(i)">não apoio</button>0 
+                    
+                    </p>
+                    
+                    <comentario :item=item :index=i>                    
+                    </comentario>                 
                 </li>
             </ul>
 
@@ -53,7 +57,7 @@ const Forum = {
     data(){
         return {
             cols : 54,
-            rows : 5,            
+            rows : 3,            
             comentarios : [],
             comentario : '',
             filterInterest: [],
@@ -63,6 +67,15 @@ const Forum = {
             quantidadeLikes : []
         }
     },
+    //computed: {
+    //    reactLikeCount() {
+    //        return this.item.like.length
+    //    },
+    //    reactDislikeCount() {
+    //        return this.item.like.length
+    //    }
+    //},
+
     methods: {
         
         like : function(i){

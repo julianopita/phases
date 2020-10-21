@@ -4,8 +4,7 @@ const Comentario = {
     template : `
     <div class="comentario">
             
-    <div class="divComentario">
-        <p class="dados">{{item.userName}} | {{item.data}} | {{item.hora}} | </p>
+    <div class="divComentario">        
         <p v-for="(resposta,i) in item.resposta" :key="i"</p>        
         <p class="texto">{{item.comentario}}</p>
         <p class="dados">{{itemsCount}} respostas | <button class="button-forum" @click="showRespostas = !showRespostas" >ver e responder</button></p>               
@@ -104,7 +103,7 @@ const Comentario = {
                 console.log('usuario adicionado(dislike) :'+idUsuario);
                 console.log(this.comentarios[i].likes);                
             }
-        },
+        },  
             
               
         responder : function (index) {

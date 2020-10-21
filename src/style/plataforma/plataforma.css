@@ -14,7 +14,7 @@
   visibility: hidden;
   -webkit-box-shadow: 5px 5px 15px 1px #000000;
           box-shadow: 5px 5px 15px 1px #000000;
-  z-index: 0;
+  z-index: -20;
 }
 
 .annotation-label {
@@ -31,7 +31,7 @@
   border: #ffffff solid 2px;
   -webkit-box-shadow: 5px 5px 15px 1px #000000;
           box-shadow: 5px 5px 15px 1px #000000;
-  z-index: 90000;
+  z-index: -20;
 }
 
 .annotation-label:after {
@@ -42,7 +42,7 @@
   border-color: transparent white;
   display: block;
   width: 0;
-  z-index: 1;
+  z-index: -20;
   margin-top: -11px;
   left: -12px;
   top: 20px;
@@ -56,7 +56,7 @@
   border-color: transparent #ffffff;
   display: block;
   width: 0;
-  z-index: 0;
+  z-index: -20;
   margin-top: -12px;
   left: -15px;
   top: 20px;
@@ -152,7 +152,7 @@
 
 #plataforma {
   font-family: 'Arial', sans-serif;
-  height: 100vh;
+  height: 100%;
   background-color: #DBDBDB;
   position: relative;
 }

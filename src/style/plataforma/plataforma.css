@@ -80,7 +80,7 @@
   position: absolute;
   background-color: rgba(255, 255, 255, 0.86);
   color: black;
-  top: 7%;
+  top: 10%;
   z-index: 200000;
   float: left;
   left: 0;
@@ -170,22 +170,22 @@
   -ms-grid-columns: 50% 50%;
       grid-template-columns: 50% 50%;
   position: relative;
-  top: 30px;
+  top: 25px;
   background-color: #8b8b8b;
   color: white;
   height: 40px;
-  border-style: solid none none none;
+  border-style: none none none solid;
   border-color: #75767B;
 }
 
 #plataforma .modelo-forum div .infoName .left {
-  padding-top: 3%;
+  padding-top: 1%;
   padding-left: 30%;
   text-align: left;
 }
 
 #plataforma .modelo-forum div .infoName .right {
-  padding-top: 3%;
+  padding-top: 1%;
   padding-right: 30%;
   text-align: right;
 }
@@ -193,29 +193,37 @@
 #plataforma .modelo-forum div .infoBar {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 35% 65%;
-      grid-template-columns: 35% 65%;
+  height: 15vh;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  background-color: #8b8b8b;
 }
 
 #plataforma .modelo-forum div .infoBar .click {
+  color: white;
+  font-size: 12px;
+  line-height: 12px;
   padding: 20px;
   padding-left: 40px;
-  margin-top: 40px;
+  margin-top: 20px;
   border-style: none none none none;
   border-width: 1px;
 }
 
 #plataforma .modelo-forum div .infoBar .fixed {
-  padding: 20px;
-  margin-top: 40px;
+  line-height: 12px;
+  padding: 0px;
+  margin-top: 0px;
+  font-size: 12px;
 }
 
 #plataforma #barra-navegacao {
   background-color: #8b8b8b;
-  height: 60px;
+  height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100vw;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -223,9 +231,11 @@
 
 #plataforma #barra-navegacao .item-navegacao {
   position: relative;
-  left: 85%;
+  float: left;
+  left: 80%;
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
+  margin-left: 10px;
 }
 
 #plataforma #barra-navegacao div {
@@ -251,13 +261,14 @@
       -ms-flex-pack: center;
           justify-content: center;
   background-color: white;
+  height: 40px;
   margin-left: 0px;
   margin-top: 0px;
 }
 
 #plataforma #barra-navegacao img {
-  height: 60px;
-  padding: 10px;
+  height: 40px;
+  padding: 0px;
   background-color: white;
 }
 

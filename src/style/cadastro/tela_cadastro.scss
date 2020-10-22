@@ -16,14 +16,15 @@ $hoverButton : #b6b6b6;
     position: relative;
     #barra-navegacao{
         background-color: $defaulColor;
-        height: 60px;
+        height: 40px;
         display: flex;
         align-items: center;
         .item-navegacao{
             // width: max-content;
             position: relative;
-            left: 90%;
+            left: 80%;
             transform: translate(-50%,0);
+            margin-left: 10px;
         }
         div{
             margin-right: 10px;
@@ -38,13 +39,23 @@ $hoverButton : #b6b6b6;
             color: white;
             text-decoration: none;
         }
+        .logo{
+            visibility: hidden;
+            align-content: left;
+            justify-content: center;          
+            background-color: white;
+            height: 40px; 
+            margin-left: 0px;
+            margin-top: 0px;        
+          }
+          img{
+            height: 40px;
+            padding: 0px;
+            background-color: white;
+          }
     }
     
-    img{
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    
 
     #formulario{
         position: absolute;
@@ -94,7 +105,7 @@ $hoverButton : #b6b6b6;
                 outline: none;
                 border-radius: 5px 5px 5px 5px;
                 color: $corFormulario;
-                background-color: $input;                
+                background-color: $input;                                
             }
         }
     }

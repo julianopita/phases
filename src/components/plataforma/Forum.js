@@ -4,50 +4,45 @@ import socket from '../../connection/socket.js';
 import axiosInstance from  '../../connection/index.js';
 
 
-
-sessionStorage.setItem('id','qqcoisa');
-
-
-
 const Forum = {
     name : 'forum',
     template : `
         <div id="forum">
 
-            <div id="v-model-multiple-checkboxes">
+            <!--<div id="v-model-multiple-checkboxes">
                 <input type="checkbox" id="ju" value=true @change="" v-model="filterInterest"/>
                 <label for="ju">Ju</label>
                 <input type="checkbox" id="noju" value="NoJu" v-model="filterInterest"/>
                 <label for="noju">No Ju</label>
                 <span> Filtro ativo: {{filterInterest}}</span>
-            </div>
-                  
-            <ul class="divComentario">
-                <li v-for="(item,i) in comentarios" :key="i">
-                    likes : {{comentarios[i].likes.length}}
-                    dislikes : {{comentarios[i].dislikes.length}}
+            </div>-->
+            <div class="comentario">      
+            <ul>
+                <li v-for="(item,i) in comentarios" :key="i">                   
 
-                    <p class="linhasuperior">{{item.userName}} | {{item.data}} | {{item.hora}} |
-                    
-                        <button class="button-react" @click="like(i)">apoio</button>0 |<button class="button-react" @click="dislike(i)">não apoio</button>0 
-                    
+                    <p class="linhasuperior">{{item.userName}} | {{item.data}} | 
+                    <button class="button-react" @click="like(i)">apoio</button>{{comentarios[i].likes.length}} |
+                    <button class="button-react" @click="dislike(i)">não apoio</button>{{comentarios[i].dislikes.length}} 
                     </p>
                     
                     <comentario :item=item :index=i>                    
                     </comentario>                 
                 </li>
             </ul>
-
+            </div>
             <div class="novo-comentario">
                 <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa"></textarea>
-                <label for="tag">Selecione o assunto do comentário:</label>
-                    <select name="tag" id="tag">
-                        <option value="Implantacao">Implantação</option>
-                        <option value="Localização">Localização</option>
-                        <option value="Uso">Uso</option>
-                        <option value="Custo">Custo</option>
+                <div class="bloco-entradas">                
+                    <span class="area-buttons"><select class="bloco-entradas" name="tag" id="tag">
+                        <option value disabled selected value="undefined">selecione um assunto</option> 
+                        <option value="Implantacao">implantação</option>
+                        <option value="Localização">localização</option>
+                        <option value="Uso">uso</option>
+                        <option value="Custo">custo</option>
                     </select>
-                <button @click="comentar" >Submit</button>
+                    <button class="button-submit" @click="comentar" >Enviar</button></span>
+                </div>
+                
             </div>
 
 
@@ -56,7 +51,7 @@ const Forum = {
     `,
     data(){
         return {
-            cols : 54,
+            cols : 20,
             rows : 3,            
             comentarios : [],
             comentario : '',
@@ -110,7 +105,7 @@ const Forum = {
             const objLikes = {
                 idComentario : i,
                 likes: likes,
-                deslikes : dislikes
+                dislikes : dislikes
             }
             console.log(objLikes);
             socket.emit('reacoes',objLikes);

@@ -1,0 +1,13 @@
+{
+     "areaPavimentos:{
+        "Piso Estação": 182.8594059502249
+     },
+     "infoTerrenos":{
+         "areaTotal": 2058.00586147482,
+         "comprimentoTotal": 62.923452246094,
+         "larguraTotal": 58.299004284668,
+         "elevaçãoTotal": 1.53991872310639
+     },
+     "coeficienteAproveitamento":0.08385091220171445,
+     "taxaOcupação":0.08385091220171445
+}

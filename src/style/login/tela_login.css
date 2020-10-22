@@ -8,7 +8,7 @@
 
 #tela-login #barra-navegacao {
   background-color: #8b8b8b;
-  height: 60px;
+  height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,9 +19,10 @@
 
 #tela-login #barra-navegacao .item-navegacao {
   position: relative;
-  left: 90%;
+  left: 80%;
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
+  margin-left: 10px;
 }
 
 #tela-login #barra-navegacao div {
@@ -40,6 +41,29 @@
   text-decoration: none;
 }
 
+#tela-login #barra-navegacao .logo {
+  visibility: hidden;
+  -ms-flex-line-pack: left;
+      align-content: left;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+  height: 40px;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+#tela-login #barra-navegacao img {
+  height: 40px;
+  padding: 0px;
+  background-color: white;
+}
+
+#tela-login .bloco-opcoes {
+  visibility: hidden;
+}
+
 #tela-login img {
   display: block;
   margin-left: auto;
@@ -55,15 +79,14 @@
           transform: translate(-50%, -50%);
   background-color: #bebebe;
   width: 564px;
-  height: 294px;
+  height: 350px;
   border-radius: 10px 10px 10px 10px;
 }
 
 #tela-login #formulario .bloco-entradas {
+  position: relative;
   margin-top: 60px;
-  margin-left: 50%;
-  -webkit-transform: translate(-70%, 0);
-          transform: translate(-70%, 0);
+  margin-left: 15%;
 }
 
 #tela-login #formulario .bloco-entradas input {

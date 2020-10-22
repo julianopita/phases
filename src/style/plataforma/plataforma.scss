@@ -97,7 +97,7 @@ $buttonComentario : #8b8b8b;
     position: absolute;
     background-color: rgba(255, 255, 255, 0.86);
     color: black;
-    top: 7%;
+    top: 10%;
     z-index: 200000;
     float: left;
     left: 0;
@@ -180,25 +180,25 @@ $buttonComentario : #8b8b8b;
         grid-template-columns: 70% 30%;
         div{
             .infoName{
-                display: grid;
+                display: grid;                
                 grid-template-columns: 50% 50%;
                 position: relative;
-                top: 30px;                
+                top: 25px;                
                 background-color: $defaulColor;
                 color: white;                
                 height: 40px;
-                border-style: solid none none none;
+                border-style: none none none solid;
                 border-color: $corFormulario;
             
 
             .left{
-              padding-top: 3%;
+              padding-top: 1%;
               padding-left: 30%;
               text-align: left;
             }
 
             .right{
-              padding-top: 3%;
+              padding-top: 1%;
               padding-right: 30%;
               text-align: right;
             }
@@ -206,17 +206,26 @@ $buttonComentario : #8b8b8b;
             
             .infoBar{
                 display: grid;
-                grid-template-columns: 35% 65%;
+                height: 15vh;
+                grid-template-columns: 50% 50%;
+                background-color: $defaulColor;
                 .click{
+                  color: white;
+                    font-size: 12px;
+                    line-height: 12px;
                     padding: 20px;
                     padding-left: 40px;
-                    margin-top: 40px;
+                    margin-top: 20px;
                     border-style: none none none none;
                     border-width: 1px;
                 }
                 .fixed{
-                    padding: 20px;
-                    margin-top: 40px;
+                    line-height: 12px;
+                    padding: 0px;
+                    margin-top: 0px;
+                    font-size: 12px;
+                    
+                    
                 }
             }
         }
@@ -226,14 +235,17 @@ $buttonComentario : #8b8b8b;
 
     #barra-navegacao{
         background-color: $defaulColor;
-        height: 60px;
+        height: 40px;
         display: flex;
+        width: 100vw;
         align-items: center;
         .item-navegacao{
             // width: max-content;
             position: relative;
-            left: 85%;
+            float: left;
+            left: 80%;
             transform: translate(-50%,0);
+            margin-left:10px;
         }
         div{
             margin-right: 10px;
@@ -252,12 +264,13 @@ $buttonComentario : #8b8b8b;
           align-content: left;
           justify-content: center;          
           background-color: white;
+          height: 40px; 
           margin-left: 0px;
           margin-top: 0px;        
         }
         img{
-          height: 60px;
-          padding: 10px;
+          height: 40px;
+          padding: 0px;
           background-color: white;
         }
     }

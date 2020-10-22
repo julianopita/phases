@@ -1,5 +1,5 @@
 import BarraNavegacao from '../telaIncial/BarraNavegacao.js';
-import Forum from './Forum.js';
+// import Forum from './Forum.js';
 import Modelo from './modelo/Modelo.js';
 import axiosInstance from '../../connection/apiInfo.js';
 
@@ -35,7 +35,6 @@ const Plataforma = {
                         
                     </div>
                 </div>
-                <forum/>
             </div>
             <link rel="stylesheet" href="src/style/plataforma/plataforma.css">
         </div>
@@ -51,17 +50,16 @@ const Plataforma = {
         getApiInfo : async function (){
             await axiosInstance.get('/infos')
             .then((data)=>{
-                console.log(data);
+                this.apiInfo = data;
             })
         }
     },
 
     mounted : async function (){
         await this.getApiInfo()
-        console.log("oooooooooooo")
     },
     components :{
-        BarraNavegacao, Forum, Modelo
+        BarraNavegacao, Modelo
     }
 }
 

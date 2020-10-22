@@ -1,7 +1,7 @@
 import BarraNavegacao from '../telaIncial/BarraNavegacao.js';
 import Forum from './Forum.js';
 import Modelo from './modelo/Modelo.js';
-
+import axiosInstance from '../../connection/apiInfo.js';
 
 
 const infoClicked = {
@@ -43,14 +43,23 @@ const Plataforma = {
     data(){
         return{
             descricao : infoClicked.descricao,
-            area : infoClicked.area
+            area : infoClicked.area,
+            apiInfo : ''
+        }
+    },
+    methods : {
+        getApiInfo : async function (){
+            await axiosInstance.get('/infos')
+            .then((data)=>{
+                console.log(data);
+            })
         }
     },
 
-    watch : {
+    mounted : async function (){
+        await this.getApiInfo()
+        console.log("oooooooooooo")
     },
-
-
     components :{
         BarraNavegacao, Forum, Modelo
     }

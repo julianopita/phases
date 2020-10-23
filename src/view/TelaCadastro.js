@@ -66,12 +66,7 @@ const TelaCadastro = {
                         texto : "CEP",
                         conteudo : null,
                         type :  "text"
-                    },
-                    //interesse : {
-                    //    texto : "interesse",
-                    //    conteudo : null,
-                    //    type :  "text"
-                    //},
+                    },                    
             }                        
         },
         cadastro : {

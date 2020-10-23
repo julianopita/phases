@@ -5,7 +5,7 @@ const Comentario = {
     <div class="comentario">
             
     <div class="divComentario">        
-        <p v-for="(resposta,i) in item.resposta" :key="i"</p>        
+        <a v-for="(resposta,i) in item.resposta" :key="i"</a>        
         <p class="texto">{{item.comentario}}</p>
         <p class="dados">{{itemsCount}} respostas | <button class="button-forum" @click="showRespostas = !showRespostas" >ver e responder</button></p>               
         <p><a class="interesse">{{item.interesse}}</a><a class="tag">{{item.tag}}</a></p>

@@ -13,10 +13,9 @@ const Formulario = {
                     :placeholder=items.formItem[i].texto 
                     :type=items.formItem[i].type />
                 </li>
-                <li>
-                <!-- v-show="a" id="show" name="show"> -->
+                <li>                
                 <select class="bloco-opcoes" v-model="interesse" name="interesse" id="interesse"> 
-                    <option value = "">Relação</option>
+                    <option value disabled selected>Relação</option>
                     <option value = "estudante">Estudante</option>
                     <option value = "professor">Professor</option>
                     <option value = "educador">Educador</option>

@@ -1,7 +1,15 @@
-Área dos andares:{'Piso Estação': 182.8594059502249}
-
-Informações do terreno:{'Área total:': 2058.00586147482, 'Comprimento total:': 62.923452246094, 'Largura total:': 58.299004284668, 'Elevação total:': 1.53991872310639}
-
-Coeficiente de Aproveitamento (CA):0.08385091220171445
-
-Taxa de ocupação (TO):0.08385091220171445
+{
+    "areaAndares" :{
+        "acesso": "123.6892906092705",
+        "superior": "73.81998796619106",
+        "estudio": "47.75317895659853"
+    },
+    "infoTerrenos":{
+        "areaTotal": "509.999652427605",
+        "comprimentoTotal": "52.0007073303222",
+        "larguraTotal": "10.0040780250549",
+        "elevacaoTotal": "19.3606608341217"
+    },
+    "coeficienteAproveitamento":"0.4147394868341093",
+    "taxaOcupacao": "0.20915892888930304"
+}

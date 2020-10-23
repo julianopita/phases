@@ -1,6 +1,49 @@
+select {
+  border: none;
+  font-size: 10pt;
+  color: white;
+  font-weight: bold;
+  background: #fc6161;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 10px;
+  padding-right: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 98%;
+  margin-right: 10px;
+}
+
+select option {
+  color: white;
+}
+
+select li {
+  list-style: none;
+}
+
 .novo-comentario {
-  margin-left: 40px;
-  max-width: 500px;
+  margin-left: 10px;
+  bottom: 0px;
+  width: 35vw;
+  position: relative;
+}
+
+.novo-comentario .area-buttons {
+  width: 25vw;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+}
+
+.novo-comentario .area-buttons .left {
+  text-align: left;
+}
+
+.novo-comentario .area-buttons .right {
+  text-align: right;
 }
 
 textarea {
@@ -11,10 +54,13 @@ textarea {
       -ms-flex-pack: left;
           justify-content: left;
   border: none;
+  width: 25vw;
+  padding: 0px;
 }
 
 .nova-resposta {
   margin: 0px;
+  margin-left: 0px;
 }
 
 .button-react {
@@ -47,8 +93,25 @@ textarea {
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
-  padding-left: 135px;
-  padding-right: 135px;
+  width: 95%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.button-submit {
+  border: none;
+  font-size: 10pt;
+  color: white;
+  font-weight: bold;
+  background: #7dd9f5;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 50px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -69,34 +132,52 @@ textarea {
 }
 
 #forum {
-  overflow-y: scroll;
+  background-color: #8b8b8b;
+  height: 100%;
 }
 
 #forum p {
-  line-height: 10px;
+  line-height: 15px;
+  padding-left: 5px;
+  padding-bottom: 5px;
 }
 
 #forum ul {
   list-style-type: none;
-  height: 60vh;
+  background-color: #8b8b8b;
+  overflow: auto;
+  padding: 2px;
+  max-height: 75.5vh;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 #forum li {
+  margin: 5px;
+  margin-top: 0px;
   list-style-type: none;
+  padding: 0px;
+  background-color: white;
 }
 
 #forum .containerForum {
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+#forum .comentario {
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: #8b8b8b;
 }
 
 #forum .comentario .divComentario {
   background-color: white;
-  padding-left: 7px;
-  padding-bottom: 1px;
-  padding-top: 1px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
   margin-top: 0px;
   margin-bottom: 0px;
-  max-width: 350px;
+  margin-right: 0px;
   overflow: auto;
 }
 
@@ -106,15 +187,19 @@ textarea {
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
+  background-color: white;
+  padding: 5px;
 }
 
 #forum .comentario .texto {
   font-size: 12pt;
+  margin: 0px;
   font-weight: bold;
   color: black;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
+  background-color: white;
 }
 
 #forum .comentario .interesse {
@@ -148,6 +233,8 @@ textarea {
 #forum .respostas {
   display: block;
   padding-left: 0px;
+  width: 96%;
+  margin-left: 20px;
 }
 
 #forum .respostas .dados {

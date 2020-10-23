@@ -16,14 +16,15 @@ $defaultColor : #8b8b8b;
     position: relative;
     #barra-navegacao{
         background-color: $defaultColor;
-        height: 60px;
+        height: 40px;
         display: flex;
         align-items: center;
         .item-navegacao{
             // width: max-content;
             position: relative;
-            left: 90%;
+            left: 80%;
             transform: translate(-50%,0);
+            margin-left:10px;
         }
         div{
             margin-right: 10px;
@@ -38,6 +39,23 @@ $defaultColor : #8b8b8b;
             color: white;
             text-decoration: none;
         }
+        .logo{
+            visibility: hidden;
+            align-content: left;
+            justify-content: center;          
+            background-color: white;
+            height: 40px; 
+            margin-left: 0px;
+            margin-top: 0px;        
+          }
+          img{
+            height: 40px;
+            padding: 0px;
+            background-color: white;
+          }
+    }
+    .bloco-opcoes {
+        visibility: hidden;
     }
     
     img{
@@ -54,13 +72,13 @@ $defaultColor : #8b8b8b;
         transform: translate(-50%, -50%);
         background-color: $corFormulario;
         width: 564px;
-        height: 294px;
+        height: 350px;
         border-radius: 10px 10px 10px 10px;
         .bloco-entradas{
-            // position: relative;
+            position: relative;
             margin-top: 60px;
-            margin-left: 50%;
-            transform: translate(-70%, 0);
+            margin-left: 15%;
+            
             input{
                 position: relative;
                 width: 332px;

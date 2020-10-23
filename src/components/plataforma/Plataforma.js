@@ -31,7 +31,21 @@ const Plataforma = {
                             <div id="descricao"> </div>
                             <div id="area"> </div>
                         </div>
-                        <div class="fixed"></div>
+                        <div class="fixed">
+                        <div class= "infoName">
+                            <div class="left">Area projeto: 182.56m²</br>                                                            
+                                Coef. Aproveitamento: 0,08</br>
+                                Taxa de ocupação: 8,38%
+                            </div>
+                            <div class="right">Informações do terreno</br>
+                                    &nbsp Área total: 2058,00m²</br>
+                                    &nbsp Comprimento: 62,92m</br>
+                                    &nbsp Largura: 58,30m</br>
+                                    &nbsp Desnível: 1,54m</br>
+                            </div>
+                            
+                        </div>
+                        </div>
                         
                     </div>
                 </div>

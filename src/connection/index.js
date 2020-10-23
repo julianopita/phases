@@ -1,5 +1,5 @@
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:2000',
+  baseURL: 'http://plat-nomads.ddns.net:8060',
   timeout: 5000,
 });
 

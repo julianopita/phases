@@ -3,6 +3,7 @@ import NovoComentario from './forum/NovoComentario.js';
 import socket from '../../connection/socket.js';
 import axiosInstance from  '../../connection/index.js';
 
+let comments = [];
 
 const Forum = {
     name : 'forum',
@@ -16,6 +17,23 @@ const Forum = {
                 <label for="noju">No Ju</label>
                 <span> Filtro ativo: {{filterInterest}}</span>
             </div>-->
+
+            <div class="filtros" style="">
+
+            <input @click="filtrar('MR')" type="radio" id="MR" name="filter" value="MR" checked>
+            <label for="MR">Mais Recente</label>
+            
+            <input @click="filtrar('MC')" type="radio" id="MC"  name="filter"value="MC">
+            <label for="MC">Mais Comentado</label>
+            
+            <input @click="filtrar('ML')" type="radio" id="ML" name="filter" value="ML">
+            <label for="ML">Mais Curtido</label>
+
+            <input @click="filtrar('MD')" type="radio" id="MD" name="filter" value="MD">
+            <label for="MD">Menos Curtido</label>
+            
+        </div>
+
             <div class="comentario">      
             <ul>
                 <li v-for="(item,i) in comentarios" :key="i">                   
@@ -169,6 +187,62 @@ const Forum = {
                 respostas : []
             });
             this.comentario = '';
+        },
+
+        filtrar: async (tipo) => {
+            const dados = comments;
+
+            console.log(tipo);
+
+            /*
+          MR- Mais Recente | MC- Mais Comentado | ML- Mais Curtido | MD- Menos Curtido
+        */
+            //reordenar comentarios
+            if (tipo == "MR") {
+                dados.sort(function (a, b) {
+                    if (a.idComentario < b.idComentario) {
+                        return 1;
+                    }
+                    if (a.idComentario > b.idComentario) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
+            if (tipo == "MC") {
+                dados.sort(function (a, b) {
+                    if (a.resposta < b.resposta) {
+                        return 1;
+                    }
+                    if (a.resposta > b.resposta) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
+            if (tipo == "ML") {
+                dados.sort(function (a, b) {
+                    if (a.likes < b.likes) {
+                        return 1;
+                    }
+                    if (a.likes > b.likes) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
+            if (tipo == "MD") {
+                dados.sort(function (a, b) {
+                    if (a.dislikes < b.dislikes) {
+                        return 1;
+                    }
+                    if (a.dislikes > b.dislikes) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
+            console.log(dados);
         }
     },
     
@@ -181,6 +255,7 @@ const Forum = {
 
         await socket.on('listComentariosInicial',(data)=>{
             this.comentarios = data;
+            comments = this.comentarios;
         });       
         
     },

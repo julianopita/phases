@@ -17,22 +17,50 @@ const Forum = {
                 <label for="noju">No Ju</label>
                 <span> Filtro ativo: {{filterInterest}}</span>
             </div>-->
-
-            <div class="filtros" style="">
-
-            <input @click="filtrar('MR')" type="radio" id="MR" name="filter" value="MR" checked>
-            <label for="MR">Mais Recente</label>
             
-            <input @click="filtrar('MC')" type="radio" id="MC"  name="filter"value="MC">
-            <label for="MC">Mais Comentado</label>
-            
-            <input @click="filtrar('ML')" type="radio" id="ML" name="filter" value="ML">
-            <label for="ML">Mais Curtido</label>
+            <div>
 
-            <input @click="filtrar('MD')" type="radio" id="MD" name="filter" value="MD">
-            <label for="MD">Menos Curtido</label>
+                <label> Filtros 1 </label>
+                <button type="button" @click="Mudarestado('filtros1')">Mostrar / Esconder</button>
+
+            </div>
+            <div class="filtros1" id="filtros1" style="">
+
+                <input @click="filtrar('MR')" type="radio" id="MR" name="filter" value="MR" checked>
+                <label for="MR">Mais Recente</label>
+                
+                <input @click="filtrar('MC')" type="radio" id="MC"  name="filter"value="MC">
+                <label for="MC">Mais Comentado</label>
+                
+                <input @click="filtrar('ML')" type="radio" id="ML" name="filter" value="ML">
+                <label for="ML">Mais Curtido</label>
+
+                <input @click="filtrar('MD')" type="radio" id="MD" name="filter" value="MD">
+                <label for="MD">Menos Curtido</label>
             
-        </div>
+            </div>
+
+            <div>
+
+                <label> Filtros 2 </label>
+                <button type="button" @click="Mudarestado('filtros2')">Mostrar / Esconder</button>
+
+            </div>
+            <div class="filtros2" id="filtros2" style="display: none">
+
+                <input @click="filtrar('MR')" type="radio" id="MR" name="filter" value="MR" checked>
+                <label for="MR">Mais Recente</label>
+                
+                <input @click="filtrar('MC')" type="radio" id="MC"  name="filter"value="MC">
+                <label for="MC">Mais Comentado</label>
+                
+                <input @click="filtrar('ML')" type="radio" id="ML" name="filter" value="ML">
+                <label for="ML">Mais Curtido</label>
+
+                <input @click="filtrar('MD')" type="radio" id="MD" name="filter" value="MD">
+                <label for="MD">Menos Curtido</label>
+            
+            </div>
 
             <div class="comentario">      
             <ul>
@@ -209,6 +237,7 @@ const Forum = {
                     return 0;
                 });
             }
+            
             if (tipo == "MC") {
                 dados.sort(function (a, b) {
                     if (a.resposta < b.resposta) {
@@ -220,6 +249,7 @@ const Forum = {
                     return 0;
                 });
             }
+            
             if (tipo == "ML") {
                 dados.sort(function (a, b) {
                     if (a.likes < b.likes) {
@@ -231,6 +261,7 @@ const Forum = {
                     return 0;
                 });
             }
+
             if (tipo == "MD") {
                 dados.sort(function (a, b) {
                     if (a.dislikes < b.dislikes) {
@@ -243,6 +274,14 @@ const Forum = {
                 });
             }
             console.log(dados);
+        },
+
+        Mudarestado: (el) => {
+            var display = document.getElementById(el).style.display;
+            if(display == "none")
+                document.getElementById(el).style.display = 'block';
+            else
+                document.getElementById(el).style.display = 'none';
         }
     },
     

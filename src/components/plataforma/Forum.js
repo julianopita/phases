@@ -58,40 +58,23 @@ const Forum = {
                 </div>
 
                 <div>
-                    <input @click="filtrar('Implantacao')" type="radio" id="Implantacao" name="filter3" value="Implantacao">
-                    <label for="Implantacao">Implantação</label>
+                    <input @click="filtrar('Implantacao')" type="radio" id="implantacao" name="filter3" value="implantacao">
+                    <label for="implantacao">Implantação</label>
                     
-                    <input @click="filtrar('localizacao')" type="radio" id="localizacao"  name="filter3"value="localizacao">
+                    <input @click="filtrar('Localizacao')" type="radio" id="localizacao"  name="filter3"value="localizacao">
                     <label for="localizacao">Localização</label>
                     
-                    <input @click="filtrar('uso')" type="radio" id="uso" name="filter3" value="uso">
+                    <input @click="filtrar('Uso')" type="radio" id="uso" name="filter3" value="uso">
                     <label for="uso">Uso</label>
 
-                    <input @click="filtrar('custo')" type="radio" id="custo" name="filter3" value="custo">
+                    <input @click="filtrar('Custo')" type="radio" id="custo" name="filter3" value="custo">
                     <label for="custo">Custo</label>
 
 
                 </div>
 
             </div>
-
-            
-
-            <div class="filtros3" id="filtros3" style="display: none">
-
-            <input @click="filtrar('MR')" type="radio" id="MR" name="filter" value="MR" checked>
-            <label for="MR">Mais Recente</label>
-            
-            <input @click="filtrar('MC')" type="radio" id="MC"  name="filter"value="MC">
-            <label for="MC">Mais Comentado</label>
-            
-            <input @click="filtrar('ML')" type="radio" id="ML" name="filter" value="ML">
-            <label for="ML">Mais Curtido</label>
-
-            <input @click="filtrar('MD')" type="radio" id="MD" name="filter" value="MD">
-            <label for="MD">Menos Curtido</label>
         
-        </div>
 
             <div class="comentario">      
             <ul>
@@ -113,7 +96,7 @@ const Forum = {
                     <span class="area-buttons"><select class="bloco-entradas" name="tag" id="tag">
                         <option value disabled selected value="undefined">selecione um assunto</option> 
                         <option value="Implantacao">implantação</option>
-                        <option value="Localização">localização</option>
+                        <option value="Localizacao">localização</option>
                         <option value="Uso">uso</option>
                         <option value="Custo">custo</option>
                     </select>
@@ -369,7 +352,7 @@ const Forum = {
                         return 0;
                     });
                     break;
-                case "localizacao":
+                case "Localizacao":
                     dados.sort(function (a, b) {
                         if (a.tag.includes(tipo) < b.tag.includes(tipo)) {
                             return 1;
@@ -380,7 +363,7 @@ const Forum = {
                         return 0;
                     });
                     break;
-                case "uso":
+                case "Uso":
                     dados.sort(function (a, b) {
                         if (a.tag.includes(tipo) < b.tag.includes(tipo)) {
                             return 1;
@@ -391,7 +374,7 @@ const Forum = {
                         return 0;
                     });
                     break;
-                case "custo":
+                case "Custo":
                     dados.sort(function (a, b) {
                         if (a.tag.includes(tipo) < b.tag.includes(tipo)) {
                             return 1;

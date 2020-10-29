@@ -1,19 +1,15 @@
-import {BIMServerLoaderPlugin} from '../../node_modules/@xeokit/xeokit-sdk/src/plugins/BIMServerLoaderPlugin/BIMServerLoaderPlugin.js'
-import {Viewer} from '../../node_modules/@xeokit/xeokit-sdk/src/viewer/Viewer.js';
-import BimServerClient from '../../node_modules/@xeokit/xeokit-sdk/src/plugins/BIMServerLoaderPlugin/BIMServerClient/bimserverclient.js';
-
+//Import on load xeokit plugins
+import StoreyViews from './plugins/storey.js';
 
 const username = "platnomads@gmail.com";
 const password = "@bimserver";
 
-
 var Login;
 
-
-
 export default Login = {
-    cria
+    cria 
 };
+
     function cria(viewer,bimServerClient,bimServerLoader,poid){
         bimServerClient.init(() => {
         // Login to the BIMServerClient
@@ -30,6 +26,7 @@ export default Login = {
                     const schema = project.schema;
     
                     // Load our model from BIMServer
+                    
                     const model = bimServerLoader.load({ // Returns a Node representing the model
                         id: "canvas_main",                   // Assigned to Node#id, and Node#isModel will also be set true
                         poid: poid,
@@ -39,11 +36,13 @@ export default Login = {
                         rotation: [-90, 0, 0],          // Rotate the model
                         edges: true                     // Emphasise edges
                     });
+                    
     
-                    // Fit camera to model when loaded
+                    // Fit camera to model when loaded, activate on load plugins
                     model.on("loaded", function() {
                         viewer.cameraFlight.jumpTo(model);
-                    });
+                        StoreyViews(viewer);
+                    });                   
     
                     model.on("error", function (errMsg) {
                         console.error("Loading failed: " + errMsg);

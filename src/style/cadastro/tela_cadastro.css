@@ -54,10 +54,10 @@
   margin-top: 0px;
 }
 
-#tela-cadastro #barra-navegacao img {
-  height: 40px;
-  padding: 0px;
-  background-color: white;
+#tela-cadastro img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #tela-cadastro #formulario {

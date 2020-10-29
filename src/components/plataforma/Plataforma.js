@@ -19,7 +19,8 @@ const Plataforma = {
     template : `
         <div id="plataforma">
             <barra-navegacao/>
-            <div id="treeViewContainer"></div>  
+            <div id="treeViewContainer"></div>
+            <div id="storeyMap"></div>
             <div class="modelo-forum">            
                 <div>
                     <modelo/>

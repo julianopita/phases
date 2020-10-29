@@ -1,4 +1,4 @@
-import {infoClicked} from '../components/plataforma/Plataforma.js'
+import {infoClicked} from '../../components/plataforma/Plataforma.js'
 
 
 
@@ -30,7 +30,7 @@ const click = function(viewer,bimServerClient,roid){
         });
     }
 
-    viewer.scene.input.on("mouseclicked",async function (coords) {
+    viewer.scene.input.on("dblclick",async function (coords) {
 
         let hit = viewer.scene.pick({
         canvasPos: coords,

@@ -1,4 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap");
+#storeyMap {
+  display: block;
+  padding-top: 25px;
+  pointer-events: all;
+  height: 25%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.86);
+  color: black;
+  top: 10%;
+  z-index: 10000;
+  float: left;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  width: auto;
+}
+
+#planPointer {
+  color: #000000;
+  line-height: 1.8;
+  text-align: center;
+  font-family: "monospace";
+  font-weight: bold;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url(../../../assets/storeyMapCamera.png);
+  background-repeat: no-repeat;
+  background-size: 60px 60px;
+}
+
 .annotation-marker {
   color: #ffffff;
   line-height: 1.8;
@@ -74,7 +112,7 @@
 #treeViewContainer {
   padding-top: 25px;
   pointer-events: all;
-  height: 30%;
+  height: 25%;
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
@@ -82,15 +120,15 @@
   color: black;
   top: 10%;
   z-index: 200000;
-  float: left;
-  left: 0;
+  float: right;
+  right: 30%;
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   user-select: none;
   -ms-user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  width: 300px;
+  width: 200px;
 }
 
 #treeViewContainer ul {
@@ -117,6 +155,7 @@
 }
 
 #treeViewContainer ul li a.plus {
+  visibility: hidden;
   background-color: #ded;
 }
 

@@ -5,6 +5,7 @@ import router from './router/index.js'
 
 
 
+
 Vue.config.productionTipimport = false;
 
 new Vue({

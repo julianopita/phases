@@ -3,8 +3,6 @@
 // import Plataforma from './components/plataforma/Plataforma.js'
 
 
-
-
 const Template = `
     <div>
         <router-view/>
@@ -12,7 +10,7 @@ const Template = `
 ` 
 export default {
     name : 'App',
-    components : {
+    components : {       
     } ,
     template : Template,
     beforeDestroy(){

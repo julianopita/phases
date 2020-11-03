@@ -1,9 +1,9 @@
-$fundo : #DBDBDB;
+$fundo :rgba(255, 255, 255, 0.86);
 $corFormulario : #75767B;
 $input : #f2f3f6da;
 $defaulColor : #8b8b8b;
 $hoverButton : #b6b6b6;
-$fundoForum : #DBDBDB;
+$fundoForum : rgba(255, 255, 255, 0.86);
 $fundoComentario : #D5D9F0;
 $novoComentario : #ffffff;
 $buttonComentario : #8b8b8b;
@@ -13,7 +13,36 @@ $buttonComentario : #8b8b8b;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
 
+
+//wrappers
+.forum-wrapper {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  width: 500px;
+  z-index: 200000;
+  background-color: rgba(255, 255, 255, 0);
+}
+.info-wrapper {
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  width: 200px;
+  z-index: 200000;
+}
+.wrapper-tree {
+  position: relative;  
+  width: 200px;
+  margin-bottom: 10px;
+}
+.wrapper-storey {
+  position: relative;  
+  width: 200px;
+  margin-bottom: 10px;
+}
+
 //dropDowns
+
 
 .navbar {
   overflow: hidden;
@@ -30,25 +59,89 @@ $buttonComentario : #8b8b8b;
   text-decoration: none;
 }
 
-.dropdown {
-  float: left;
-  overflow: hidden;
+.dropdown-closed {  
+  height: 0px;
+  transition: height 0.5s; 
 }
 
-.dropdown .dropbtn {
+.dropdown-open-tree {  
+  height: 150px;
+  transition: height 0.5s; 
+}
+
+.dropdown-open-storey {  
+  height: 300px;
+  transition: height 0.5s; 
+}
+
+.dropleft-closed {
+  //float: left;  
+  width: 60px;
+  transition: width 0.5s; 
+}
+    .dropleft-closed-forum {
+      width: 0px;
+      opacity: 0;
+      transition: opacity width 0.5s;
+    }
+
+.dropleft-open-forum { 
+  //float: left; 
+  width: 440px;
+  opacity: 100;
+  transition: opacity 0.5s, width 0.5s; 
+}
+
+.dropbtn {
   cursor: pointer;
-  font-size: 16px;  
+  font-size: 16px;
+  color: white;  
   border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
+  outline: none;  
+  padding: 2px 0px;
+  font-weight: bold;
+  background-color: blue;
+  transition: background-color .5s;
   font-family: inherit;
-  margin: 0;
+  margin: 0px 0px;
+  width: 200px;  
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
-  background-color: red;
+.dropbtn-vertical { 
+  display: block; 
+  position: relative;
+  top: 30px;
+  left: 0px;  
+  cursor: pointer;
+  font-size: 20px;
+  color: white;  
+  border: solid 2px blue;
+  border-radius: 8px;
+  outline: none;  
+  padding: 2px 0px;
+  font-weight: bold;
+  background-color: blue;
+  transition: background-color .5s;
+  font-family: inherit;  
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;  
+}
+
+.clicked-vertical {      
+  background-color: white;
+  left: 5px;
+  transition: background-color .5s;
+  color: blue;
+  border: solid 2px blue;
+   
+}
+
+.clicked {    
+  background-color: white;
+  transition: background-color .5s;
+  color: black;
+  border: solid 2px blue;  
 }
 
 .dropdown-content {
@@ -77,34 +170,31 @@ $buttonComentario : #8b8b8b;
   display: block;
 }
 
-
-
+.toolbar {
+  float: right;
+  background-color: rgba(255,255,255,0); 
+}
 
 //StoreyMaps styles
 
-#storeyMap {
-
-
-  display: block;
-  padding-top: 25px;
-  pointer-events: all;
-  height: 25%;
+#storeyMap {  
+  
+  pointer-events: all;  
   overflow-y: hidden;
   overflow-x: hidden;
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   background-color: rgba(255, 255, 255, 0.86);
-  color: black;
-  top: 10%;
+  color: black;  
   z-index: 10000;
-  float: left;  
+  float: right;  
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   user-select: none;
   -ms-user-select: none;
   -moz-user-select: none;
-  -webkit-user-select: none;
+  -webkit-user-select: none;   
   width: auto;
 }
 
@@ -198,18 +288,14 @@ $buttonComentario : #8b8b8b;
 
 //TreeView Styles
 #treeViewContainer {
-    padding-top: 25px;
-    pointer-events: all;
-    height: 25%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    position: absolute;
+    position: relative;    
+    pointer-events: all;    
+    overflow-y: hidden;
+    overflow-x: hidden;    
     background-color: rgba(255, 255, 255, 0.86);
-    color: black;
-    top: 10%;
-    z-index: 200000;
-    float: right;
-    right: 30%;
+    color: black;    
+    z-index: 2000;
+    float: right;    
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
     user-select: none;
@@ -220,15 +306,13 @@ $buttonComentario : #8b8b8b;
   }
   
   #treeViewContainer ul {
-    list-style: none;
-    padding-left: 1.75em;
+    list-style: none;    
   }
   
   #treeViewContainer ul li {
     
     position: relative;
     width: 500px;
-  
   }
   
   #treeViewContainer ul li a {
@@ -283,13 +367,17 @@ $buttonComentario : #8b8b8b;
 #plataforma{
     font-family: 'Arial', sans-serif;
     height: 100%;
-    background-color: $fundo;
+    background-color:rgba(255, 255, 255, 0.86);
     position: relative;
 
-
+    .modelo-forum-open{
+      grid-template-columns: 70% 30%;
+      transition: grid-template-columns 0.5s;
+    }
     .modelo-forum{
         display: grid;
-        grid-template-columns: 70% 30%;
+        grid-template-columns: 100% 0%;
+        transition: grid-template-columns 0.5s;
         div{
             .infoName{
                 display: grid;                

@@ -2,7 +2,8 @@
 import StoreyViews from './plugins/storey.js';
 import {AmbientLight} from "../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/lights/AmbientLight.js";
 import {DirLight} from "../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/lights/DirLight.js";
-import {Shadow} from "../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/lights/Shadow.js";
+import TreeView from './plugins/treeview.js';
+
 const username = "platnomads@gmail.com";
 const password = "@bimserver";
 
@@ -113,12 +114,14 @@ export default Login = {
                         objectDefaults: BIMobjectDefaults,//Adusts model appeareance
                         //saoEnabled: true
                     });
+                                     
                     
     
                     // Fit camera to model when loaded, activate on load plugins
                     model.on("loaded", function() {
                         viewer.cameraFlight.jumpTo(model);
-                        StoreyViews(viewer);
+                        StoreyViews(viewer);                        
+                        TreeView(viewer, model);
                     });                   
     
                     model.on("error", function (errMsg) {

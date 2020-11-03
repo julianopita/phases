@@ -4,10 +4,15 @@ import Modelo from './modelo/Modelo.js';
 import axiosInstance from '../../connection/apiInfo.js';
 
 
+
+
 const infoClicked = {
     descricao  : null,
     area : null
 }
+
+var controlMeasurement = true;
+localStorage.setItem("controlMeasurement", "true");
 
 
 const Plataforma = {
@@ -15,22 +20,28 @@ const Plataforma = {
     template : `
         <div id="plataforma">
     <barra-navegacao/>
-    <button class="dropbtn" id="drop1" @click="showTreeView = !showTreeView">Ver árvore
-        <i class="fa fa-caret-down"></i>
-    </button>
-        <div class="dropdown" id="dropDown-tree" v-show= "showTreeView">
-            <div id="treeViewContainer"></div>            
+
+
+    <div class="info-wrapper">
+        <div class="wrapper-tree">
+            <div>
+                <button id="drop1" @click="showTreeView = !showTreeView" v-bind:class = "[showTreeView ? 'dropbtn clicked' : 'dropbtn']">Pavimentos
+                    <i v-bind:class = "[showTreeView ? 'fa fa-chevron-down fa-rotate-180' : 'fa fa-chevron-down']"></i>
+                </button>
+            </div>
+            <div class="dropdown" id="treeViewContainer" v-bind:class = "[showTreeView ? 'dropdown-open-tree' : 'dropdown-closed']">
+            </div>
         </div> 
-    <button class="dropbtn" id="drop2" @click="showStoreyMap = !showStoreyMap">Ver árvore
-        <i class="fa fa-caret-down"></i>
-    </button>
-    <button class="dropbtn" id="drop3" @click="showForum = !showForum">Ver árvore
-        <i class="fa fa-caret-down"></i>
-    </button>
-        <div class="dropdown" id="dropDown-storey" v-show= "showStoreyMap">
-            <div id="storeyMap"></div>            
-        </div>                          
-        
+        <div class="wrapper-storey">
+            <div>
+                <button class="dropbtn" id="drop2" @click="showStoreyMap = !showStoreyMap" v-bind:class = "[showStoreyMap ? 'dropbtn clicked' : 'dropbtn']">Plantas
+                    <i v-bind:class = "[showStoreyMap ? 'fa fa-chevron-down fa-rotate-180' : 'fa fa-chevron-down']"></i>
+                </button>
+            </div>
+                <div class="dropdown" id="storeyMap" v-bind:class = "[showStoreyMap ? 'dropdown-open-storey' : 'dropdown-closed']"> 
+            </div>
+        </div>
+    </div> 
         <div class="modelo-forum" id="dropDown-forum">            
             <div>
                 <modelo/>
@@ -53,28 +64,45 @@ const Plataforma = {
                                 &nbsp Comprimento: 62,92m</br>
                                 &nbsp Largura: 58,30m</br>
                                 &nbsp Desnível: 1,54m</br>
-                        </div>
-                        
+                        </div>                        
                     </div>
-                    </div>
-                    
-                </div>
+                </div>                    
+            </div>
         </div>
-        <a v-show= "showForum">
-        <forum/>
-        </a>
+    <div class= "forum-wrapper"  v-bind:class = "[showForum ? 'dropleft-open-forum' : 'dropleft-closed']">
+        <div class="toolbar">
+            <button class="dropbtn-vertical" id="drop3" @click="showForum = !showForum" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+                <i class="far fa-comment-alt"></i>
+            </button>
+            <button class="dropbtn-vertical" id="measurements" @click="showMeasurement = !showMeasurement" v-on:click="measurement" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+                <i class="fa fa-ruler"></i>
+            </button>
+            <button class="dropbtn-vertical" id="annotations" @click="showForum = !showForum" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+                <i class="fa fa-sticky-note"></i>
+            </button>
+            <button class="dropbtn-vertical" id="view" @click="showForum = !showForum" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+                <i class="fa fa-street-view"></i>
+            </button>
+        </div>
+        <div id="Forum"  v-bind:class = "[showForum ? 'dropleft-open-forum' : 'dropleft-closed-forum']">       
+            <forum/>        
+        </div>
     </div>
     <link rel="stylesheet" href="src/style/plataforma/plataforma.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</div>
 </div>
     `,
+    
     data(){
         return{
             descricao : infoClicked.descricao,
             area : infoClicked.area,
             apiInfo : '',
-            showTreeView : true,
-            showStoreyMap : true,
-            showForum : true
+            showTreeView : false,           
+            showStoreyMap : false,
+            showForum : true,
+            showMeasurement : false
         }
     },
     methods : {
@@ -82,8 +110,16 @@ const Plataforma = {
             await axiosInstance.get('/infos')
             .then((data)=>{
                 console.log(data);
-            })
-        }                
+            })            
+        },
+
+        measurement : function(){  
+                ruler(viewer, "true");           
+            }
+       
+    },
+    watch : {
+        
     },
 
     mounted : async function (){
@@ -97,5 +133,6 @@ const Plataforma = {
 
 export{
     Plataforma,
-    infoClicked,
+    infoClicked,       
 };
+

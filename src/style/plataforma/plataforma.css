@@ -1,19 +1,184 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap");
-#storeyMap {
+.forum-wrapper {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  width: 500px;
+  z-index: 200000;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.info-wrapper {
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  width: 200px;
+  z-index: 200000;
+}
+
+.wrapper-tree {
+  position: relative;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.wrapper-storey {
+  position: relative;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown-closed {
+  height: 0px;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
+}
+
+.dropdown-open-tree {
+  height: 150px;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
+}
+
+.dropdown-open-storey {
+  height: 300px;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
+}
+
+.dropleft-closed {
+  width: 60px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+.dropleft-closed-forum {
+  width: 0px;
+  opacity: 0;
+  -webkit-transition: opacity width 0.5s;
+  transition: opacity width 0.5s;
+}
+
+.dropleft-open-forum {
+  width: 440px;
+  opacity: 100;
+  -webkit-transition: opacity 0.5s, width 0.5s;
+  transition: opacity 0.5s, width 0.5s;
+}
+
+.dropbtn {
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 2px 0px;
+  font-weight: bold;
+  background-color: blue;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+  font-family: inherit;
+  margin: 0px 0px;
+  width: 200px;
+}
+
+.dropbtn-vertical {
   display: block;
-  padding-top: 25px;
+  position: relative;
+  top: 30px;
+  left: 0px;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  border: solid 2px blue;
+  border-radius: 8px;
+  outline: none;
+  padding: 2px 0px;
+  font-weight: bold;
+  background-color: blue;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+  font-family: inherit;
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.clicked-vertical {
+  background-color: white;
+  left: 5px;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+  color: blue;
+  border: solid 2px blue;
+}
+
+.clicked {
+  background-color: white;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+  color: black;
+  border: solid 2px blue;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+.toolbar {
+  float: right;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#storeyMap {
   pointer-events: all;
-  height: 25%;
   overflow-y: hidden;
   overflow-x: hidden;
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   background-color: rgba(255, 255, 255, 0.86);
   color: black;
-  top: 10%;
   z-index: 10000;
-  float: left;
+  float: right;
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   user-select: none;
@@ -110,18 +275,14 @@
 }
 
 #treeViewContainer {
-  padding-top: 25px;
+  position: relative;
   pointer-events: all;
-  height: 25%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
-  position: absolute;
   background-color: rgba(255, 255, 255, 0.86);
   color: black;
-  top: 10%;
-  z-index: 200000;
+  z-index: 2000;
   float: right;
-  right: 30%;
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   user-select: none;
@@ -133,7 +294,6 @@
 
 #treeViewContainer ul {
   list-style: none;
-  padding-left: 1.75em;
 }
 
 #treeViewContainer ul li {
@@ -192,15 +352,26 @@
 #plataforma {
   font-family: 'Arial', sans-serif;
   height: 100%;
-  background-color: #DBDBDB;
+  background-color: rgba(255, 255, 255, 0.86);
   position: relative;
+}
+
+#plataforma .modelo-forum-open {
+  -ms-grid-columns: 70% 30%;
+      grid-template-columns: 70% 30%;
+  -webkit-transition: grid-template-columns 0.5s;
+  transition: grid-template-columns 0.5s;
+  transition: grid-template-columns 0.5s, -ms-grid-columns 0.5s;
 }
 
 #plataforma .modelo-forum {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 70% 30%;
-      grid-template-columns: 70% 30%;
+  -ms-grid-columns: 100% 0%;
+      grid-template-columns: 100% 0%;
+  -webkit-transition: grid-template-columns 0.5s;
+  transition: grid-template-columns 0.5s;
+  transition: grid-template-columns 0.5s, -ms-grid-columns 0.5s;
 }
 
 #plataforma .modelo-forum div .infoName {

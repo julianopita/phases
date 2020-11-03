@@ -9,12 +9,9 @@ const canvaComponent = {
     template : `
     <div id="canva">
         <div class="botoes">
-            <button id="button1" @click="canvasUm">versão 1</button>
-            <!--<button id="button2" @click="canvasDois">versão 2</button>
-            <button id="button3" @click="canvasTres">versão 3</button>-->
-            <button id="annotations" @click="annotations">anotações (F)</button>
-            <button id="measurements" @click="measurements">medidas (L)</button>
-            <button id="storeys"@click="storeysTree">andares</button>           
+        <!--<button id="button1" @click="canvasUm">versão 1</button>
+            <button id="button2" @click="canvasDois">versão 2</button>
+            <button id="button3" @click="canvasTres">versão 3</button>-->                                   
         </div>
     <div id="modelos">
         <canvas id='c1' style="background:white"></canvas>
@@ -59,17 +56,13 @@ const canvaComponent = {
         measurements : function() {
             this.simulateKeyPress(76);
             console.log(76);
-        },
-        storeysTree : function() {
-            if (document.getElementById("treeViewContainer").style.zIndex == -10) {
-                document.getElementById("treeViewContainer").style.zIndex = 20000;
-            } else {
-                document.getElementById("treeViewContainer").style.zIndex = -10
-            }
-        }
-        
-        
+        }   
     }
 }
+
+window.addEventListener ('controlMeasurement' ,() => {
+    console.log("fire");
+    Measurement(viewer);
+ });
 
 export default canvaComponent;

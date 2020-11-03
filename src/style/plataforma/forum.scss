@@ -1,9 +1,9 @@
-$fundo : #DBDBDB;
+$fundo : rgb(255, 255, 255);
 $corFormulario : white;
 $input : #f2f3f6da;
 $defaulColor : #8b8b8b;
 $hoverButton : #b6b6b6;
-$fundoForum :white;
+$fundoForum :rgba(255, 255, 255, 0.86);
 $fundoComentario : #D5D9F0;
 $novoComentario : #ffffff;
 $buttonComentario : #ee3737;
@@ -123,7 +123,7 @@ textarea{
 }
 
 #forum{ 
-    background-color:#8b8b8b;
+    background-color:rgba(255, 255, 255, 0);
     height: 100%;   
     p{
         line-height: 15px;        
@@ -132,7 +132,7 @@ textarea{
     }    
     ul{
         list-style-type: none;
-        background-color: #8b8b8b;
+        background-color: white;
         overflow:auto;
         padding: 2px;
         max-height: 75.5vh;
@@ -156,7 +156,7 @@ textarea{
        
        margin-left: 0px;
        margin-right: 0px;
-       background-color: #8b8b8b;
+       background-color:rgba(255, 255, 255, 0);
        
        
        

@@ -1,13 +1,13 @@
 import {BIMServerLoaderPlugin} from '../../node_modules/@xeokit/xeokit-sdk/src/plugins/BIMServerLoaderPlugin/BIMServerLoaderPlugin.js'
 import {Viewer} from '../../node_modules/@xeokit/xeokit-sdk/src/viewer/Viewer.js';
 import BimServerClient from '../../node_modules/@xeokit/xeokit-sdk/src/plugins/BIMServerLoaderPlugin/BIMServerClient/bimserverclient.js';
-//import viewer from './viewer.js';
-//Import xeokit plugins
+
 import Login from "./login.js";
 import click from "./plugins/click.js";
 import Annotations from "./plugins/annotations.js";
 import Measurement from './plugins/measurement.js';
-//import {measurementControl} from '../components/plataforma/plataforma.js';
+//import {measureControl} from '../components/plataforma/Plataforma.js';
+import measurementEvent from './measurementClick.js';
 
 //Viewer
 const clientNomads = function(bimServerAddress,poid,canvasId, roid){
@@ -23,17 +23,19 @@ const clientNomads = function(bimServerAddress,poid,canvasId, roid){
     console.log(cameraControl);
     cameraControl.mouseWheelDollyRate = 2;
 
-//Activate xeokit plugins    
-    Measurement(viewer);
+//Activate xeokit plugins
+
+    // Measurement (viewer, measureControl);    
     Annotations(viewer);   
 
-//Load model in the viewer    
-const bimServerLoader = new BIMServerLoaderPlugin(viewer, {
-    bimServerClient: bimServerClient
-});
-Login.cria(viewer,bimServerClient,bimServerLoader,poid);
-click(viewer,bimServerClient,roid);
+    //Load model in the viewer    
+    const bimServerLoader = new BIMServerLoaderPlugin(viewer, {
+        bimServerClient: bimServerClient
+    });
+    Login.cria(viewer,bimServerClient,bimServerLoader,poid);
+    click(viewer,bimServerClient,roid);
 }
 
+  //console.log(this.$showMeasurement);
 
 export default clientNomads

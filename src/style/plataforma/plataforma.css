@@ -101,7 +101,7 @@
   display: block;
   position: relative;
   top: 30px;
-  left: 0px;
+  left: 5px;
   cursor: pointer;
   font-size: 20px;
   color: white;
@@ -374,7 +374,13 @@
   transition: grid-template-columns 0.5s, -ms-grid-columns 0.5s;
 }
 
-#plataforma .modelo-forum div .infoName {
+#plataforma .modelo-forum .info-wrapper {
+  width: 70%;
+  height: 100px;
+  position: relative;
+}
+
+#plataforma .modelo-forum .info-wrapper div .infoName {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 50% 50%;
@@ -388,19 +394,19 @@
   border-color: #75767B;
 }
 
-#plataforma .modelo-forum div .infoName .left {
+#plataforma .modelo-forum .info-wrapper div .infoName .left {
   padding-top: 1%;
   padding-left: 30%;
   text-align: left;
 }
 
-#plataforma .modelo-forum div .infoName .right {
+#plataforma .modelo-forum .info-wrapper div .infoName .right {
   padding-top: 1%;
   padding-right: 30%;
   text-align: right;
 }
 
-#plataforma .modelo-forum div .infoBar {
+#plataforma .modelo-forum .info-wrapper div .infoBar {
   display: -ms-grid;
   display: grid;
   height: 15vh;
@@ -409,7 +415,7 @@
   background-color: #8b8b8b;
 }
 
-#plataforma .modelo-forum div .infoBar .click {
+#plataforma .modelo-forum .info-wrapper div .infoBar .click {
   color: white;
   font-size: 12px;
   line-height: 12px;
@@ -420,7 +426,7 @@
   border-width: 1px;
 }
 
-#plataforma .modelo-forum div .infoBar .fixed {
+#plataforma .modelo-forum .info-wrapper div .infoBar .fixed {
   line-height: 12px;
   padding: 0px;
   margin-top: 0px;

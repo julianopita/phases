@@ -3,9 +3,6 @@ import Vue from './lib/vue.js';
 import router from './router/index.js'
 
 
-
-
-
 Vue.config.productionTipimport = false;
 
 new Vue({
@@ -13,3 +10,4 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
+export const EventBus = new Vue();

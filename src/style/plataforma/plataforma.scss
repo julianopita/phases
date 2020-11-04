@@ -111,7 +111,7 @@ $buttonComentario : #8b8b8b;
   display: block; 
   position: relative;
   top: 30px;
-  left: 0px;  
+  left: 5px;  
   cursor: pointer;
   font-size: 20px;
   color: white;  
@@ -378,8 +378,16 @@ $buttonComentario : #8b8b8b;
         display: grid;
         grid-template-columns: 100% 0%;
         transition: grid-template-columns 0.5s;
+
+        .info-wrapper{
+          width: 70%;
+          height: 100px;
+          position: relative;
+          
+        
         div{
             .infoName{
+                
                 display: grid;                
                 grid-template-columns: 50% 50%;
                 position: relative;
@@ -429,6 +437,7 @@ $buttonComentario : #8b8b8b;
                 }
             }
         }
+      }
     }
 
 

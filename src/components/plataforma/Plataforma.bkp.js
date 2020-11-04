@@ -2,6 +2,7 @@ import BarraNavegacao from '../telaIncial/BarraNavegacao.js';
 import Forum from './Forum.js';
 import Modelo from './modelo/Modelo.js';
 import axiosInstance from '../../connection/apiInfo.js';
+import {EventBus} from '../../main.js';
 
 
 
@@ -9,10 +10,12 @@ import axiosInstance from '../../connection/apiInfo.js';
 const infoClicked = {
     descricao  : null,
     area : null
-};
-var measureControl = {
-    state: "true",
-};
+}
+const measureControl = {
+    control : 0
+}
+
+sessionStorage.setItem("measureControl", "true");
 
 const Plataforma = {
     name : "plataforma",
@@ -24,11 +27,11 @@ const Plataforma = {
     <div class="info-wrapper">
         <div class="wrapper-tree">
             <div>
-                <button id="drop1" title="Exibir andares" @click="showTreeView = !showTreeView" v-bind:class = "[showTreeView ? 'dropbtn clicked' : 'dropbtn']">Pavimentos
+                <button id="drop1" @click="showTreeView = !showTreeView" v-bind:class = "[showTreeView ? 'dropbtn clicked' : 'dropbtn']">Pavimentos
                     <i v-bind:class = "[showTreeView ? 'fa fa-chevron-down fa-rotate-180' : 'fa fa-chevron-down']"></i>
                 </button>
             </div>
-            <div class="dropdown" title="Exibir plantas" id="treeViewContainer" v-bind:class = "[showTreeView ? 'dropdown-open-tree' : 'dropdown-closed']">
+            <div class="dropdown" id="treeViewContainer" v-bind:class = "[showTreeView ? 'dropdown-open-tree' : 'dropdown-closed']">
             </div>
         </div> 
         <div class="wrapper-storey">
@@ -44,10 +47,9 @@ const Plataforma = {
         <div class="modelo-forum" id="dropDown-forum">            
             <div>
                 <modelo/>
-                <div class="info-wrapper">
                 <div class="infoName">
                     <span class="left">elemento selecionado</span><span class="right">informaçoes gerais</span>
-                </div>                                  
+                </div>                    
                 <div class="infoBar">                    
                     <div class="click">
                         <div id="descricao"> </div>
@@ -66,26 +68,22 @@ const Plataforma = {
                                 &nbsp Desnível: 1,54m</br>
                         </div>                        
                     </div>
-                </div> 
                 </div>                    
             </div>
         </div>
     <div class= "forum-wrapper"  v-bind:class = "[showForum ? 'dropleft-open-forum' : 'dropleft-closed']">
         <div class="toolbar">
-            <button class="dropbtn-vertical" title="Recolher ou exibir discussões" id="drop3" @click="showForum = !showForum" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+            <button class="dropbtn-vertical" id="drop3" @click="showForum = !showForum" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
                 <i class="far fa-comment-alt"></i>
             </button>
-            <button class="dropbtn-vertical" title="Ferramenta fita métrica" id="measurements" @click="showMeasurement = !showMeasurement" v-on:click="measurement" v-bind:class = "[showMeasurement ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+            <button class="dropbtn-vertical" id="measurements" @click="showMeasurement = !showMeasurement" v-on:click="measurement" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
                 <i class="fa fa-ruler"></i>
             </button>
-            <button class="dropbtn-vertical" title="Exibir ou esconder anotações" id="annotations" @click="showAnnotations = !showAnnotations" v-bind:class = "[showAnnotations ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+            <button class="dropbtn-vertical" id="annotations" @click="showForum = !showForum" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
                 <i class="fa fa-sticky-note"></i>
             </button>
-            <button class="dropbtn-vertical" title="Mudar visualização" id="view" @click="showView = !showView" v-bind:class = "[showView ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+            <button class="dropbtn-vertical" id="view" @click="showForum = !showForum" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
                 <i class="fa fa-street-view"></i>
-            </button>
-            <button class="dropbtn-vertical" title="Exibir informações" id="Info" @click="showInfo = !showInfo" v-bind:class = "[showInfo ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
-                <i class="fas fa-info-circle"></i>
             </button>
         </div>
         <div id="Forum"  v-bind:class = "[showForum ? 'dropleft-open-forum' : 'dropleft-closed-forum']">       
@@ -106,10 +104,7 @@ const Plataforma = {
             showTreeView : false,           
             showStoreyMap : false,
             showForum : true,            
-            showMeasurement : true,
-            showAnnotations : true,
-            showView: true,
-            showInfo: true
+            showMeasurement : false
             }
         
     },
@@ -121,15 +116,14 @@ const Plataforma = {
             })            
         },
 
-        measurement: function() { 
-            console.log(measureControl.state);               
+        measurement: async function() {  
         
-            if (measureControl.state == "true") {
+            if (sessionStorage.getItem("measureControl") == "true") {
                 console.log("change to false");               
-                measureControl.state = "false";
+                sessionStorage.setItem("measureControl", "false");
             } else { 
                 console.log("change to true");                
-                measureControl.state = "true"; 
+                sessionStorage.setItem("measureControl", "true"); 
             }            
         } 
     },    
@@ -146,7 +140,7 @@ const Plataforma = {
 export {
     Plataforma,
     infoClicked,
-    measureControl,                      
+    measureControl,                  
 };
 
 window.addEventListener("measureControl", () => {

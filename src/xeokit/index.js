@@ -6,8 +6,6 @@ import Login from "./login.js";
 import click from "./plugins/click.js";
 import Annotations from "./plugins/annotations.js";
 import Measurement from './plugins/measurement.js';
-//import {measureControl} from '../components/plataforma/Plataforma.js';
-import measurementEvent from './measurementClick.js';
 
 //Viewer
 const clientNomads = function(bimServerAddress,poid,canvasId, roid){
@@ -16,16 +14,15 @@ const clientNomads = function(bimServerAddress,poid,canvasId, roid){
     const viewer = new Viewer({
         canvasId: canvasId
     });
-    
-    
+        
     //sets the camera parameters
-    const cameraControl = viewer.cameraControl;
-    console.log(cameraControl);
-    cameraControl.mouseWheelDollyRate = 2;
+    const cameraControl = viewer.cameraControl;        
+    cameraControl.mouseWheelDollyRate = 2;     
+    
 
 //Activate xeokit plugins
 
-    // Measurement (viewer, measureControl);    
+    Measurement (viewer);    
     Annotations(viewer);   
 
     //Load model in the viewer    

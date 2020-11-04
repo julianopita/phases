@@ -42,27 +42,11 @@ const canvaComponent = {
         },
         canvasTres : function(){
             this.changeCanvas('c3','c1','c2');            
-        },
-        simulateKeyPress : function (key){
-            console.log();
-        },
-        annotations : function() {
-            console.log("annotation button");                
-           // var event = $.Event("keydown");            
-           // event.which = 70;
-           // $("body").trigger(event);  
-        },
-            
-        measurements : function() {
-            this.simulateKeyPress(76);
-            console.log(76);
-        }   
+        },      
+       
+          
     }
 }
 
-window.addEventListener ('controlMeasurement' ,() => {
-    console.log("fire");
-    Measurement(viewer);
- });
 
 export default canvaComponent;

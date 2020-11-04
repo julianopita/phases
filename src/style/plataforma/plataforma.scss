@@ -107,6 +107,7 @@ $buttonComentario : #8b8b8b;
   width: 200px;  
 }
 
+
 .dropbtn-vertical { 
   display: block; 
   position: relative;
@@ -128,13 +129,18 @@ $buttonComentario : #8b8b8b;
   height: 40px;  
 }
 
+
 .clicked-vertical {      
   background-color: white;
   left: 5px;
   transition: background-color .5s;
   color: blue;
-  border: solid 2px blue;
-   
+  border: solid 2px blue;   
+}
+.clicked-vertical :active {
+  background-color: blue;  
+  color:white;
+  border: solid 2px white;  
 }
 
 .clicked {    

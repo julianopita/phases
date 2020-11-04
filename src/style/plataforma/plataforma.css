@@ -128,6 +128,12 @@
   border: solid 2px blue;
 }
 
+.clicked-vertical :active {
+  background-color: blue;
+  color: white;
+  border: solid 2px white;
+}
+
 .clicked {
   background-color: white;
   -webkit-transition: background-color .5s;

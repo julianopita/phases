@@ -3,9 +3,6 @@ import Forum from './Forum.js';
 import Modelo from './modelo/Modelo.js';
 import axiosInstance from '../../connection/apiInfo.js';
 
-
-
-
 const infoClicked = {
     descricao  : null,
     area : null
@@ -75,13 +72,13 @@ const Plataforma = {
             <button class="dropbtn-vertical" title="Recolher ou exibir discussões" id="drop3" @click="showForum = !showForum" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
                 <i class="far fa-comment-alt"></i>
             </button>
-            <button class="dropbtn-vertical" title="Ferramenta fita métrica" id="measurements" @click="showMeasurement = !showMeasurement" v-on:click="measurement" v-bind:class = "[showMeasurement ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+            <button class="dropbtn-vertical" title="Ferramenta fita métrica" id="measurements" @click="showMeasurement = !showMeasurement" v-bind:class = "[showMeasurement ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
                 <i class="fa fa-ruler"></i>
             </button>
             <button class="dropbtn-vertical" title="Exibir ou esconder anotações" id="annotations" @click="showAnnotations = !showAnnotations" v-bind:class = "[showAnnotations ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
                 <i class="fa fa-sticky-note"></i>
             </button>
-            <button class="dropbtn-vertical" title="Mudar visualização" id="view" @click="showView = !showView" v-bind:class = "[showView ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+            <button class="dropbtn-vertical clicked-vertical" title="Mudar visualização" id="cameraview" @click="showView = !showView">
                 <i class="fa fa-street-view"></i>
             </button>
             <button class="dropbtn-vertical" title="Exibir informações" id="Info" @click="showInfo = !showInfo" v-bind:class = "[showInfo ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
@@ -119,19 +116,7 @@ const Plataforma = {
             .then((data)=>{
                 console.log(data);
             })            
-        },
-
-        measurement: function() { 
-            console.log(measureControl.state);               
-        
-            if (measureControl.state == "true") {
-                console.log("change to false");               
-                measureControl.state = "false";
-            } else { 
-                console.log("change to true");                
-                measureControl.state = "true"; 
-            }            
-        } 
+        }        
     },    
 
     mounted : async function (){
@@ -145,12 +130,8 @@ const Plataforma = {
 
 export {
     Plataforma,
-    infoClicked,
-    measureControl,                      
+    infoClicked,                         
 };
 
-window.addEventListener("measureControl", () => {
-    var control = localStorage.getItem("measureControl");
-    console.log("fire");
-});
+
 

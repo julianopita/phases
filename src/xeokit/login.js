@@ -3,7 +3,8 @@ import StoreyViews from './plugins/storey.js';
 import {AmbientLight} from "../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/lights/AmbientLight.js";
 import {DirLight} from "../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/lights/DirLight.js";
 import TreeView from './plugins/treeview.js';
-
+import {CameraMemento } from '../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/mementos/CameraMemento.js';
+import {ObjectsMemento } from '../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/mementos/ObjectsMemento.js';
 const username = "platnomads@gmail.com";
 const password = "@bimserver";
 
@@ -12,6 +13,8 @@ var Login;
 export default Login = {
     cria 
 };
+
+
 
     function cria(viewer,bimServerClient,bimServerLoader,poid){
         bimServerClient.init(() => {
@@ -68,38 +71,20 @@ export default Login = {
                         intensity: 1.0                                               
                     });
 
-                    
                     const dirLight = new DirLight(viewer.scene, {
                     id: "fillLight",
                     dir: [-0.8, -0.4, -0.4],
                     color: [0.1, 0.1, 0.3],
                     intensity: 1.0,
                     space: "view",
-                    // shadow: new Shadow(dirLight, {
-                    //     resolution: [1000, 1000],
-                    //     intensity: 0.7,
-                    //     sampling: "stratified" // "stratified" | "poisson" | "basic"
-                    // })                    
+                                    
                     });
                     dirLight.shadow = {
                             resolution: [1000, 1000],
                             intensity: 0.7,
                             sampling: "stratified" // "stratified" | "poisson" | "basic"
                         };
-
-                    //Set shadows options
-                    //const shadows = viewer.scene.shadow;
-                    
-
-                   // shadows.intensity = true; // Enable SAO - only works if supported (see above)
-                    // sao.intensity = 0.25;
-                    // sao.bias = 0.5;
-                    // sao.scale = 500.0;
-                    // sao.minResolution = 0.0;
-                    // sao.kernelRadius = 100;
-                    // sao.blendCutoff = 0.2;
-                    
-    
+                   
                     // Load our model from BIMServer
                     
                     const model = bimServerLoader.load({ // Returns a Node representing the model
@@ -113,17 +98,30 @@ export default Login = {
                         edges: true,                    // Emphasise edges
                         objectDefaults: BIMobjectDefaults,//Adusts model appeareance
                         //saoEnabled: true
+                    });                                     
+                    //set camera point, save and listen to calls
+                    const cameraMemento = new CameraMemento();
+                    const scene = viewer.scene;
+                    const cameraFlight = viewer.cameraFlight;
+                    const camera = scene.camera;
+                    const cameraControl = viewer.cameraControl;
+                    cameraControl.navMode = "orbit";
+
+                    // return camera to the model in a click
+                    const viewClick = document.getElementById('cameraview');
+                    viewClick.addEventListener('click',() => { 
+                        cameraMemento.restoreCamera(viewer.scene);                        
                     });
-                                     
-                    
-    
+
                     // Fit camera to model when loaded, activate on load plugins
-                    model.on("loaded", function() {
-                        viewer.cameraFlight.jumpTo(model);
+                    model.on("loaded", function() {                        
                         StoreyViews(viewer);                        
-                        TreeView(viewer, model);
-                    });                   
-    
+                        TreeView(viewer, model);                        
+                        viewer.cameraFlight.jumpTo(model);                        
+                        cameraMemento.saveCamera(viewer.scene);                       
+                    }); 
+                    
+                         
                     model.on("error", function (errMsg) {
                         console.error("Loading failed: " + errMsg);
                     });
@@ -131,5 +129,6 @@ export default Login = {
         },(error) => {
             console.log("Error logging in: " + error.message);
         });
-    });
+              
+    });   
 }

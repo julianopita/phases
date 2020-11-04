@@ -12,12 +12,14 @@ export default function StoreyViews(viewer){
     const storeyGuid = "3cY3xbxgn6VhJE$xgHgubj"
 
     // Make all doors transparent
+
+    
     
     storeyviews.gotoStoreyCamera(storeyGuid, {
-        projection: "ortho",
+        projection: "perspective",
         duration: 2.5,
         done: () => {
-            viewer.cameraControl.planView = true;
+            viewer.cameraControl.planView = false;
         }
     });
 
@@ -123,7 +125,7 @@ export default function StoreyViews(viewer){
                 
             } else {
                 storeyviews.gotoStoreyCamera(storeyGuid, {                    
-                    projection: "ortho",
+                    projection: "perspective",
                     duration: 1.5,
                     done: () => {
                         viewer.cameraControl.navMode = "orbit";                        

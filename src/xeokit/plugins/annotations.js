@@ -4,8 +4,8 @@ import {getKeyByValue} from "./supportFunctions.js"
 
 export default function Annotations(viewer){
     const annotations = new AnnotationsPlugin(viewer, {
-
-    markerHTML: "<div  class='annotation-marker' style='background-color: {{markerBGColor}}; visibility: hidden;'>{{glyph}}</div>",
+        
+    markerHTML: "<div class='annotation-marker' style='background-color: {{markerBGColor}}; visibility: hidden;'{{glyph}}></div>",
     labelHTML: "<div class='annotation-label' style='background-color: {{labelBGColor}};'>\
         <div class='annotation-title'>{{title}}</div>\
         <div class='annotation-desc'>{{description}}</div>\
@@ -30,17 +30,16 @@ annotations.on("markerMouseLeave", (annotation) => {
 });
 
 var numAnnotations = 0;
-var annoControl = 0;    
+let control = true;
+const annotationClick = document.getElementById('annotations');
 
-viewer.scene.input.on("keydown", (keyCode) => {
-    if (annoControl == 0 && keyCode == 70) { 
-    annoControl = 1;
-    console.log("yay!");
+annotationClick.addEventListener('click',()=>{
+    if (control == true) {     
+    control = false;
     
     //read JSON of spaces Guid fed by the apiInfo
     const spaceJSON = $.getJSON("../annotationData.json",function(json) {            
-        const spaceGuid = spaceJSON.responseJSON;
-        console.log(spaceGuid);            
+        const spaceGuid = spaceJSON.responseJSON;                   
 
         //iterate over the JSON and use each of the space GUID to create an annotation
         for (var value of Object.values(spaceGuid)) {
@@ -68,18 +67,15 @@ viewer.scene.input.on("keydown", (keyCode) => {
                     glyph: "a",
                     title: name,
                     description: "",
-                    markerBGColor: "green"
+                    markerBGColor: "blue"
                 }
             });
         }
     });
-} else if (annoControl == 1 && keyCode == 70) {
+} else  {
 annotations.clear();
-annoControl = 0;
-console.log("boo!");
-} else { 
-console.log("nope");
-};
+control = true;
+} 
 });
 };
 

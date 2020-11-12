@@ -51,7 +51,7 @@ annotationClick.addEventListener('click',()=>{
             //define the insertion point at the center of the space and the lowest z value       
             const entity = viewer.scene.objects[value];             
             const locX = (entity.aabb[0]+entity.aabb[3])/2;
-            const locY = entity.aabb[1];
+            const locY = (entity.aabb[1]+entity.aabb[4])/10;
             const locZ = (entity.aabb[2]+entity.aabb[5])/2;                              
         
             //create the annotations

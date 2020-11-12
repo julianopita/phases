@@ -20,7 +20,7 @@ $buttonComentario : #8b8b8b;
   top: 40px;
   left: 20px;
   width: 500px;
-  z-index: 200000;
+  z-index: 20000;
   background-color: rgba(255, 255, 255, 0);
 }
 .info-wrapper {
@@ -28,7 +28,7 @@ $buttonComentario : #8b8b8b;
   top: 60px;
   right: 50px;
   width: 200px;
-  z-index: 200000;
+  z-index: 20000;
 }
 .wrapper-tree {
   position: relative;  
@@ -36,6 +36,11 @@ $buttonComentario : #8b8b8b;
   margin-bottom: 10px;
 }
 .wrapper-storey {
+  position: relative;  
+  width: 200px;
+  margin-bottom: 10px;
+}
+.wrapper-info {
   position: relative;  
   width: 200px;
   margin-bottom: 10px;
@@ -72,6 +77,14 @@ $buttonComentario : #8b8b8b;
 .dropdown-open-storey {  
   height: 300px;
   transition: height 0.5s; 
+}
+
+.dropdown-open-info { 
+  background-color: rgba(255, 255, 255, 0.86); 
+  height: 100px;
+  transition: height 0.5s;
+  margin: 5px; 
+  padding: 5px;
 }
 
 .dropleft-closed {
@@ -181,6 +194,36 @@ $buttonComentario : #8b8b8b;
   background-color: rgba(255,255,255,0); 
 }
 
+//info styles
+.gInfo {
+  position: relative;    
+  pointer-events: all;    
+  overflow-y: hidden;
+  overflow-x: hidden;    
+  background-color: rgba(255, 255, 255, 0.86);
+  color: black;    
+  z-index: 2000;
+  float: right;    
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  text-align: left;
+  width: 400px;
+  font-weight: bold;
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  } 
+  .text {
+    font-weight: normal;
+  } 
+}
+
 //StoreyMaps styles
 
 #storeyMap {  
@@ -215,7 +258,7 @@ $buttonComentario : #8b8b8b;
   height: 60px;
   background-image: url(../../../assets/storeyMapCamera.png);
   background-repeat: no-repeat;
-  background-size: 60px 60px;
+  background-size: 60px 60px;  
 }
 
 
@@ -446,8 +489,6 @@ $buttonComentario : #8b8b8b;
       }
     }
 
-
-
     #barra-navegacao{
         background-color: $defaulColor;
         height: 40px;
@@ -490,6 +531,65 @@ $buttonComentario : #8b8b8b;
         }
     }
 }
+
+//Context menu. Using !important for the styles that are hard-coded in the HTML template of the plugin
+
+.xeokit-context-menu {
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  display: none;
+  z-index: 300000;
+  background: rgba(255, 255, 255, 0.66) !important;
+  border: solid 3px blue !important; //style hard-coded in the plugin, using important to override it
+  border-radius: 10px !important; //style hard-coded in the plugin, using important to override it
+  padding: 0;
+  width: 150px;
+}
+
+.xeokit-context-menu ul {
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+}
+
+.xeokit-context-menu ul li {
+  list-style-type: none;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color: black;
+  border-bottom: 1px solid blue;
+  background: rgba(255, 255, 255, 0.46);
+  cursor: pointer;
+  width: calc(100% - 30px);
+}
+
+.xeokit-context-menu ul li:hover {
+  background: blue;
+  color: white;
+  font-weight: bold;
+}
+
+.xeokit-context-menu ul li span {
+  display: inline-block;
+}
+
+.xeokit-context-menu .disabled {
+  display: inline-block;
+  color: gray;
+  cursor: default;
+  font-weight: normal;
+}
+
+.xeokit-context-menu .disabled:hover {
+  color: gray;
+  cursor: default;
+  background: #eeeeee;
+  font-weight: normal;
+}
+
+
 
 
 

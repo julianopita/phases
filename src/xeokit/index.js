@@ -6,6 +6,7 @@ import Login from "./login.js";
 import click from "./plugins/click.js";
 import Annotations from "./plugins/annotations.js";
 import Measurement from './plugins/measurement.js';
+import contextMenu from './plugins/context.js';
 
 //Viewer
 const clientNomads = function(bimServerAddress,poid,canvasId, roid){
@@ -22,7 +23,8 @@ const clientNomads = function(bimServerAddress,poid,canvasId, roid){
 
 //Activate xeokit plugins
 
-    Measurement (viewer);    
+    contextMenu(viewer);
+    Measurement(viewer);    
     Annotations(viewer);   
 
     //Load model in the viewer    

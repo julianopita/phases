@@ -37,39 +37,36 @@ const Plataforma = {
                 <div class="dropdown" id="storeyMap" v-bind:class = "[showStoreyMap ? 'dropdown-open-storey' : 'dropdown-closed']"> 
             </div>
         </div>
+        <div class="wrapper-info">
+            <div>
+                <button class="dropbtn" id="drop4" @click="showgInfo = !showgInfo" v-bind:class = "[showgInfo ? 'dropbtn clicked' : 'dropbtn']">Informações gerais
+                    <i v-bind:class = "[showgInfo ? 'fa fa-chevron-down fa-rotate-180' : 'fa fa-chevron-down']"></i>
+                </button>
+            </div>
+                <div class="gInfo" id="generalInfo" v-bind:class = "[showgInfo ? 'dropdown-open-info' : 'dropdown-closed']">
+                        
+                            <div class='left'>Índices</br>
+                                <a class = 'text'>Area projeto: 182.56m²</br>                                                            
+                                Coef. Aproveitamento: 0,08</br>
+                                Taxa de ocupação: 8,38%</a>
+                            </div>
+                            <div class='right'>Informações do terreno</br>
+                                    <a class='text'>Área total: 2058,00m²</br>
+                                    Comprimento: 62,92m</br>
+                                    Largura: 58,30m</br>
+                                    Desnível: 1,54m</br></a>
+                            </div>          
+            </div>
+        </div>
     </div> 
         <div class="modelo-forum" id="dropDown-forum">            
             <div>
-                <modelo/>
-                <div class="info-wrapper">
-                <div class="infoName">
-                    <span class="left">elemento selecionado</span><span class="right">informaçoes gerais</span>
-                </div>                                  
-                <div class="infoBar">                    
-                    <div class="click">
-                        <div id="descricao"> </div>
-                        <div id="area"> </div>
-                    </div>
-                    <div class="fixed">
-                    <div class= "infoName">
-                        <div class="left">Area projeto: 182.56m²</br>                                                            
-                            Coef. Aproveitamento: 0,08</br>
-                            Taxa de ocupação: 8,38%
-                        </div>
-                        <div class="right">Informações do terreno</br>
-                                &nbsp Área total: 2058,00m²</br>
-                                &nbsp Comprimento: 62,92m</br>
-                                &nbsp Largura: 58,30m</br>
-                                &nbsp Desnível: 1,54m</br>
-                        </div>                        
-                    </div>
-                </div> 
-                </div>                    
+                <modelo/>                                    
             </div>
         </div>
     <div class= "forum-wrapper"  v-bind:class = "[showForum ? 'dropleft-open-forum' : 'dropleft-closed']">
         <div class="toolbar">
-            <button class="dropbtn-vertical" title="Recolher ou exibir discussões" id="drop3" @click="showForum = !showForum" v-bind:class = "[showForum ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+            <button class="dropbtn-vertical" title="Recolher ou exibir discussões" id="drop3" @click="showForum = !showForum" v-bind:class = "[showForum ?  'dropbtn-vertical' : 'dropbtn-vertical clicked-vertical']">
                 <i class="far fa-comment-alt"></i>
             </button>
             <button class="dropbtn-vertical" title="Ferramenta fita métrica" id="measurements" @click="showMeasurement = !showMeasurement" v-bind:class = "[showMeasurement ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
@@ -81,7 +78,7 @@ const Plataforma = {
             <button class="dropbtn-vertical clicked-vertical" title="Mudar visualização" id="cameraview" @click="showView = !showView">
                 <i class="fa fa-street-view"></i>
             </button>
-            <button class="dropbtn-vertical" title="Exibir informações" id="Info" @click="showInfo = !showInfo" v-bind:class = "[showInfo ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
+            <button class="dropbtn-vertical" title="Exibir informações" id="info" @click="showInfo = !showInfo" v-bind:class = "[showInfo ? 'dropbtn-vertical clicked-vertical' : 'dropbtn-vertical']">
                 <i class="fas fa-info-circle"></i>
             </button>
         </div>
@@ -102,11 +99,12 @@ const Plataforma = {
             apiInfo : '',
             showTreeView : false,           
             showStoreyMap : false,
-            showForum : true,            
+            showForum : false,            
             showMeasurement : true,
             showAnnotations : true,
             showView: true,
-            showInfo: true
+            showInfo: true,
+            showgInfo: false,
             }
         
     },

@@ -4,7 +4,7 @@
   top: 40px;
   left: 20px;
   width: 500px;
-  z-index: 200000;
+  z-index: 20000;
   background-color: rgba(255, 255, 255, 0);
 }
 
@@ -13,7 +13,7 @@
   top: 60px;
   right: 50px;
   width: 200px;
-  z-index: 200000;
+  z-index: 20000;
 }
 
 .wrapper-tree {
@@ -23,6 +23,12 @@
 }
 
 .wrapper-storey {
+  position: relative;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.wrapper-info {
   position: relative;
   width: 200px;
   margin-bottom: 10px;
@@ -59,6 +65,15 @@
   height: 300px;
   -webkit-transition: height 0.5s;
   transition: height 0.5s;
+}
+
+.dropdown-open-info {
+  background-color: rgba(255, 255, 255, 0.86);
+  height: 100px;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
+  margin: 5px;
+  padding: 5px;
 }
 
 .dropleft-closed {
@@ -172,6 +187,38 @@
 .toolbar {
   float: right;
   background-color: rgba(255, 255, 255, 0);
+}
+
+.gInfo {
+  position: relative;
+  pointer-events: all;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: rgba(255, 255, 255, 0.86);
+  color: black;
+  z-index: 2000;
+  float: right;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  text-align: left;
+  width: 400px;
+  font-weight: bold;
+}
+
+.gInfo .left {
+  float: left;
+}
+
+.gInfo .right {
+  float: right;
+}
+
+.gInfo .text {
+  font-weight: normal;
 }
 
 #storeyMap {
@@ -492,6 +539,61 @@
   height: 40px;
   padding: 0px;
   background-color: white;
+}
+
+.xeokit-context-menu {
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  display: none;
+  z-index: 300000;
+  background: rgba(255, 255, 255, 0.66) !important;
+  border: solid 3px blue !important;
+  border-radius: 10px !important;
+  padding: 0;
+  width: 150px;
+}
+
+.xeokit-context-menu ul {
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+}
+
+.xeokit-context-menu ul li {
+  list-style-type: none;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color: black;
+  border-bottom: 1px solid blue;
+  background: rgba(255, 255, 255, 0.46);
+  cursor: pointer;
+  width: calc(100% - 30px);
+}
+
+.xeokit-context-menu ul li:hover {
+  background: blue;
+  color: white;
+  font-weight: bold;
+}
+
+.xeokit-context-menu ul li span {
+  display: inline-block;
+}
+
+.xeokit-context-menu .disabled {
+  display: inline-block;
+  color: gray;
+  cursor: default;
+  font-weight: normal;
+}
+
+.xeokit-context-menu .disabled:hover {
+  color: gray;
+  cursor: default;
+  background: #eeeeee;
+  font-weight: normal;
 }
 
 /* Line 2 */

@@ -4,12 +4,14 @@ import {math} from "../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/ma
 
 export default function StoreyViews(viewer){
 
+    const st = "3cY3xbxgn6VhJE$xgHgubj"; // substitute for the guids in apiInfo
+
     const storeyviews = new StoreyViewsPlugin(viewer);
-    const storey = storeyviews.storeys["3cY3xbxgn6VhJE$xgHgubj"];
+    const storey = storeyviews.storeys[st];
     const modelId = storeyviews.modelId;
     const storeyId = storeyviews.storeyId;
     const aabb = storeyviews.aabb;
-    const storeyGuid = "3cY3xbxgn6VhJE$xgHgubj"
+    const storeyGuid = st;
 
     // Make all doors transparent
 
@@ -27,18 +29,21 @@ export default function StoreyViews(viewer){
         width:300,
         format: "png",
         useObjectStates: true
-    });
+    }); 
+    
+    console.log(storeyMap.width,storeyMap.height);
 
     const img = document.createElement("img");
-        img.src = storeyMap.imageData;
+        img.src = "../../../assets/"+st+".png";
         img.style.width = storeyMap.width + "px";
-        img.style.height = storeyMap.height + "px";
+        img.style.height = storeyMap.width + "px";
         img.style.padding = "0";
         img.style.margin = "0";
         
 
         const storeyMapDiv = document.getElementById("storeyMap");
         storeyMapDiv.appendChild(img);
+        
 
         const pointer = document.createElement("div");
         pointer.id = "planPointer";

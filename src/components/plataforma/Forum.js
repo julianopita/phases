@@ -4,29 +4,24 @@ import socket from '../../connection/socket.js';
 import axiosInstance from '../../connection/index.js';
 
 let comments = [];
+//var matchCriteria = "professor";
+
 
 const Forum = {
     name: 'forum',
     template: `
         <div id="forum">
-
-            <!--<div id="v-model-multiple-checkboxes">
-                <input type="checkbox" id="ju" value=true @change="" v-model="filterInterest"/>
-                <label for="ju">Ju</label>
-                <input type="checkbox" id="noju" value="NoJu" v-model="filterInterest"/>
-                <label for="noju">No Ju</label>
-                <span> Filtro ativo: {{filterInterest}}</span>
-            </div>-->
-            
-            <div>
-
-                <label> Filtros </label>
-                <button type="button" @click="Mudarestado('filtros')">Mostrar / Esconder</button>
-
+        <div class= "wrapper-filter">          
+            <div>                
+                <button type="button" @click="showFilters = !showFilters" v-bind:class = "[showFilters ? 'dropbtn clicked' : 'dropbtn']">Filtros
+                    <i v-bind:class = "[showFilters ? 'fa fa-chevron-down fa-rotate-180' : 'fa fa-chevron-down']"></i>
+                </button>
             </div>
-            <div class="filtros" id="filtros" style="display: none">
-
-                <div>
+            
+            <div class="dropdown" id="filtros" v-show = "showFilters" v-bind:class = "[showFilters ? 'dropdown-open-filter' : 'dropdown-closed']">
+             
+            <div class="radio">
+                    <span> Filtrar por tempo e popularidade: </br></span>
                     <input @click="filtrar('MR')" type="radio" id="MR" name="filter" value="MR">
                     <label for="MR">Mais Recente</label>
                     
@@ -40,54 +35,58 @@ const Forum = {
                     <label for="MD">Menos Curtido</label>
                 </div>
 
-                <div>
-                    <input @click="filtrar('estudante')" type="radio" id="estudante" name="filter2" value="estudante">
-                    <label for="estudante">Estudante</label>
+                <div class="radio">
+                    <span> Filtrar por usuário: </br></span>
+
+                    <input @click="matchCriteria = 'gestorpublico'" type="radio" id="gestorpublico" name="filter2" value="gestorpublico">
+                    <label for="gestorpublico">Gestor público</label>
                     
-                    <input @click="filtrar('professor')" type="radio" id="professor"  name="filter2"value="professor">
+                    <input @click="matchCriteria = 'estudante'" type="radio" id="estudante" name="filter2" value="estudante">
+                    <label for="estudante">Estudante</label>
+                                        
+                    <input @click="matchCriteria = 'professor'" type="radio" id="professor"  name="filter2" value="professor">
                     <label for="professor">Professor</label>
                     
-                    <input @click="filtrar('tecnico')" type="radio" id="tecnico" name="filter2" value="tecnico">
+                    <input @click="matchCriteria = 'tecnico'" type="radio" id="tecnico" name="filter2" value="tecnico">
                     <label for="tecnico">Técnico</label>
 
-                    <input @click="filtrar('educador')" type="radio" id="educador" name="filter2" value="educador">
+                    <input @click="matchCriteria = 'educador'" type="radio" id="educador" name="filter2" value="educador">
                     <label for="educador">Educador</label>
-
-                    <input @click="filtrar('gestorpublico')" type="radio" id="gestorpublico" name="filter2" value="gestorpublico">
-                    <label for="gestorpublico">Gestor Público</label>
+                    
                 </div>
 
-                <div>
-                    <input @click="filtrar('Implantacao')" type="radio" id="implantacao" name="filter3" value="implantacao">
+                <div class="radio">
+                    <span> Filtrar por assunto: </br></span>
+                    <input @click="matchTag = 'Implantacao'" type="radio" id="implantacao" name="filter3" value="implantacao">
                     <label for="implantacao">Implantação</label>
                     
-                    <input @click="filtrar('Localizacao')" type="radio" id="localizacao"  name="filter3"value="localizacao">
+                    <input @click="matchTag = 'Localização'" type="radio" id="localizacao"  name="filter3" value="localizacao">
                     <label for="localizacao">Localização</label>
                     
-                    <input @click="filtrar('Uso')" type="radio" id="uso" name="filter3" value="uso">
+                    <input @click="matchTag = 'Uso'" type="radio" id="uso" name="filter3" value="uso">
                     <label for="uso">Uso</label>
 
-                    <input @click="filtrar('Custo')" type="radio" id="custo" name="filter3" value="custo">
+                    <input @click="matchTag = 'Custo'" type="radio" id="custo" name="filter3" value="custo">
                     <label for="custo">Custo</label>
-
-
                 </div>
-
+              </div>
             </div>
+            
         
 
             <div class="comentario">      
             <ul>
-                <li v-for="(item,i) in comentarios" :key="i">                   
+                <li v-for="(item,i) in comentarios" :key="i" v-if="matchCriteria == 'all' | matchCriteria == item.interesse && matchTag == 'all' | matchTag == item.tag">                    
 
-                    <p class="linhasuperior">{{item.userName}} | {{item.data}} | 
+                    <p class="linhasuperior">{{item.userName}} | {{item.data}} | {{item.tag}} | {{item.interesse}}
                     <button class="button-react" @click="like(i)">apoio</button>{{comentarios[i].likes.length}} |
                     <button class="button-react" @click="dislike(i)">não apoio</button>{{comentarios[i].dislikes.length}} 
                     </p>
                     
                     <comentario :item=item :index=i>                    
-                    </comentario>                 
+                    </comentario>
                 </li>
+               
             </ul>
             </div>
             <div class="novo-comentario">
@@ -119,17 +118,13 @@ const Forum = {
             likes: [],
             dislikes: [],
             tag: '',
-            quantidadeLikes: []
+            quantidadeLikes: [],
+            showFilters: true,
+            matchCriteria: 'all',
+            matchTag: 'all',
+            
         }
-    },
-    //computed: {
-    //    reactLikeCount() {
-    //        return this.item.like.length
-    //    },
-    //    reactDislikeCount() {
-    //        return this.item.like.length
-    //    }
-    //},
+    },    
 
     methods: {
 
@@ -138,9 +133,7 @@ const Forum = {
             const idUsuario = sessionStorage.getItem('id');
             const checkLike = this.comentarios[i].likes.includes(idUsuario);
             const checkDislike = this.comentarios[i].dislikes.includes(idUsuario);
-            // console.log(checkLike, checkDislike);
-            // console.log(this.comentarios[i].likes);
-
+            
             if (checkDislike == true) {
 
                 this.comentarios[i].dislikes = this.comentarios[i].dislikes.filter(function (value, index, arr) {
@@ -160,32 +153,27 @@ const Forum = {
 
 
             const likes = this.comentarios[i].likes;
-            const dislikes = this.comentarios[i].dislikes;
-            console.log(idUsuario);
+            const dislikes = this.comentarios[i].dislikes;            
             const objLikes = {
                 idComentario: i,
                 likes: likes,
                 dislikes: dislikes
-            }
-            console.log(objLikes);
+            }            
             socket.emit('reacoes', objLikes);
         },
 
-        dislike: function (i) {
-            console.log('dislike no comentario : ' + i);
+        dislike: function (i) {            
             const idUsuario = sessionStorage.getItem('id');
             const checkLike = this.comentarios[i].likes.includes(idUsuario);
             const checkDislike = this.comentarios[i].dislikes.includes(idUsuario);
             var dislike = "";
 
             if (checkLike == true) {
-
                 this.comentarios[i].likes = this.comentarios[i].likes.filter(function (value, index, arr) {
                     return value != idUsuario;
                 })
             }
-            if (checkDislike == true) {
-                //  dislikes trocar nome
+            if (checkDislike == true) {                
                 this.comentarios[i].dislikes = this.comentarios[i].dislikes.filter(function (value, index, arr) {
                     return value != idUsuario;
                 })
@@ -193,14 +181,12 @@ const Forum = {
                 this.comentarios[i].dislikes.push(idUsuario);
             }
             const likes = this.comentarios[i].likes;
-            const dislikes = this.comentarios[i].dislikes;
-            console.log(idUsuario);
+            const dislikes = this.comentarios[i].dislikes;            
             const objLikes = {
                 idComentario: i,
                 likes: likes,
                 dislikes: dislikes
-            }
-            console.log(objLikes);
+            }            
             socket.emit('reacoes', objLikes);
         },
 
@@ -208,8 +194,7 @@ const Forum = {
         comentar: async function () {
             const interesse = sessionStorage.getItem('interesse');
             const userName = sessionStorage.getItem('userName');
-            const idUsuario = sessionStorage.getItem('id');
-            console.log(userName, idUsuario, tag.value);
+            const idUsuario = sessionStorage.getItem('id');            
 
             const data = Date(Date.now()).split(' ');
             const dataBr = data[2] + '-' + data[1] + '-' + data[3];
@@ -232,9 +217,9 @@ const Forum = {
         },
 
         filtrar: async (tipo) => {
-            const dados = comments;
+            var dados = comments;
 
-            console.log(tipo);
+            console.log(tipo);            
 
             /*
           MR- Mais Recente | MC- Mais Comentado | ML- Mais Curtido | MD- Menos Curtido
@@ -286,19 +271,32 @@ const Forum = {
                         return 0;
                     });
                     break;
-                case "estudante":
-                    dados.sort(function (a, b) {
-                        if (a.interesse.includes(tipo) < b.interesse.includes(tipo)) {
-                            return 1;
-                        }
-                        if (a.interesse.includes(tipo) > b.interesse.includes(tipo)) {
-                            return -1;
-                        }
-                        return 0;
-                    });
+                case "estudante":                
+                    matchCriteria = tipo;
+                
+                
+                
+                    //  dados.filter(function(e){
+                    //      if (e.interesse === "estudante") {                             
+                    //         return dados;                             
+                    //      }
+                    //  });
+                    
+                    // break;
+
+                    
+                    // dados.sort(function (a, b) {
+                    //     if (a.interesse.includes(tipo) < b.interesse.includes(tipo)) {                            
+                    //         return 1;
+                    //     }
+                    //     if (a.interesse.includes(tipo) > b.interesse.includes(tipo)) {
+                    //         return -1;                            
+                    //     }
+                    //     return 0;
+                    // });                    
                     break;
                 case "professor":
-                    dados.sort(function (a, b) {
+                    dados.sort(function (a, b) {                        
                         if (a.interesse.includes(tipo) < b.interesse.includes(tipo)) {
                             return 1;
                         }
@@ -307,6 +305,7 @@ const Forum = {
                         }
                         return 0;
                     });
+                    console.log(dados);
                     break;
                 case "tecnico":
                     dados.sort(function (a, b) {
@@ -386,7 +385,7 @@ const Forum = {
                     });
                     break;
             }
-
+            
             console.log(dados);
 
             /*

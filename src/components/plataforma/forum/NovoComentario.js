@@ -15,16 +15,7 @@ const NovoComentario = {
             comentario : ''            
         }
     },
-    methods : {
-        // comentar : async function() {
-        //     await socket.emit('comentar',{
-        //         userName : "Victor",
-        //         comentario : this.comentario,
-        //         idUsuario : "4",
-        //         respostas : []
-        //     });
-        //     this.comentario = null;
-        // }
+    methods : {       
     }
 }
 

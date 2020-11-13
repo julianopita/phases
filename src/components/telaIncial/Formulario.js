@@ -15,7 +15,7 @@ const Formulario = {
                         :type=items.formItem[i].type v-bind:title=items.formItem[i].tooltip />
                     </li> 
                     <li>                
-                        <select v-model="interesse":selected=interesse.value title="Escolha uma atividade">
+                        <select v-model="interesse":selected=interesse.value title="Escolha uma atividade" id="interesse">
                             <option selected disabled value="">Relação com a edificação</option>  
                             <option value = "estudante">Estudante</option>
                             <option value = "professor">Professor</option>

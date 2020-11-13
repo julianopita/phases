@@ -127,7 +127,7 @@ const Forum = {
             dislikes: [],
             tag: '',
             quantidadeLikes: [],
-            showFilters: true,
+            showFilters: false,
             matchCriteria: 'all',
             matchTag: 'all',
             

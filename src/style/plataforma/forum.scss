@@ -21,13 +21,10 @@ select{
     padding-top: 10px;
     padding-bottom: 10px;
     width: 98%; 
-    margin-right: 10px;
-
-        
+    margin-right: 10px;        
         option{        
             color: white;
-        }
-        
+        }        
         li{
             list-style: none;
         }
@@ -306,7 +303,29 @@ textarea{
 
   .radio {
       font-size: 12px;
-      margin: auto;      
+      margin: auto;
+      
+      .reset {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        justify-content: center;
+        height: 25px;
+        background-color: white;
+        padding: 5px 5px;
+        font-family: sans-serif, Arial;
+        border: 2px solid blue;
+        border-radius: 4px;
+        transition-duration: 0.4s;
+            } 
+            .reset:hover {
+                background-color:rgba(0, 0, 255, 0.438);
+                }
+            .reset:active {
+                background-color: blue;
+                border: 2px solid blue;
+            }
+    
       
       label {        
         display: inline-block;
@@ -319,12 +338,13 @@ textarea{
         padding: 5px 5px;
         font-family: sans-serif, Arial;
         border: 2px solid blue;
-        border-radius: 4px;        
+        border-radius: 4px;
+        transition-duration: 0.4s;        
             }
         
-    label:hover {
+    label:hover {        
         background-color:rgba(0, 0, 255, 0.438);
-      }
+      }      
 
       input[type="radio"] {
           opacity: 0;

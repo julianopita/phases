@@ -10,8 +10,9 @@ $defaultColor : #8b8b8b;
 
 
 #tela-login{
+    color: blue;
     font-family: 'Arial', sans-serif;
-    height: 100vh;
+    height: 95vh;
     background-color: $fundo;
     position: relative;
     #barra-navegacao{
@@ -20,6 +21,7 @@ $defaultColor : #8b8b8b;
         display: flex;
         align-items: center;
         .item-navegacao{
+            visibility:hidden;
             // width: max-content;
             position: relative;
             left: 80%;
@@ -32,7 +34,7 @@ $defaultColor : #8b8b8b;
             align-content: center;
             display: inline;
         }
-        a{
+        a{            
             font-family: -apple-system, BlinkMacSystemFont, 'Arial', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 20px;
             font-weight: 300;
@@ -60,6 +62,7 @@ $defaultColor : #8b8b8b;
     
     img{
         display: block;
+        height: 180px;
         margin-left: auto;
         margin-right: auto;
         
@@ -67,52 +70,70 @@ $defaultColor : #8b8b8b;
 
     #formulario{
         position: absolute;
-        top: 46%;
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%);
-        background-color: $corFormulario;
-        width: 564px;
-        height: 350px;
+        // min-height: 40vh;
+        // max-height: 70vh;
+        width: 400px;
+        top: 250px;
+        left: 50%;        
+        transform: translate(-50%, 0%);
+        background-color: $corFormulario;        
         border-radius: 10px 10px 10px 10px;
-        .bloco-entradas{
+        .bloco-entradas{            
             position: relative;
-            margin-top: 60px;
-            margin-left: 15%;
+            margin-top: 30px;
+
+            .block {
+                height: auto;
+                width: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center; 
+                align-items: center;                
+            } 
             
             input{
+                flex-shrink: 3;
+                align-self: flex-start;                
                 position: relative;
-                width: 332px;
+                width: 300px;
                 background: none;
                 border: 0;
                 display: block;
                 text-align: center;
-                font-size: 20px;
-                margin: 20px;
+                font-size: 14px;
+                margin: 10px;
                 border: 1px solid white;
-                padding: 13px 10px;
+                padding: 5px 0px;
                 outline: none;
                 border-radius: 5px 5px 5px 5px;
-                color: $corFormulario;
+                color: black;
                 background-color: $input;
             }
             li{
                 list-style: none;
             }
+            select{
+                visibility: hidden;
+            }
         }
     }
     .button-class{
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-flow: column;
         position: relative;
-        left: 90%;
+        top:100%;
+        left: 50%;
+        transform: translate(-50%, -10%);
         a{
             color: white;
             width: fit-content;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 10px;
             font-family: 'Arial';
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 350;
             position: relative;
             bottom: 2px;
@@ -121,14 +142,13 @@ $defaultColor : #8b8b8b;
             border: none;
             cursor: pointer;
             box-shadow: 0px 0px 0px;
-            border-radius: 10px 10px 10px 10px;
+            border-radius: 5px 5px 5px 5px;
             width: 120px;
-            font-size: 20px;
-            height: 50px;
+            height: 30px;
+            font-size: 16px;
             &:hover{
                 background-color: $hoverButton;
             }
-        }
-        transform: translate(-50%,0);
+        }        
     }
 }

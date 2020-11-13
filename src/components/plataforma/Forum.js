@@ -4,7 +4,8 @@ import socket from '../../connection/socket.js';
 import axiosInstance from '../../connection/index.js';
 
 let comments = [];
-//var matchCriteria = "professor";
+var matchCriteria;
+var matchTag;
 
 
 const Forum = {
@@ -21,7 +22,7 @@ const Forum = {
             <div class="dropdown" id="filtros" v-show = "showFilters" v-bind:class = "[showFilters ? 'dropdown-open-filter' : 'dropdown-closed']">
              
             <div class="radio">
-                    <span> Filtrar por tempo e popularidade: </br></span>
+                    <span> Ordenar por tempo e popularidade: </br></span>
                     <input @click="filtrar('MR')" type="radio" id="MR" name="filter" value="MR">
                     <label for="MR">Mais Recente</label>
                     
@@ -38,7 +39,7 @@ const Forum = {
                 <div class="radio">
                     <span> Filtrar por usuário: </br></span>
 
-                    <input @click="matchCriteria = 'gestorpublico'" type="radio" id="gestorpublico" name="filter2" value="gestorpublico">
+                    <input @click="matchCriteria = 'gestor'" type="radio" id="gestorpublico" name="filter2" value="gestorpublico">
                     <label for="gestorpublico">Gestor público</label>
                     
                     <input @click="matchCriteria = 'estudante'" type="radio" id="estudante" name="filter2" value="estudante">
@@ -69,6 +70,11 @@ const Forum = {
                     <input @click="matchTag = 'Custo'" type="radio" id="custo" name="filter3" value="custo">
                     <label for="custo">Custo</label>
                 </div>
+                <div class="radio">
+                <span></br></span>
+                <input @click="matchCriteria = 'all'; matchTag = 'all'; reset()" type="button" id="reset" name="filter4" value="Redefinir filtros" class="reset">
+                    
+                </div>
               </div>
             </div>
             
@@ -92,14 +98,16 @@ const Forum = {
             <div class="novo-comentario">
                 <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa"></textarea>
                 <div class="bloco-entradas">                
-                    <span class="area-buttons"><select class="bloco-entradas" name="tag" id="tag">
-                        <option value disabled selected value="undefined">selecione um assunto</option> 
-                        <option value="Implantacao">implantação</option>
-                        <option value="Localizacao">localização</option>
-                        <option value="Uso">uso</option>
-                        <option value="Custo">custo</option>
-                    </select>
-                    <button class="button-submit" @click="comentar" >Enviar</button></span>
+                    <span class="area-buttons">
+                        <select class="bloco-entradas" name="tag" id="tag">
+                            <option value disabled selected value="undefined">selecione um assunto</option> 
+                            <option value="Implantacao">implantação</option>
+                            <option value="Localizacao">localização</option>
+                            <option value="Uso">uso</option>
+                            <option value="Custo">custo</option>
+                        </select>
+                    <button class="button-submit" @click="comentar" >Enviar</button>
+                    </span>
                 </div>
                 
             </div>
@@ -127,6 +135,11 @@ const Forum = {
     },    
 
     methods: {
+        reset: function() {
+            var ele = document.querySelectorAll('[name="filter2"],[name="filter3"]');
+                for(var i=0;i<ele.length;i++)
+                    ele[i].checked = false;
+        },
 
         like: function (i) {
             console.log('like no comentario : ' + i);

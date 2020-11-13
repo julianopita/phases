@@ -328,6 +328,32 @@ textarea {
   margin: auto;
 }
 
+.radio .reset {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 25px;
+  background-color: white;
+  padding: 5px 5px;
+  font-family: sans-serif, Arial;
+  border: 2px solid blue;
+  border-radius: 4px;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+}
+
+.radio .reset:hover {
+  background-color: rgba(0, 0, 255, 0.438);
+}
+
+.radio .reset:active {
+  background-color: blue;
+  border: 2px solid blue;
+}
+
 .radio label {
   display: inline-block;
   text-align: center;
@@ -342,6 +368,8 @@ textarea {
   font-family: sans-serif, Arial;
   border: 2px solid blue;
   border-radius: 4px;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 
 .radio label:hover {

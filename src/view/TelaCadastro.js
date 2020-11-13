@@ -37,7 +37,7 @@ const TelaCadastro = {
                     },
                     cep: {
                         conteudo : "CEP não encontrado",
-                        valido : true
+                        valido : false
                     }
                 },
                                 
@@ -45,28 +45,33 @@ const TelaCadastro = {
                     nomeCompleto : {
                         texto : "nome completo",
                         conteudo : null,
-                        type :  "text"
+                        type :  "text",
+                        tooltip: "Esta informação não será visível em suas postagens"
                     },
                     userName : {
                         texto : "nome de usuário",
                         conteudo : null,
-                        type :  "text"
+                        type :  "text",
+                        tooltip: "Este nome será visível em suas postagens"
                     },
                     password : {
-                        texto : "senha",
+                        texto : "senha com mínimo 6 caracteres",
                         conteudo : null,
-                        type :  "password"
+                        type :  "password",
+                        tooltip: "Procure criar uma senha com letras, números e símbolos"
                     },
                     email : {
                         texto : "e-mail",
                         conteudo : null,
-                        type :  "text"
+                        type :  "text",
+                        tooltip: "Esta informação não será visível em suas postagens"
                     },
                     cep : {
-                        texto : "CEP",
+                        texto : "CEP sem traços",
                         conteudo : null,
-                        type :  "text"
-                    },                    
+                        type :  "text",
+                        tooltip: "Esta informação não será visível em suas postagens"
+                    },                                       
             }                        
         },
         cadastro : {
@@ -112,17 +117,20 @@ const TelaCadastro = {
 
             //valida email
             if(email.test(item.formItem.email.conteudo) != true){
+                alert('Digite um e-mail válido.');
                 item.formErros.email.valido = false;
                 count++;
             }
             //valida senha
             if(item.formItem.password.conteudo != null && item.formItem.password.conteudo.length < 5){
+                alert('Digite uma senha com pelo menos 6 caracteres.');
                 item.formErros.password.valido = false;
                 count++;
             }
             //valida campos vazios
             for(let i in item.formItem){
                 if(item.formItem[i].conteudo == null){
+                    alert('Preencha todos os campos.');
                     item.formErros.campoVazio.valido = false;
                     count++;
                 }
@@ -134,6 +142,7 @@ const TelaCadastro = {
             })
             .catch((err)=>{
                 item.formErros.cep.valido = false;
+                alert('Digite um CEP válido.')
                 count++;
                 console.log(err);
             })

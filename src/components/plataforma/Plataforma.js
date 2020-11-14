@@ -99,7 +99,7 @@ const Plataforma = {
             apiInfo : '',
             showTreeView : false,           
             showStoreyMap : false,
-            showForum : false,            
+            showForum : true,            
             showMeasurement : true,
             showAnnotations : true,
             showView: true,

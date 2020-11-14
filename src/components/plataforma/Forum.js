@@ -4,116 +4,106 @@ import socket from '../../connection/socket.js';
 import axiosInstance from '../../connection/index.js';
 
 let comments = [];
-var matchCriteria;
-var matchTag;
 
 
 const Forum = {
     name: 'forum',
     template: `
         <div id="forum">
-        <div class= "wrapper-filter">          
-            <div>                
-                <button type="button" @click="showFilters = !showFilters" v-bind:class = "[showFilters ? 'dropbtn clicked' : 'dropbtn']">Filtros
-                    <i v-bind:class = "[showFilters ? 'fa fa-chevron-down fa-rotate-180' : 'fa fa-chevron-down']"></i>
-                </button>
-            </div>
-            
-            <div class="dropdown" id="filtros" v-show = "showFilters" v-bind:class = "[showFilters ? 'dropdown-open-filter' : 'dropdown-closed']">
-             
-            <div class="radio">
-                    <span> Ordenar por tempo e popularidade: </br></span>
-                    <input @click="filtrar('MR')" type="radio" id="MR" name="filter" value="MR">
-                    <label for="MR">Mais Recente</label>
-                    
-                    <input @click="filtrar('MC')" type="radio" id="MC"  name="filter"value="MC">
-                    <label for="MC">Mais Comentado</label>
-                    
-                    <input @click="filtrar('ML')" type="radio" id="ML" name="filter" value="ML">
-                    <label for="ML">Mais Curtido</label>
-
-                    <input @click="filtrar('MD')" type="radio" id="MD" name="filter" value="MD">
-                    <label for="MD">Menos Curtido</label>
-                </div>
-
-                <div class="radio">
-                    <span> Filtrar por usuário: </br></span>
-
-                    <input @click="matchCriteria = 'gestor'" type="radio" id="gestorpublico" name="filter2" value="gestorpublico">
-                    <label for="gestorpublico">Gestor público</label>
-                    
-                    <input @click="matchCriteria = 'estudante'" type="radio" id="estudante" name="filter2" value="estudante">
-                    <label for="estudante">Estudante</label>
-                                        
-                    <input @click="matchCriteria = 'professor'" type="radio" id="professor"  name="filter2" value="professor">
-                    <label for="professor">Professor</label>
-                    
-                    <input @click="matchCriteria = 'tecnico'" type="radio" id="tecnico" name="filter2" value="tecnico">
-                    <label for="tecnico">Técnico</label>
-
-                    <input @click="matchCriteria = 'educador'" type="radio" id="educador" name="filter2" value="educador">
-                    <label for="educador">Educador</label>
-                    
-                </div>
-
-                <div class="radio">
-                    <span> Filtrar por assunto: </br></span>
-                    <input @click="matchTag = 'Implantacao'" type="radio" id="implantacao" name="filter3" value="implantacao">
-                    <label for="implantacao">Implantação</label>
-                    
-                    <input @click="matchTag = 'Localização'" type="radio" id="localizacao"  name="filter3" value="localizacao">
-                    <label for="localizacao">Localização</label>
-                    
-                    <input @click="matchTag = 'Uso'" type="radio" id="uso" name="filter3" value="uso">
-                    <label for="uso">Uso</label>
-
-                    <input @click="matchTag = 'Custo'" type="radio" id="custo" name="filter3" value="custo">
-                    <label for="custo">Custo</label>
-                </div>
-                <div class="radio">
-                <span></br></span>
-                <input @click="matchCriteria = 'all'; matchTag = 'all'; reset()" type="button" id="reset" name="filter4" value="Redefinir filtros" class="reset">
-                    
-                </div>
-              </div>
-            </div>
-            
-        
-
             <div class="comentario">      
-            <ul>
-                <li v-for="(item,i) in comentarios" :key="i" v-if="matchCriteria == 'all' | matchCriteria == item.interesse && matchTag == 'all' | matchTag == item.tag">                    
+                <ul>
+                    <li v-for="(item,i) in comentarios" :key="i" v-if="matchCriteria == 'all' | matchCriteria == item.interesse && matchTag == 'all' | matchTag == item.tag">                    
 
-                    <p class="linhasuperior">{{item.userName}} | {{item.data}} | {{item.tag}} | {{item.interesse}}
-                    <button class="button-react" @click="like(i)">apoio</button>{{comentarios[i].likes.length}} |
-                    <button class="button-react" @click="dislike(i)">não apoio</button>{{comentarios[i].dislikes.length}} 
-                    </p>
-                    
-                    <comentario :item=item :index=i>                    
-                    </comentario>
-                </li>
-               
-            </ul>
-            </div>
-            <div class="novo-comentario">
-                <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa"></textarea>
-                <div class="bloco-entradas">                
-                    <span class="area-buttons">
-                        <select class="bloco-entradas" name="tag" id="tag">
-                            <option value disabled selected value="undefined">selecione um assunto</option> 
-                            <option value="Implantacao">implantação</option>
-                            <option value="Localizacao">localização</option>
-                            <option value="Uso">uso</option>
-                            <option value="Custo">custo</option>
-                        </select>
-                    <button class="button-submit" @click="comentar" >Enviar</button>
-                    </span>
-                </div>
+                        <p class="linhasuperior">{{item.userName}} | {{item.data}} | {{item.tag}} | {{item.interesse}} |
+                        <button v-if="logged == 'true'" style="color:blue;" class="button-react" @click="like(i)">apoio</button> <span v-else title="Você deve estar logado para reagir">apoio</span> {{comentarios[i].likes.length}} |
+                        <button v-if="logged == 'true'" style="color:blue;" class="button-react" @click="dislike(i)">não apoio</button> <span v-else title="Você deve estar logado para reagir">não apoio</span> {{comentarios[i].dislikes.length}} 
+                        </p>
+                        <comentario :item=item :index=i>                    
+                        </comentario>
+                    </li>
                 
+                </ul>
             </div>
-
-
+                <button id="open-novo-comentario-modal" v-on:click="modal">Novo Comentário</button>
+                    <div id="novo-comentario-modal" class="modal">
+                        <div class="novo-comentario modal-content">
+                            <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa"></textarea>
+                            <div class="bloco-entradas">                
+                                <span class="area-buttons">
+                                    <select class="bloco-entradas" name="tag" id="tag">
+                                        <option value disabled selected value="undefined">selecione um assunto</option> 
+                                        <option value="Implantacao">implantação</option>
+                                        <option value="Localizacao">localização</option>
+                                        <option value="Uso">uso</option>
+                                        <option value="Custo">custo</option>
+                                    </select>                                    
+                                    <button id="button-submit" class="button-submit" @click="comentar" >Enviar</button>                        
+                                    <span class="modal-close"></span>
+                                &times;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class= "wrapper-filter">          
+                    <div>                
+                        <button type="button" @click="showFilters = !showFilters" v-bind:class = "[showFilters ? 'dropbtn clicked' : 'dropbtn']">Filtros
+                            <i v-bind:class = "[showFilters ? 'fa fa-chevron-down fa-rotate-180' : 'fa fa-chevron-down']"></i>
+                        </button>
+                    </div>            
+                    <div class="dropdown" id="filtros" v-show = "showFilters" v-bind:class = "[showFilters ? 'dropdown-open-filter' : 'dropdown-closed']">
+                        <div class="radio">
+                            <span> Ordenar por tempo e popularidade: </br></span>
+                            <input @click="filtrar('MR')" type="radio" id="MR" name="filter" value="MR">
+                            <label for="MR">Mais Recente</label>
+                            
+                            <input @click="filtrar('MC')" type="radio" id="MC"  name="filter"value="MC">
+                            <label for="MC">Mais Comentado</label>
+                            
+                            <input @click="filtrar('ML')" type="radio" id="ML" name="filter" value="ML">
+                            <label for="ML">Mais Curtido</label>
+    
+                            <input @click="filtrar('MD')" type="radio" id="MD" name="filter" value="MD">
+                            <label for="MD">Menos Curtido</label>
+                        </div>
+                        <div class="radio">
+                            <span> Filtrar por usuário: </br></span>
+    
+                            <input @click="matchCriteria = 'gestor'" type="radio" id="gestorpublico" name="filter2" value="gestorpublico">
+                            <label for="gestorpublico">Gestor público</label>
+                            
+                            <input @click="matchCriteria = 'estudante'" type="radio" id="estudante" name="filter2" value="estudante">
+                            <label for="estudante">Estudante</label>
+                                                
+                            <input @click="matchCriteria = 'professor'" type="radio" id="professor"  name="filter2" value="professor">
+                            <label for="professor">Professor</label>
+                            
+                            <input @click="matchCriteria = 'tecnico'" type="radio" id="tecnico" name="filter2" value="tecnico">
+                            <label for="tecnico">Técnico</label>
+    
+                            <input @click="matchCriteria = 'educador'" type="radio" id="educador" name="filter2" value="educador">
+                            <label for="educador">Educador</label>                        
+                        </div>
+                        <div class="radio">
+                            <span> Filtrar por assunto: </br></span>
+                            <input @click="matchTag = 'Implantacao'" type="radio" id="implantacao" name="filter3" value="implantacao">
+                            <label for="implantacao">Implantação</label>
+                            
+                            <input @click="matchTag = 'Localização'" type="radio" id="localizacao"  name="filter3" value="localizacao">
+                            <label for="localizacao">Localização</label>
+                            
+                            <input @click="matchTag = 'Uso'" type="radio" id="uso" name="filter3" value="uso">
+                            <label for="uso">Uso</label>
+    
+                            <input @click="matchTag = 'Custo'" type="radio" id="custo" name="filter3" value="custo">
+                            <label for="custo">Custo</label>
+                        </div>
+                        <div class="radio">
+                            <span></br></span>
+                            <input @click="matchCriteria = 'all'; matchTag = 'all'; reset()" type="button" id="reset" name="filter4" value="Redefinir filtros" class="reset">
+                        </div>
+                    </div>
+                </div>    
             <link rel="stylesheet" href="src/style/plataforma/forum.css">
+            <link rel="stylesheet" href="src/style/plataforma/modal.css">
         </div>
     `,
     data() {
@@ -130,11 +120,48 @@ const Forum = {
             showFilters: false,
             matchCriteria: 'all',
             matchTag: 'all',
-            
+            logged: sessionStorage.getItem('logged'),            
         }
-    },    
+    },
+    
+    created() {        
+            const idUsuario = sessionStorage.getItem('id');            
+            if (idUsuario === null) {
+                sessionStorage.setItem('logged',false);              
+            } else {
+                sessionStorage.setItem('logged',true);
+            }
+                   
+    },
 
-    methods: {
+    methods: {   
+                   
+        modal(){            
+            const modal = document.getElementById("novo-comentario-modal");
+            const btnModal = document.getElementById("open-novo-comentario-modal");
+            const btnSubmit = document.getElementById("button-submit");
+            const span = document.getElementsByClassName("modal-close");
+                
+                btnModal.onclick = function() {                    
+                    if (sessionStorage.getItem('logged') == 'true') {
+                        modal.style.display = "block";
+                    } else {
+                        alert("Você precisa estar logado para comentar");
+                    }
+                }
+                btnSubmit.onclick = function() {
+                    modal.style.display = "none";
+                    console.log("clicked");
+                }
+                span.onclick = function() {
+                    modal.style.display = "none";                
+                }
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            },
         reset: function() {
             var ele = document.querySelectorAll('[name="filter2"],[name="filter3"]');
                 for(var i=0;i<ele.length;i++)
@@ -284,137 +311,7 @@ const Forum = {
                         return 0;
                     });
                     break;
-                case "estudante":                
-                    matchCriteria = tipo;
-                
-                
-                
-                    //  dados.filter(function(e){
-                    //      if (e.interesse === "estudante") {                             
-                    //         return dados;                             
-                    //      }
-                    //  });
-                    
-                    // break;
-
-                    
-                    // dados.sort(function (a, b) {
-                    //     if (a.interesse.includes(tipo) < b.interesse.includes(tipo)) {                            
-                    //         return 1;
-                    //     }
-                    //     if (a.interesse.includes(tipo) > b.interesse.includes(tipo)) {
-                    //         return -1;                            
-                    //     }
-                    //     return 0;
-                    // });                    
-                    break;
-                case "professor":
-                    dados.sort(function (a, b) {                        
-                        if (a.interesse.includes(tipo) < b.interesse.includes(tipo)) {
-                            return 1;
-                        }
-                        if (a.interesse.includes(tipo) > b.interesse.includes(tipo)) {
-                            return -1;
-                        }
-                        return 0;
-                    });
-                    console.log(dados);
-                    break;
-                case "tecnico":
-                    dados.sort(function (a, b) {
-                        if (a.interesse.includes(tipo) < b.interesse.includes(tipo)) {
-                            return 1;
-                        }
-                        if (a.interesse.includes(tipo) > b.interesse.includes(tipo)) {
-                            return -1;
-                        }
-                        return 0;
-                    });
-                    break;
-                case "educador":
-                    dados.sort(function (a, b) {
-                        if (a.interesse.includes(tipo) < b.interesse.includes(tipo)) {
-                            return 1;
-                        }
-                        if (a.interesse.includes(tipo) > b.interesse.includes(tipo)) {
-                            return -1;
-                        }
-                        return 0;
-                    });
-                    break;
-                case "gestorpublico":
-                    dados.sort(function (a, b) {
-                        if (a.interesse.includes(tipo) < b.interesse.includes(tipo)) {
-                            return 1;
-                        }
-                        if (a.interesse.includes(tipo) > b.interesse.includes(tipo)) {
-                            return -1;
-                        }
-                        return 0;
-                    });
-                    break;
-                case "Implantacao":
-                    dados.sort(function (a, b) {
-                        if (a.tag.includes(tipo) < b.tag.includes(tipo)) {
-                            return 1;
-                        }
-                        if (a.tag.includes(tipo) > b.tag.includes(tipo)) {
-                            return -1;
-                        }
-                        return 0;
-                    });
-                    break;
-                case "Localizacao":
-                    dados.sort(function (a, b) {
-                        if (a.tag.includes(tipo) < b.tag.includes(tipo)) {
-                            return 1;
-                        }
-                        if (a.tag.includes(tipo) > b.tag.includes(tipo)) {
-                            return -1;
-                        }
-                        return 0;
-                    });
-                    break;
-                case "Uso":
-                    dados.sort(function (a, b) {
-                        if (a.tag.includes(tipo) < b.tag.includes(tipo)) {
-                            return 1;
-                        }
-                        if (a.tag.includes(tipo) > b.tag.includes(tipo)) {
-                            return -1;
-                        }
-                        return 0;
-                    });
-                    break;
-                case "Custo":
-                    dados.sort(function (a, b) {
-                        if (a.tag.includes(tipo) < b.tag.includes(tipo)) {
-                            return 1;
-                        }
-                        if (a.tag.includes(tipo) > b.tag.includes(tipo)) {
-                            return -1;
-                        }
-                        return 0;
-                    });
-                    break;
-            }
-            
-            console.log(dados);
-
-            /*
-            Tipo 1
-            estudante
-            professor
-            tecnico
-            educador
-            gestorpublico
-- - - - - - - - - - - - - - - - -
-            Tipo 2
-            Implantacao
-            localizacao
-            uso
-            custo
-*/
+                }
         },
 
         Mudarestado: (el) => {
@@ -424,10 +321,7 @@ const Forum = {
             else
                 document.getElementById(el).style.display = 'none';
         }
-
-
     },
-
     mounted: async function () {
 
         await axiosInstance.get('/comentario/list')
@@ -439,8 +333,9 @@ const Forum = {
             this.comentarios = data;
             comments = this.comentarios;
         });
+        this.modal()
+    },   
 
-    },
     components: {
         Comentario,
         NovoComentario

@@ -16,14 +16,15 @@ const Comentario = {
             <p class="dados">{{resposta.userName}} | {{resposta.data}} | {{resposta.hora}}</p>
             <p class="texto">{{resposta.comentario}}</p>
             <p><a class="interesse">{{resposta.interesse}}</a></p>
-        </li>
-    
+        </li>   
 
 
-    <div class="nova-resposta">
+    <div v-if="logged == 'true' "class="nova-resposta">
         <p><textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova resposta"></textarea></p>
         <p><button class="button-resposta" @click="responder(index)" >Responder</button></p>
-        
+    </div>
+    <div v-else>
+        <p class="button-resposta"> Você precisa estar logado para responder </p>
     </div>
     </ul>
     
@@ -37,83 +38,23 @@ const Comentario = {
             comentario : '',            
             showRespostas : false,
             likes : [],
-            dislikes : []                        
+            dislikes : [],
+            logged : sessionStorage.getItem('logged') 
         }
-    
-    },
+    },    
+
     computed: {
         itemsCount() {
             return this.item.resposta.length
         }
     },
    
-    methods : {
-
-        like : function(i){
-            console.log('like no comentario : '+i);
-            const idUsuario = sessionStorage.getItem('id');            
-            const checkLike = this.comentarios[i].likes.includes(idUsuario);
-            const checkDislike = this.comentarios[i].dislikes.includes(idUsuario);
-            console.log(checkLike, checkDislike);
-            console.log(this.comentarios[i].likes);
-
-            if(checkDislike == true){
-
-                this.comentarios[i].dislikes = this.comentarios[i].likes.filter(function(value,index,arr){
-                    return value != idUsuario;
-                })
-                console.log(this.comentarios[i].dislikes);
-            }
-            if(checkLike == true){
-                this.comentarios[i].likes = this.comentarios[i].likes.filter(function(value,index,arr){
-                    return value != idUsuario;
-                })
-                console.log(this.comentarios[i].likes);
-
-            }else{
-                this.comentarios[i].likes.push(idUsuario);
-                console.log('usuario adicionado(like) :'+idUsuario);
-                console.log(this.comentarios[i].likes);
-            }
-        },
-
-        dislike : function(i){
-            console.log('dislike no comentario : '+i);
-            const idUsuario = sessionStorage.getItem('id');
-            const checkLike = this.comentarios[i].likes.includes(idUsuario);
-            const checkDislike = this.comentarios[i].dislikes.includes(idUsuario);
-            var dislike = "";
-
-            if(checkDislike == true){
-
-                this.comentarios[i].dislikes = this.comentarios[i].likes.filter(function(value,index,arr){
-                    return value != idUsuario;
-                })
-                console.log(this.comentarios[i].dislikes);
-            }
-            if(checkLike == true){
-                //  dislikes trocar nome
-                this.comentarios[i].likes = this.comentarios[i].likes.filter(function(value,index,arr){
-                    return value != idUsuario;
-                })
-                console.log(this.comentarios[i].likes);
-
-            }else{
-                this.comentarios[i].likes.push(idUsuario);
-                console.log('usuario adicionado(dislike) :'+idUsuario);
-                console.log(this.comentarios[i].likes);                
-            }
-        },  
-            
-              
+    methods : { 
         responder : function (index) {
             
             const interesse = sessionStorage.getItem('interesse');
             const userName = sessionStorage.getItem('userName');
-            const idUsuario = sessionStorage.getItem('id');
-            // console.log(userName);
-            // console.log(idUsuario);
-            // console.log(index);
+            const idUsuario = sessionStorage.getItem('id');            
 
             const data = Date(Date.now()).split(' ');
             const dataBr = data[2]+'-'+data[1]+'-'+data[3];

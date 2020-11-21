@@ -6,6 +6,7 @@ import axiosInstance from '../../connection/index.js';
 let comments = [];
 
 
+
 const Forum = {
     name: 'forum',
     template: `
@@ -13,25 +14,70 @@ const Forum = {
             <div class="comentario">      
                 <ul>
                     <li v-for="(item,i) in comentarios" :key="i" v-if="matchCriteria == 'all' | matchCriteria == item.interesse && matchTag == 'all' | matchTag == item.tag">                    
-
-                        <p class="linhasuperior">{{item.userName}} | {{item.data}} | {{item.tag}} | {{item.interesse}} |
-                        <button v-if="logged == 'true'" style="color:blue;" class="button-react" @click="like(i)">apoio</button> <span v-else title="Você deve estar logado para reagir">apoio</span> {{comentarios[i].likes.length}} |
-                        <button v-if="logged == 'true'" style="color:blue;" class="button-react" @click="dislike(i)">não apoio</button> <span v-else title="Você deve estar logado para reagir">não apoio</span> {{comentarios[i].dislikes.length}} 
-                        </p>
+                        <p class="linhasuperior"><a style="color:black;">{{item.userName}}</a>, <a style="color:red;">{{item.interesse}}</a>, iniciou uma conversa em {{item.data}} sobre <a style="color:red;">{{item.tag}}</a></p>
+                        <span class="texto">{{item.comentario}}</span></br>
                         <comentario :item=item :index=i>                    
                         </comentario>
-                    </li>
-                
+                        <span> <button v-if="logged == 'true'" style="color:blue;" class="button-react" @click="like(i)"><i class="far fa-thumbs-up"></i> apoio</button> <span v-else title="Você deve estar logado para reagir">apoio</span><a class="button-react" style="color:black;">{{comentarios[i].likes.length}}</a>
+                        <button v-if="logged == 'true'" style="color:blue;" class="button-react" @click="dislike(i)"><i class="far fa-thumbs-down"></i> não apoio</button> <span v-else title="Você deve estar logado para reagir">não apoio</span><a class="button-react" style="color:black;">{{comentarios[i].dislikes.length}}</a></span>
+                        <button class="button-forum" style="color:blue;" @click="showRespostas = !showRespostas" ><i class="far fa-comment"></i> ver respostas</button>
+                        <ul class="respostas" v-show = "showRespostas">
+                            <li v-for="(resposta,i) in item.resposta">                    
+                                <p class="dados">{{resposta.userName}} | {{resposta.data}} | {{resposta.hora}}</p>
+                                <p class="texto">{{resposta.comentario}}</p>
+                                <p><a class="interesse">{{resposta.interesse}}</a></p>
+                            </li> 
+                            <div v-if="logged == 'true' "class="nova-resposta">
+                                <p><textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova resposta"></textarea></p>
+                                <p><button class="button-resposta" @click="responder(index)" >Responder</button></p>
+                            </div>
+                            <div v-else>
+                                <p class="button-resposta"> Você precisa estar conectado para responder </p>
+                            </div>
+                        </ul>
+                    </li>                
                 </ul>
-            </div>
-                <button id="open-novo-comentario-modal" v-on:click="modal">Novo Comentário</button>
+            </div>                
+                    <div class= "wrapper-filter">
+                        <div class="filter-dropdown">
+                            
+                            <select name="filter1" id="filter1" @change="filtrar">
+                                <option selected id="MR" value='MR'>Mais recente</option>
+                                <option value='MC'>Mais comentado</option>
+                                <option value='ML'>Mais apoiado</option>
+                                <option value='MD'>Menos apoiado</option>                                                               
+                            </select>
+                        </div>
+                        <div class="filter-dropdown">                            
+                            <select name="filter2" id="filter2" @change="submitUserFilter('filter2')" required>
+                                <option selected id="default-filter2" value='all'>Todas atribuições</option>
+                                <option value='gestor'>Gestor público</option>
+                                <option value='estudante'>Estudante</option>
+                                <option value='professor'>Professor</option>
+                                <option value='tecnico'>Técnico</option>
+                                <option value='educador'>Educador</option>                                
+                            </select>                       
+                        </div>
+                        <div class="filter-dropdown">                            
+                            <select name="filter3" id="filter3" @change="submitTagFilter('filter3')" required>
+                                <option selected id="default-filter3" value='all'>Todos assuntos</option>
+                                <option value='Implantacao'>Implantação</option>
+                                <option value='Localizacao'>Localização</option>
+                                <option value='Uso'>Uso</option>
+                                <option value='Custo'>Custo</option>                                                                
+                            </select>                       
+                        </div>
+                        <div class="filter-dropdown">                         
+                            <button class="button" id="open-novo-comentario-modal" v-on:click="modal">Novo Comentário</button>                           
+                        </div>
+                    </div>                     
                     <div id="novo-comentario-modal" class="modal">
                         <div class="novo-comentario modal-content">
                             <textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova conversa"></textarea>
                             <div class="bloco-entradas">                
                                 <span class="area-buttons">
                                     <select class="bloco-entradas" name="tag" id="tag">
-                                        <option value disabled selected value="undefined">selecione um assunto</option> 
+                                        <option disabled selected value="undefined">selecione um assunto</option> 
                                         <option value="Implantacao">implantação</option>
                                         <option value="Localizacao">localização</option>
                                         <option value="Uso">uso</option>
@@ -42,74 +88,20 @@ const Forum = {
                                 &times;</span>
                             </div>
                         </div>
-                    </div>
-                    <div class= "wrapper-filter">          
-                    <div>                
-                        <button type="button" @click="showFilters = !showFilters" v-bind:class = "[showFilters ? 'dropbtn clicked' : 'dropbtn']">Filtros
-                            <i v-bind:class = "[showFilters ? 'fa fa-chevron-down fa-rotate-180' : 'fa fa-chevron-down']"></i>
-                        </button>
-                    </div>            
-                    <div class="dropdown" id="filtros" v-show = "showFilters" v-bind:class = "[showFilters ? 'dropdown-open-filter' : 'dropdown-closed']">
-                        <div class="radio">
-                            <span> Ordenar por tempo e popularidade: </br></span>
-                            <input @click="filtrar('MR')" type="radio" id="MR" name="filter" value="MR">
-                            <label for="MR">Mais Recente</label>
-                            
-                            <input @click="filtrar('MC')" type="radio" id="MC"  name="filter"value="MC">
-                            <label for="MC">Mais Comentado</label>
-                            
-                            <input @click="filtrar('ML')" type="radio" id="ML" name="filter" value="ML">
-                            <label for="ML">Mais Curtido</label>
-    
-                            <input @click="filtrar('MD')" type="radio" id="MD" name="filter" value="MD">
-                            <label for="MD">Menos Curtido</label>
-                        </div>
-                        <div class="radio">
-                            <span> Filtrar por usuário: </br></span>
-    
-                            <input @click="matchCriteria = 'gestor'" type="radio" id="gestorpublico" name="filter2" value="gestorpublico">
-                            <label for="gestorpublico">Gestor público</label>
-                            
-                            <input @click="matchCriteria = 'estudante'" type="radio" id="estudante" name="filter2" value="estudante">
-                            <label for="estudante">Estudante</label>
-                                                
-                            <input @click="matchCriteria = 'professor'" type="radio" id="professor"  name="filter2" value="professor">
-                            <label for="professor">Professor</label>
-                            
-                            <input @click="matchCriteria = 'tecnico'" type="radio" id="tecnico" name="filter2" value="tecnico">
-                            <label for="tecnico">Técnico</label>
-    
-                            <input @click="matchCriteria = 'educador'" type="radio" id="educador" name="filter2" value="educador">
-                            <label for="educador">Educador</label>                        
-                        </div>
-                        <div class="radio">
-                            <span> Filtrar por assunto: </br></span>
-                            <input @click="matchTag = 'Implantacao'" type="radio" id="implantacao" name="filter3" value="implantacao">
-                            <label for="implantacao">Implantação</label>
-                            
-                            <input @click="matchTag = 'Localização'" type="radio" id="localizacao"  name="filter3" value="localizacao">
-                            <label for="localizacao">Localização</label>
-                            
-                            <input @click="matchTag = 'Uso'" type="radio" id="uso" name="filter3" value="uso">
-                            <label for="uso">Uso</label>
-    
-                            <input @click="matchTag = 'Custo'" type="radio" id="custo" name="filter3" value="custo">
-                            <label for="custo">Custo</label>
-                        </div>
-                        <div class="radio">
-                            <span></br></span>
-                            <input @click="matchCriteria = 'all'; matchTag = 'all'; reset()" type="button" id="reset" name="filter4" value="Redefinir filtros" class="reset">
-                        </div>
-                    </div>
-                </div>    
+                    </div>   
             <link rel="stylesheet" href="src/style/plataforma/forum.css">
             <link rel="stylesheet" href="src/style/plataforma/modal.css">
+            <!--RESET button (not used)
+                <div class="filter-dropdown">                            
+                     <input @click="reset()" type="button" id="reset" name="filter4" value="Redefinir filtros" class="reset">
+                </div>-->
         </div>
     `,
     data() {
         return {
             cols: 20,
             rows: 3,
+            showRespostas : false,
             comentarios: [],
             comentario: '',
             filterInterest: [],
@@ -120,6 +112,7 @@ const Forum = {
             showFilters: false,
             matchCriteria: 'all',
             matchTag: 'all',
+            filter: 'MR',            
             logged: sessionStorage.getItem('logged'),            
         }
     },
@@ -134,7 +127,17 @@ const Forum = {
                    
     },
 
-    methods: {   
+    methods: {
+        submitUserFilter(filter) {
+            let s = document.getElementById(filter).value;
+            this.matchCriteria = s;
+        },
+        
+        submitTagFilter(filter) {
+            let s = document.getElementById(filter).value;
+            console.log(this.matchTag);
+            this.matchTag = s;
+        },
                    
         modal(){            
             const modal = document.getElementById("novo-comentario-modal");
@@ -162,11 +165,14 @@ const Forum = {
                     }
                 }
             },
-        reset: function() {
-            var ele = document.querySelectorAll('[name="filter2"],[name="filter3"]');
-                for(var i=0;i<ele.length;i++)
-                    ele[i].checked = false;
-        },
+
+        //RESET not used   
+        // reset: function() {
+        //     this.matchCriteria = "all";
+        //     this.matchTag = "all";
+        //     document.getElementById("default-filter2").selected = true;            
+        //     document.getElementById("default-filter3").selected = true;
+        // },
 
         like: function (i) {
             console.log('like no comentario : ' + i);
@@ -256,10 +262,9 @@ const Forum = {
             this.comentario = '';
         },
 
-        filtrar: async (tipo) => {
-            var dados = comments;
-
-            console.log(tipo);            
+        filtrar: async (tipo) => {            
+            tipo = filter1.value;
+            var dados = comments;                        
 
             /*
           MR- Mais Recente | MC- Mais Comentado | ML- Mais Curtido | MD- Menos Curtido

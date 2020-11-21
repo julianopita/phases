@@ -114,7 +114,7 @@ textarea{
     margin-top:20px;
     margin-bottom: 0px;
     max-width: 350px;
-    font-size: 10pt;
+    font-size: 12px;
     color: #75767B;
     justify-content: left;
 }
@@ -174,16 +174,16 @@ textarea{
            
        }
        .dados{
-            font-size: 10pt;
+            font-size: 12px;
             color: #75767B;
             justify-content: left;
             background-color: white;
-            padding: 5px;
+            padding: 0px 0px 0px 5px;
         
        }
        .texto{
-            font-size: 12pt;
-            margin:0px;
+            font-size: 15px;
+            margin-left:5px;
             font-weight: bold;
             color: black;
             justify-content: left;
@@ -224,7 +224,7 @@ textarea{
          justify-content: left;                  
     }    
     .texto{
-         font-size: 12pt;
+         font-size: 10pt;
          font-weight: bold;
          color: black;
          justify-content: left;
@@ -283,9 +283,10 @@ textarea{
   //dropdown filter
 
   .wrapper-filter {
+    display: flex;
     position: relative;  
-    width: 100%;    
-    margin-bottom: 10px;
+    width: 90%;    
+    margin-bottom: 10px;    
   }
 
   .dropdown-closed { 
@@ -300,23 +301,80 @@ textarea{
     transition: height 0.5s; 
   }
   //filters
+  .button{
+                    
+          margin: 5px 5px 5px 0px;
+          border: none;
+          height: 45px;    
+          font-size: 12px;
+          border: 2px solid blue;
+          border-radius: 5px;
+          color:white;
+          font-weight: normal;
+          background-color: blue;
+          justify-content: center;
+          padding: 5px 5px 5px 0px; 
+          width: 95%;
+      }
 
-  .radio {
+  .filter-dropdown {
       font-size: 12px;
       margin: auto;
+            
+    //   button{
+    //       width: 100%;
+    //   }
+
+      select {          
+          margin: 5px 5px 5px 0px;
+          border: none;    
+          font-size: 12px;
+          height:45px;
+          border: 2px solid blue;
+          border-radius: 5px;
+          color:blue;
+          font-weight: normal;
+          background-color: white;
+          justify-content: center;
+          padding: 5px 5px 5px 0px; 
+          width: 95%;
+          word-break: break-word;
+          white-space: normal;           
+            &:invalid {
+                background-color:white;
+                color: grey;
+                border: 2px solid blue;
+            }
+            [disabled] {
+                background-color:white;
+                color: grey;
+            }        
+              option{
+                  background-color: blue;        
+                  color:white;                  
+                }            
+              
+              li{
+                  list-style: none;
+                  background-color: blue;                  
+              }              
+      
+    }
       
       .reset {
         display: inline-block;
+        margin: 5px 5px 5px 0px;
         text-align: center;
         vertical-align: middle;
-        justify-content: center;
-        height: 25px;
-        background-color: white;
-        padding: 5px 5px;
+        justify-content: center;        
+        background-color: white;        
         font-family: sans-serif, Arial;
         border: 2px solid blue;
-        border-radius: 4px;
+        border-radius: 5px;
+        height: 30px;
+        padding: 5px 5px 5px 0px;
         transition-duration: 0.4s;
+        border: 2px solid blue;
             } 
             .reset:hover {
                 background-color:rgba(0, 0, 255, 0.438);

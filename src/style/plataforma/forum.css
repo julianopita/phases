@@ -124,7 +124,7 @@ textarea {
   margin-top: 20px;
   margin-bottom: 0px;
   max-width: 350px;
-  font-size: 10pt;
+  font-size: 12px;
   color: #75767B;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
@@ -183,18 +183,18 @@ textarea {
 }
 
 #forum .comentario .dados {
-  font-size: 10pt;
+  font-size: 12px;
   color: #75767B;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
   background-color: white;
-  padding: 5px;
+  padding: 0px 0px 0px 5px;
 }
 
 #forum .comentario .texto {
-  font-size: 12pt;
-  margin: 0px;
+  font-size: 15px;
+  margin-left: 5px;
   font-weight: bold;
   color: black;
   -webkit-box-pack: left;
@@ -247,7 +247,7 @@ textarea {
 }
 
 #forum .respostas .texto {
-  font-size: 12pt;
+  font-size: 10pt;
   font-weight: bold;
   color: black;
   -webkit-box-pack: left;
@@ -304,8 +304,11 @@ textarea {
 }
 
 .wrapper-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
-  width: 100%;
+  width: 90%;
   margin-bottom: 10px;
 }
 
@@ -323,38 +326,97 @@ textarea {
   transition: height 0.5s;
 }
 
-.radio {
+.button {
+  margin: 5px 5px 5px 0px;
+  border: none;
+  height: 45px;
+  font-size: 12px;
+  border: 2px solid blue;
+  border-radius: 5px;
+  color: white;
+  font-weight: normal;
+  background-color: blue;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px 5px 5px 0px;
+  width: 95%;
+}
+
+.filter-dropdown {
   font-size: 12px;
   margin: auto;
 }
 
-.radio .reset {
+.filter-dropdown select {
+  margin: 5px 5px 5px 0px;
+  border: none;
+  font-size: 12px;
+  height: 45px;
+  border: 2px solid blue;
+  border-radius: 5px;
+  color: blue;
+  font-weight: normal;
+  background-color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px 5px 5px 0px;
+  width: 95%;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.filter-dropdown select:invalid {
+  background-color: white;
+  color: grey;
+  border: 2px solid blue;
+}
+
+.filter-dropdown select [disabled] {
+  background-color: white;
+  color: grey;
+}
+
+.filter-dropdown select option {
+  background-color: blue;
+  color: white;
+}
+
+.filter-dropdown select li {
+  list-style: none;
+  background-color: blue;
+}
+
+.filter-dropdown .reset {
   display: inline-block;
+  margin: 5px 5px 5px 0px;
   text-align: center;
   vertical-align: middle;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 25px;
   background-color: white;
-  padding: 5px 5px;
   font-family: sans-serif, Arial;
   border: 2px solid blue;
-  border-radius: 4px;
+  border-radius: 5px;
+  height: 30px;
+  padding: 5px 5px 5px 0px;
   -webkit-transition-duration: 0.4s;
           transition-duration: 0.4s;
+  border: 2px solid blue;
 }
 
-.radio .reset:hover {
+.filter-dropdown .reset:hover {
   background-color: rgba(0, 0, 255, 0.438);
 }
 
-.radio .reset:active {
+.filter-dropdown .reset:active {
   background-color: blue;
   border: 2px solid blue;
 }
 
-.radio label {
+.filter-dropdown label {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
@@ -372,22 +434,22 @@ textarea {
           transition-duration: 0.4s;
 }
 
-.radio label:hover {
+.filter-dropdown label:hover {
   background-color: rgba(0, 0, 255, 0.438);
 }
 
-.radio input[type="radio"] {
+.filter-dropdown input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
 
-.radio input[type="radio"]:checked + label {
+.filter-dropdown input[type="radio"]:checked + label {
   background-color: blue;
   color: white;
 }
 
-.radio input[type="radio"]:focus + label {
+.filter-dropdown input[type="radio"]:focus + label {
   border: 2px dashed blue;
 }
 /*# sourceMappingURL=forum.css.map */

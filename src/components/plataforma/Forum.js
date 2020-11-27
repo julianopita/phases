@@ -5,42 +5,26 @@ import axiosInstance from '../../connection/index.js';
 
 let comments = [];
 
-
-
 const Forum = {
     name: 'forum',
     template: `
         <div id="forum">
             <div class="comentario">      
-                <ul>
+                <ul>                         
                     <li v-for="(item,i) in comentarios" :key="i" v-if="matchCriteria == 'all' | matchCriteria == item.interesse && matchTag == 'all' | matchTag == item.tag">                    
-                        <p class="linhasuperior"><a style="color:black;">{{item.userName}}</a>, <a style="color:red;">{{item.interesse}}</a>, iniciou uma conversa em {{item.data}} sobre <a style="color:red;">{{item.tag}}</a></p>
+                        <span class="linhasuperior"><a style="color:black;">{{item.userName}}</a>, <a style="color:red;">{{item.interesse}}</a>, iniciou uma conversa em {{item.data}} sobre <a style="color:red;">{{item.tag}}</a></span></br>
                         <span class="texto">{{item.comentario}}</span></br>
-                        <comentario :item=item :index=i>                    
-                        </comentario>
-                        <span> <button v-if="logged == 'true'" style="color:blue;" class="button-react" @click="like(i)"><i class="far fa-thumbs-up"></i> apoio</button> <span v-else title="Você deve estar logado para reagir">apoio</span><a class="button-react" style="color:black;">{{comentarios[i].likes.length}}</a>
-                        <button v-if="logged == 'true'" style="color:blue;" class="button-react" @click="dislike(i)"><i class="far fa-thumbs-down"></i> não apoio</button> <span v-else title="Você deve estar logado para reagir">não apoio</span><a class="button-react" style="color:black;">{{comentarios[i].dislikes.length}}</a></span>
-                        <button class="button-forum" style="color:blue;" @click="showRespostas = !showRespostas" ><i class="far fa-comment"></i> ver respostas</button>
-                        <ul class="respostas" v-show = "showRespostas">
-                            <li v-for="(resposta,i) in item.resposta">                    
-                                <p class="dados">{{resposta.userName}} | {{resposta.data}} | {{resposta.hora}}</p>
-                                <p class="texto">{{resposta.comentario}}</p>
-                                <p><a class="interesse">{{resposta.interesse}}</a></p>
-                            </li> 
-                            <div v-if="logged == 'true' "class="nova-resposta">
-                                <p><textarea v-model="comentario" :cols=cols :rows=rows placeholder="nova resposta"></textarea></p>
-                                <p><button class="button-resposta" @click="responder(index)" >Responder</button></p>
-                            </div>
-                            <div v-else>
-                                <p class="button-resposta"> Você precisa estar conectado para responder </p>
-                            </div>
-                        </ul>
-                    </li>                
+                        <span class="dados"> {{item.resposta.length}} respostas</span> 
+                        <div style="margin-bottom: 5px;"> <button v-if="logged == 'true'" class="button-react" @click="like(i)"><i class="far fa-thumbs-up"></i> {{comentarios[i].likes.length}}</button> <span v-else class="button-react" style="color:grey;" title="Você deve estar logado para reagir"><i class="far fa-thumbs-up"></i><a class="button-react" style="color:grey;"> {{comentarios[i].likes.length}}</a></span>
+                            <button v-if="logged == 'true'" class="button-react" @click="dislike(i)"><i class="far fa-thumbs-down"></i> {{comentarios[i].dislikes.length}}</button> <span v-else class="button-react" style="color: grey;" title="Você deve estar logado para reagir"><i class="far fa-thumbs-down"></i><a class="button-react" style="color:grey;"> {{comentarios[i].dislikes.length}}</a></span>
+                            <comentario :item=item :index=i>                                                
+                            </comentario>
+                        </div> 
+                    </li>                                 
                 </ul>
             </div>                
                     <div class= "wrapper-filter">
                         <div class="filter-dropdown">
-                            
                             <select name="filter1" id="filter1" @change="filtrar">
                                 <option selected id="MR" value='MR'>Mais recente</option>
                                 <option value='MC'>Mais comentado</option>
@@ -98,7 +82,7 @@ const Forum = {
         </div>
     `,
     data() {
-        return {
+        return {            
             cols: 20,
             rows: 3,
             showRespostas : false,
@@ -116,7 +100,14 @@ const Forum = {
             logged: sessionStorage.getItem('logged'),            
         }
     },
-    
+
+    computed: {
+        itemsCount() {
+            return this.item.resposta.length
+        }
+    },
+
+        
     created() {        
             const idUsuario = sessionStorage.getItem('id');            
             if (idUsuario === null) {

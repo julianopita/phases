@@ -64,7 +64,7 @@
 
 #canva .botoes #annotations {
   position: absolute;
-  z-index: 100;
+  z-index: 100000;
   right: 290px;
   margin-left: 10px;
   color: #ffffff;
@@ -80,7 +80,7 @@
 
 #canva .botoes #measurements {
   position: absolute;
-  z-index: 100;
+  z-index: 100000;
   right: 410px;
   margin-left: 10px;
   color: #ffffff;

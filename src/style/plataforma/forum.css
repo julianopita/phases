@@ -54,7 +54,8 @@ textarea {
       -ms-flex-pack: left;
           justify-content: left;
   border: none;
-  width: 25vw;
+  width: 70%;
+  height: 50px;
   padding: 0px;
 }
 
@@ -65,13 +66,14 @@ textarea {
 
 .button-react {
   border: none;
+  color: blue;
   font-size: 10pt;
-  color: #75767B;
   background: white;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
   margin-right: 0px;
+  cursor: pointer;
 }
 
 .button-forum {
@@ -82,22 +84,24 @@ textarea {
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
+  cursor: pointer;
 }
 
 .button-resposta {
   border: none;
+  -ms-flex-line-pack: center;
+      align-content: center;
   font-size: 10pt;
   color: white;
   font-weight: bold;
   background: #ffbc40;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
-  width: 95%;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  text-align: center;
+  margin: 10px 5px 0px 5px;
+  width: 93%;
+  height: 30px;
+  padding-top: 15px;
+  padding-left: 9.5px;
+  padding-right: 9.5px;
 }
 
 .button-submit {
@@ -119,10 +123,7 @@ textarea {
 .linhasuperior {
   background-color: white;
   padding-left: 7px;
-  padding-bottom: 1px;
   padding-top: 1px;
-  margin-top: 20px;
-  margin-bottom: 0px;
   max-width: 350px;
   font-size: 12px;
   color: #75767B;
@@ -139,22 +140,19 @@ textarea {
 #forum p {
   line-height: 15px;
   padding-left: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 0px;
 }
 
 #forum ul {
   list-style-type: none;
   background-color: rgba(180, 180, 180, 0.5);
   overflow: auto;
-  padding: 2px;
-  max-height: 70vh;
-  margin-top: 0px;
-  margin-bottom: 10px;
+  padding: 0px;
+  max-height: 75vh;
 }
 
 #forum li {
-  margin: 5px;
-  border-radius: 5px;
+  margin: 10px 5px;
   margin-top: 0px;
   list-style-type: none;
   padding: 0px;
@@ -168,7 +166,6 @@ textarea {
 #forum .comentario {
   margin-left: 0px;
   margin-right: 0px;
-  background-color: rgba(255, 255, 255, 0);
 }
 
 #forum .comentario .divComentario {
@@ -190,6 +187,7 @@ textarea {
           justify-content: left;
   background-color: white;
   padding: 0px 0px 0px 5px;
+  margin: 5px 0px;
 }
 
 #forum .comentario .texto {
@@ -233,9 +231,10 @@ textarea {
 
 #forum .respostas {
   display: block;
-  padding-left: 0px;
-  width: 96%;
-  margin-left: 20px;
+  overflow: hidden;
+  width: 95%;
+  padding-left: 9.5px;
+  padding-right: 9.5px;
 }
 
 #forum .respostas .dados {
@@ -244,6 +243,7 @@ textarea {
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
+  padding: 5px;
 }
 
 #forum .respostas .texto {
@@ -281,6 +281,33 @@ textarea {
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
+}
+
+.dropbtn-answer {
+  cursor: pointer;
+  font-size: 12px;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 5px 5px;
+  font-weight: normal;
+  background-color: orange;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+  font-family: inherit;
+  margin: 0px 3px;
+  width: 98%;
+}
+
+.dropdown-open-answer {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 50px;
+  overflow: visible;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
 }
 
 /* width */
@@ -451,5 +478,48 @@ textarea {
 
 .filter-dropdown input[type="radio"]:focus + label {
   border: 2px dashed blue;
+}
+
+.justified {
+  margin: 10px 0px 0px 4.5px;
+  width: 99%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  overflow: none;
+}
+
+textarea {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  resize: none;
+  height: 50px;
+  width: 100%;
+}
+
+.button-enviar-resposta {
+  border: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: white;
+  line-height: 50px;
+  font-weight: bold;
+  background: #ffbc40;
+  margin: 0px 5px;
+  height: 50px;
+}
+
+.clicked-answer {
+  background-color: white;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+  color: black;
+  border: solid 2px orange;
 }
 /*# sourceMappingURL=forum.css.map */

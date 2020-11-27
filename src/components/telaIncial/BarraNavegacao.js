@@ -6,10 +6,10 @@ const BarraNavegacao = {
                 <img class="img" src="../../../assets/logo.png"></img>
             </div>
             <div class="item-navegacao">
-                <div class="menu-item"><a href="#"> início </a></div>
-                <div class="menu-item"><a href="#"> registro </a></div>
-                <div class="menu-item"><a href="#"> sobre </a></div>
-                <div class="menu-item"><a href="#"> ajuda </a></div>
+                <div class="menu-item"><a href="/"> início </a></div>
+                <div class="menu-item"><a href="#/"> registro </a></div>
+                <!--<div class="menu-item"><a href="#"> sobre </a></div>
+                <div class="menu-item"><a href="#"> ajuda </a></div>-->
             </div>         
         </div>
     `,

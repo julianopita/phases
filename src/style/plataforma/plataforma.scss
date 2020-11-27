@@ -45,6 +45,10 @@ $buttonComentario : #8b8b8b;
   width: 200px;
   margin-bottom: 10px;
 }
+.wrapper-answer {  
+  position: relative;    
+  margin-bottom: 5px;
+}
 
 //dropDowns
 
@@ -270,14 +274,15 @@ $buttonComentario : #8b8b8b;
   font-family: "monospace";
   font-weight: bold;
   position: absolute;
-  width: 25px;
-  height: 25px;
-  border-radius: 15px;
-  border: 2px solid #ffffff;
-  background: black;
+  color: blue;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+  background: none;
   visibility: hidden;
-  box-shadow: 5px 5px 15px 1px #000000;
-  z-index: -20;
+  box-shadow: 2px 2px 7px 1px #000000;
+  z-index: 0;
 }
 
 .annotation-label {
@@ -295,7 +300,7 @@ $buttonComentario : #8b8b8b;
   border-radius: 8px;
   border: #ffffff solid 2px;
   box-shadow: 5px 5px 15px 1px #000000;
-  z-index: -20;
+  z-index: 100;
 }
 
 .annotation-label:after {
@@ -306,7 +311,7 @@ $buttonComentario : #8b8b8b;
   border-color: transparent white;
   display: block;
   width: 0;
-  z-index: -20;
+  z-index: 100;
   margin-top: -11px;
   left: -12px;
   top: 20px;
@@ -320,7 +325,7 @@ $buttonComentario : #8b8b8b;
   border-color: transparent #ffffff;
   display: block;
   width: 0;
-  z-index: -20;
+  z-index: 100;
   margin-top: -12px;
   left: -15px;
   top: 20px;

@@ -14,7 +14,7 @@ export default function Annotations(viewer){
     values: {
         markerBGColor: "red",
         labelBGColor: "white",
-        glyph: "X",
+        glyph: "a",
         title: "Untitled",
         description: "No description"
     }
@@ -39,19 +39,27 @@ annotationClick.addEventListener('click',()=>{
     
     //read JSON of spaces Guid fed by the apiInfo
     const spaceJSON = $.getJSON("../annotationData.json",function(json) {            
-        const spaceGuid = spaceJSON.responseJSON;                   
+        const spaceGuid = spaceJSON.responseJSON;
+        console.log(spaceGuid);       
+                          
 
         //iterate over the JSON and use each of the space GUID to create an annotation
         for (var value of Object.values(spaceGuid)) {
 
             //define here the contents of the label
-            var name = getKeyByValue(spaceGuid, value);
-            
+            var name = getKeyByValue(spaceGuid, value); 
 
-            //define the insertion point at the center of the space and the lowest z value       
-            const entity = viewer.scene.objects[value];             
+            //define the insertion point at the center of the space and the lowest z value
+            const guid = value[0];
+            const area = value[1];
+            const piso = value[2];
+            const parede = value[3];
+            const forro = value[4];   
+            const entity = viewer.scene.objects[guid];
+            console.log(value,guid,area);
+                        
             const locX = (entity.aabb[0]+entity.aabb[3])/2;
-            const locY = (entity.aabb[1]+entity.aabb[4])/10;
+            const locY = (entity.aabb[1]-1);
             const locZ = (entity.aabb[2]+entity.aabb[5])/2;                              
         
             //create the annotations
@@ -66,8 +74,8 @@ annotationClick.addEventListener('click',()=>{
                 values: {
                     glyph: "a",
                     title: name,
-                    description: "",
-                    markerBGColor: "blue"
+                    description: "<strong>Área</strong>: "+ area + "m²</br><strong>Acabamento piso</strong>: " + piso + "</br><strong>Acabamento parede</strong>: " + parede + "</br><strong>Acabamento forro</strong>: " + forro,
+                    markerBGColor: ""
                 }
             });
         }

@@ -8,6 +8,8 @@ import Annotations from "./plugins/annotations.js";
 import Measurement from './plugins/measurement.js';
 import contextMenu from './plugins/context.js';
 
+
+
 //Viewer
 const clientNomads = function(bimServerAddress,poid,canvasId, roid){
     const bimServerClient = new BimServerClient(bimServerAddress);

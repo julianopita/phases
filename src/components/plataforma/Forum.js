@@ -5,10 +5,18 @@ import axiosInstance from '../../connection/index.js';
 
 let comments = [];
 
+window.onload=function() {
+    if (! localStorage.justOnce) {
+        localStorage.setItem("justOnce", "true");
+        window.location.reload();
+        console.log("reloaded");
+    }
+};
+
 const Forum = {
     name: 'forum',
     template: `
-        <div id="forum">
+        <div id="forum">     
             <div class="comentario">      
                 <ul>                         
                     <li v-for="(item,i) in comentarios" :key="i" v-if="matchCriteria == 'all' | matchCriteria == item.interesse && matchTag == 'all' | matchTag == item.tag">                    
@@ -67,9 +75,8 @@ const Forum = {
                                         <option value="Uso">uso</option>
                                         <option value="Custo">custo</option>
                                     </select>                                    
-                                    <button id="button-submit" class="button-submit" @click="comentar" >Enviar</button>                        
-                                    <span class="modal-close"></span>
-                                &times;</span>
+                                    <button id="button-submit" class="button" @click="comentar" >Enviar</button>                        
+                                </span>    
                             </div>
                         </div>
                     </div>   
@@ -114,7 +121,16 @@ const Forum = {
                 sessionStorage.setItem('logged',false);              
             } else {
                 sessionStorage.setItem('logged',true);
-            }
+            };
+            
+            window.onload=function() {
+                if (! localStorage.justOnce) {
+                    localStorage.setItem("justOnce", "true");
+                    window.location.reload();
+                    console.log("reloaded");
+                }
+            };
+            
                    
     },
 
@@ -248,6 +264,7 @@ const Forum = {
                 comentario: this.comentario,
                 idUsuario: idUsuario,
                 tag: tag.value,
+                visible: true,
                 respostas: []
             });
             this.comentario = '';

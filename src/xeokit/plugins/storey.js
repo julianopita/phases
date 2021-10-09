@@ -34,7 +34,7 @@ export default function StoreyViews(viewer){
     console.log(storeyMap.width,storeyMap.height);
 
     const img = document.createElement("img");
-        img.src = "../../../assets/"+st+".png";
+        img.src = "./assets/"+st+".png";
         img.style.width = storeyMap.width + "px";
         img.style.height = storeyMap.width + "px";
         img.style.padding = "0";

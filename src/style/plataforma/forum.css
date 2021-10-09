@@ -1,26 +1,41 @@
 select {
+  margin: 5px 5px 5px 0px;
   border: none;
-  font-size: 10pt;
-  color: white;
-  font-weight: bold;
-  background: #fc6161;
+  font-size: 12px;
+  height: 45px;
+  border: 2px solid blue;
+  border-radius: 5px;
+  color: blue;
+  font-weight: normal;
+  background-color: white;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-left: 10px;
-  padding-right: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 98%;
-  margin-right: 10px;
+  padding: 5px 5px 5px 0px;
+  width: 95%;
+  word-break: break-word;
+  white-space: normal;
+}
+
+select:invalid {
+  background-color: white;
+  color: grey;
+  border: 2px solid blue;
+}
+
+select [disabled] {
+  background-color: white;
+  color: grey;
 }
 
 select option {
+  background-color: blue;
   color: white;
 }
 
 select li {
   list-style: none;
+  background-color: blue;
 }
 
 .novo-comentario {
@@ -231,7 +246,6 @@ textarea {
 
 #forum .respostas {
   display: block;
-  overflow: hidden;
   width: 95%;
   padding-left: 9.5px;
   padding-right: 9.5px;

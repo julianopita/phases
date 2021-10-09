@@ -3,6 +3,7 @@ import Forum from './Forum.js';
 import Modelo from './modelo/Modelo.js';
 import axiosInstance from '../../connection/apiInfo.js';
 
+
 const infoClicked = {
     descricao  : null,
     area : null
@@ -114,13 +115,29 @@ const Plataforma = {
             .then((data)=>{
                 console.log(data);
             })            
-        }        
-    },    
-
-    mounted : async function (){
-        await this.getApiInfo()
-        console.log("oooooooooooo")
+        },        
+     
+        onLoad : function () {
+            if (! localStorage.justOnce) {
+                localStorage.setItem("justOnce", "true");
+                window.location.reload();
+                console.log("reloaded");
+            }
+        },
     },
+
+
+    mounted : function(){
+        this.onLoad()
+     },
+
+
+    // async function (){
+    //     await this.getApiInfo()
+    //     console.log("oooooooooooo")
+    // },
+            
+    
     components :{
         BarraNavegacao, Forum, Modelo,
     }

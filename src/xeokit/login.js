@@ -1,10 +1,10 @@
 //Import on load xeokit plugins
 import StoreyViews from './plugins/storey.js';
-import {AmbientLight} from "../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/lights/AmbientLight.js";
-import {DirLight} from "../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/lights/DirLight.js";
+import {AmbientLight} from "../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/lights/AmbientLight.js";
+import {DirLight} from "../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/lights/DirLight.js";
 import TreeView from './plugins/treeview.js';
-import {CameraMemento } from '../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/mementos/CameraMemento.js';
-import {ObjectsMemento } from '../../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/mementos/ObjectsMemento.js';
+import {CameraMemento } from '../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/mementos/CameraMemento.js';
+import {ObjectsMemento } from '../../node_modules/@xeokit/xeokit-sdk/src/viewer/scene/mementos/ObjectsMemento.js';
 const username = "platnomads@gmail.com";
 const password = "@bimserver";
 

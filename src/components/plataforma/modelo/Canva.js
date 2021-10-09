@@ -1,13 +1,13 @@
 import clientNomads from '../../../xeokit/index.js';
 const bimServerAddress = "http://plat-nomads.ddns.net:8080/bimserver/";
-const poid1 = 786433;
-const roid1 = 851971;
+const poid1 = 983041;
+const roid1 = 1310723;
 
     
 const canvaComponent = {
     name : 'canvaComponent',
     template : `
-    <div id="canva">
+    <div id="canva">    
         <div class="botoes">
         <!--<button id="button1" @click="canvasUm">versão 1</button>
             <button id="button2" @click="canvasDois">versão 2</button>
